@@ -87,7 +87,12 @@
                 });
                         var baseurl = "<?php echo base_url(); ?>index.php/";
                         var imageurlg = "<?php echo imageserver; ?>";
-                        var avaiblecredits = 0;</script>
+                        var avaiblecredits = 0;
+                        var currency_type = "<?php echo globle_currency; ?>";
+                        var checktestdata;
+                                                                                                  
+            </script>
+
 
             <style>
                 .ownmenu .dropdown.megamenu .dropdown-menu li:last-child{
@@ -104,7 +109,7 @@
             <!-- Header Area Start Here -->
             <header>
                 <div class="header-area-style2" id="sticker">
-                    <div class="header-top" style="    padding: 60px 0;">
+                    <div class="header-top" >
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
@@ -117,11 +122,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-2 hidden-xs">
                                     <div class="logo-area">
-                                        <a href="<?php echo site_url(); ?>"><img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    
-                                                                                 position: absolute;
-                                                                                 top: -53px;
-                                                                                 height: 128px;
-                                                                                 margin-left: -135px;"></a>
+                                        <a href="<?php echo site_url(); ?>"><img class="img-responsive logofront" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" ></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
@@ -271,7 +272,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="logo-area" style="    margin-top: 2px;">
                                         <a href="<?php echo site_url(); ?>">
-                                            <img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    height:60px;">
+                                            <img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    height:48px;">
                                         </a>
                                     </div>
                                     <div class="main-menu-area home2-sticky-area">
@@ -337,9 +338,9 @@
             <div class="modal fade model_search" id="searchModel" tabindex="-1" role="dialog" aria-labelledby="searchModelLabel">
                 <div class="modal-dialog" role="document" style="margin-top: 60px;">
                     <div class="modal-content mobile_model_search">
-                         <div class="modal-header">
+                        <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                           
+
                         </div>
                         <div class="modal-body">
 

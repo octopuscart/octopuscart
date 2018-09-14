@@ -202,10 +202,14 @@ b.barcomb-list {
 
 .cart_header_stick{
     display: none;
-    right: 47px;
+    right: -60px;
     top: 11px;
     position: absolute;
     font-size: 24px;
+}
+
+.stick .header-bottom {
+    background: #fff;
 }
 
 .cart_header_stick span {
@@ -505,4 +509,16 @@ b.barcomb-list {
         border: none;
        
     }
+}
+
+.logofront{
+     position: absolute;
+    top: -6px;
+    height: 44px;
+    margin-left: -90px;
+}
+
+.modal-sm {
+  background: #ffffff;
+      width: 389px;
 }

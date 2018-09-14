@@ -71,7 +71,7 @@ class Product_model extends CI_Model {
         $points = ($point) ?
                 "." . $words[$point / 10] . " " .
                 $words[$point = $point % 10] : '';
-        return $result . "Rupees  " . $points . " Paise";
+        return globle_currency.$result . " " . $points  . ($points ?$points." and Cents" :"");
     }
 
     ///*******  Get data for deepth of the array  ********///
@@ -115,9 +115,14 @@ where pa.product_id = $product_id group by attribute_value_id";
 
             $this->db->where('id', $productobj['user_id']);
             $query = $this->db->get('admin_users');
-            $userobj = $query->result_array()[0];
-
+            $userobj = $query->result_array();
+            if(count($userobj)){
+                $userobj = $userobj[0];
             $productobj['vendor'] = $userobj['first_name'] . " " . $userobj['last_name'];
+            }
+            else{
+               $productobj['vendor'] = "Admin";
+            }
             return $productobj;
         } else {
             return FALSE;

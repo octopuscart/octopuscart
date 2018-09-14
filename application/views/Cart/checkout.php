@@ -139,8 +139,9 @@ $this->load->view('layout/header');
                                                     <?php } ?> 
                                                     <div class=" address_block <?php echo $value['status']; ?> ">
                                                         <p>
-                                                            <?php echo $value['address']; ?>,<br/>
-                                                            <?php echo $value['city']; ?>, <?php echo $value['state']; ?> <?php echo $value['pincode']; ?>
+                                                            <?php echo $value['address1']; ?>,<br/>
+                                                            <?php echo $value['address2']; ?>,<br/>
+                                                            <?php echo $value['city']; ?>, <?php echo $value['state']; ?> <?php echo $value['zipcode']; ?>
                                                             <br/>
                                                             <?php if ($value['status'] != 'default') { ?> 
                                                                 <a href="<?php echo site_url("Cart/checkout/?setAddress=" . $value['id']); ?>" class="btn-send-message address_button btn-small ">Select Address</a>
@@ -177,7 +178,7 @@ $this->load->view('layout/header');
                                         <span>{{product.total_price|currency:" "}}</span></li>
                                 </ul>
                                 <h3>Subtotal<span>{{globleCartData.total_price|currency:" "}}</span></h3>
-                                <ul>
+<!--                                <ul>
                                     <li class="availble_credit"> Applicable Credit Limit <span> {{globleCartData.total_credit_limit}}</span></li>
                                     <li>Available Credits:{{<?php echo $user_credits; ?>|currency:" "}} <span><input type="number" 
                                                                                                                      ng-change="checkOrderTotal()"
@@ -189,7 +190,7 @@ $this->load->view('layout/header');
                                                                                                                      value="{{globleCartData.used_credit}}" 
                                                                                                                      style="width: 100px"></span>
                                     </li>
-                                </ul>
+                                </ul>-->
                                 <h3>Total<span>{{globleCartData.grand_total|currency:" "}}</span></h3>
                             </div>
 
@@ -248,28 +249,68 @@ $this->load->view('layout/header');
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel" style="font-size: 15px">Change Password</h4>
+                    <h4 class="modal-title" id="myModalLabel" style="font-size: 15px">Add New Address</h4>
                 </div>
                 <div class="modal-body checkout-form">
 
-                    <label>
-                        Address
-                        <input type="text" name="address"  value="" class="form-control">
-                    </label>
+                    <table class="table">
+                        <tbody><tr>
+                                <td style="line-height: 25px;">
+                                    <span for="name" class=""><b>Address (Line 1)</b></span>
+                                </td>
+                                <td>
+                                    <input type="text" required="" name="address1" class="form-control woocommerce-Input woocommerce-Input--email input-text" value="" style="height: 10%;">
+                                </td>
+                            </tr>
 
-                    <label>
-                        City
-                        <input type="text" name="city"  value="" class="form-control">
-                    </label>
-                    <br/>
-                    <label>
-                        State
-                        <input type="text" name="state"  value="" class="form-control">
-                    </label>
-                    <label>
-                        Pincode
-                        <input type="text" name="pincode"  value="" class="form-control">
-                    </label>
+                            <tr>
+                                <td style="line-height: 25px;">
+                                    <span for="name" class=""><b>Address (Line 2)</b></span>
+                                </td>
+                                <td>
+                                    <input type="text" required="" name="address2" class="form-control woocommerce-Input woocommerce-Input--email input-text" value="" style="height: 10%;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="line-height: 25px;">
+                                    <span for="name" class=""><b>Town/City</b></span>
+
+                                </td>
+                                <td>
+                                    <input type="text" required="" name="city" class="form-control woocommerce-Input woocommerce-Input--email input-text" value="" style="height: 10%;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="line-height: 25px;">
+                                    <span for="name"><b>State</b></span>
+                                </td>
+                                <td>
+                                    <input type="text" required="" name="state" class="form-control woocommerce-Input woocommerce-Input--email input-text" value="" style="height: 10%;">
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td style="line-height: 25px;">
+                                    <span for="name"><b>Zip/Postal</b></span>
+                                </td>
+                                <td>
+                                    <input type="text"  name="zipcode" class="form-control " value="" style="height: 10%;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="line-height: 25px;">
+                                    <span for="name"><b>Country</b></span>
+                                </td>
+                                <td>
+                                    <input type="text" required="" name="country" class="form-control" value="" style="height: 10%;">
+                                </td>
+                            </tr>
+                          
+                        </tbody>
+                    </table>
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" name="add_address" class="btn btn-primary btn-small" style="color: white">Add Address</button>
@@ -290,7 +331,7 @@ $this->load->view('layout/header');
 <!--angular controllers-->
 <script src="<?php echo base_url(); ?>assets/theme/angular/productController.js"></script>
 <script>
-        var avaiblecredits =<?php echo $user_credits; ?>;
+    var avaiblecredits =<?php echo $user_credits; ?>;
 </script>
 
 <?php

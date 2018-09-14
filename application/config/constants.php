@@ -10,7 +10,7 @@ define('imageserverslider', $baselinkmain."assets_main/sliderimages/");
 
 define('imageservermain', $baselinkmain."assets_main/");
 
-define('globle_currency', 'Rs.');
+define('globle_currency', 'HK$ ');
 
 /*
 |--------------------------------------------------------------------------

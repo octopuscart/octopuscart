@@ -59,8 +59,8 @@ $paymentstatus = "";
                     <div class="col-md-4">
                         <article class="order_box">
                             <li><i class="fa fa-map"></i> Shipping Adddress </li>
-                            <li>  <?php echo $order_data->address; ?><br/>
-                                <?php echo $order_data->state; ?>  <?php echo $order_data->city; ?> <?php echo $order_data->pincode; ?></li>
+                            <li>  <?php echo $order_data->address1; ?><br/><?php echo $order_data->address2; ?><br/>
+                                <?php echo $order_data->state; ?>  <?php echo $order_data->city; ?> <?php echo $order_data->country; ?>, <?php echo $order_data->zipcode; ?></li>
                         </article>
                     </div>
 
@@ -92,7 +92,7 @@ $paymentstatus = "";
                             <div class="row payment_block " >
                                 <form action="#" method="post" enctype="multipart/form-data">
                                     <div class="col-md-12">
-                                        <div class="col-md-3">
+<!--                                        <div class="col-md-3">
                                             <div class="thumbnail">
                                                 <img src="<?php
                                                 echo imageservermain . 'barcodes/' . $paymentbarcode->file_name;
@@ -101,9 +101,9 @@ $paymentstatus = "";
                                                     <h3 style="text-align: center"><?php echo $paymentbarcode->mobile_no; ?></h3>
                                                 </div>
                                             </div>    
-                                        </div>
+                                        </div>-->
 
-                                        <div class="col-md-9">
+                                        <div class="col-md-12">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="image1">Upload Payment Screen</label>

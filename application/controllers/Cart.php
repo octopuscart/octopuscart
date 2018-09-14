@@ -57,10 +57,12 @@ class Cart extends CI_Controller {
                 $this->db->update('shipping_address');
 
                 $category_array = array(
-                    'address' => $this->input->post('address'),
+                    'address1' => $this->input->post('address1'),
+                    'address2' => $this->input->post('address2'),
                     'city' => $this->input->post('city'),
                     'state' => $this->input->post('state'),
-                    'pincode' => $this->input->post('pincode'),
+                    'zipcode' => $this->input->post('zipcode'),
+                     'country' => $this->input->post('country'),
                     'user_id' => $this->user_id,
                     'status' => 'default',
                 );
@@ -76,19 +78,24 @@ class Cart extends CI_Controller {
                     'name' => $user_details->first_name . " " . $user_details->last_name,
                     'email' => $user_details->email,
                     'user_id' => $user_details->id,
-                    'contact_no' => $user_details->contact_no?$user_details->contact_no:'---',
-                    'pincode' => $address['pincode'],
-                    'address' => $address['address'],
+                    'contact_no' => $user_details->contact_no ? $user_details->contact_no : '---',
+                    
+                    'zipcode' => $address['zipcode'],
+                    'address1' => $address['address1'],
+                    'address2' => $address['address2'],
                     'city' => $address['city'],
                     'state' => $address['state'],
+                    'country' => $address['country'],
+                    
+                    
                     'order_date' => date('Y-m-d'),
                     'order_time' => date('H:i:s'),
-                    'amount_in_word'=> $this->Product_model->convert_num_word($this->input->post('total_price')),
+                    'amount_in_word' => $this->Product_model->convert_num_word($this->input->post('total_price')),
                     'sub_total_price' => $this->input->post('sub_total_price'),
                     'total_price' => $this->input->post('total_price'),
                     'total_quantity' => $this->input->post('total_quantity'),
                     'status' => 'Pending',
-                    'credit_price' => $this->input->post('credit_price'),
+                    'credit_price' => $this->input->post('credit_price') || 0,
                 );
 
                 $this->db->insert('user_order', $order_array);
@@ -109,25 +116,25 @@ class Cart extends CI_Controller {
                 $credit_data = array(
                     'c_date' => date('Y-m-d'),
                     'c_time' => date('H:i:s'),
-                    'order_id'=>$last_id,
-                    'credit' => $this->input->post('credit_price'),
+                    'order_id' => $last_id,
+                    'credit' => $this->input->post('credit_price') || 0,
                     'user_id' => $this->user_id,
-                    'remark' => "Credits used in Order No.: ".$orderno,
+                    'remark' => "Credits used in Order No.: " . $orderno,
                 );
                 $this->db->insert('user_debit', $credit_data);
 
 
-                
+
                 $order_status_data = array(
                     'c_date' => date('Y-m-d'),
                     'c_time' => date('H:i:s'),
-                    'order_id'=>$last_id,
+                    'order_id' => $last_id,
                     'status' => "Payment Pending",
                     'user_id' => $this->user_id,
                     'remark' => "Order Confirmed, Now Need To Process Payment.",
                 );
                 $this->db->insert('user_order_status', $order_status_data);
-                
+
                 $this->Product_model->order_to_vendor($last_id);
 
 

@@ -84,6 +84,7 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
             $scope.globleCartData = rdata.data;
             $scope.globleCartData['grand_total'] = $scope.globleCartData['total_price'];
             $(".cartquantity").text($scope.globleCartData.total_quantity);
+              console.log($scope.globleCartData.used_credit);
         }, function (r) {
         })
     }
@@ -142,7 +143,7 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
             swal({
                 title: 'Added To Cart',
                 type: 'success',
-                html: "<p class='swalproductdetail'><span>" + rdata.data.title + "</span><br>" + "Total Price: " + currencyfilter(rdata.data.total_price, 'Rs.  ') + ", Quantity: " + rdata.data.quantity + "</p>",
+                html: "<p class='swalproductdetail'><span>" + rdata.data.title + "</span><br>" + "Total Price: " + currencyfilter(rdata.data.total_price, currency_type) + ", Quantity: " + rdata.data.quantity + "</p>",
                 imageUrl: rdata.data.file_name,
                 imageWidth: 100,
                 timer: 1500,
@@ -170,8 +171,10 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
     $scope.avaiblecredits = avaiblecredits;
 
     $scope.checkOrderTotal = function () {
+          console.log($scope.globleCartData.used_credit);
         if ($scope.globleCartData.used_credit) {
             $scope.globleCartData.grand_total = $scope.globleCartData.total_price - $scope.globleCartData.used_credit;
+          
         }
         else {
             $scope.globleCartData.used_credit = 0;

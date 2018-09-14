@@ -44,7 +44,10 @@ $this->load->view('layout/header');
                                     </a>
                                 </td>
                                 <td>
-                                    <h3><a href="#">{{product.title}}</a><br/><small style="font-size: 10px">Vendor Code:{{product.vendor_id}}</small></h3>
+                                    <h3><a href="#">{{product.title}}</a>
+                                        <br/>
+                                        <small style="font-size: 10px">{{product.sku}}</small>
+                                    </h3>
                                 </td>
                                 <td class="amount">{{product.price|currency:" "}}</td>
                                 <td class="quantity">
@@ -79,7 +82,7 @@ $this->load->view('layout/header');
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <div class="cart-page-bottom-right">
                     
-                    <h3>Total<span>{{globleCartData.total_price|currency:" "}}</span></h3>
+                    <h3>Total<span>{{globleCartData.total_price|currency:"<?php echo globle_currency; ?>"}}</span></h3>
 
                     <div class="proceed-button">
 

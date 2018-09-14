@@ -51,7 +51,7 @@ $this->load->view('layout/header');
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="login-registration-field">
                     <h2 class="cart-area-title">Register</h2>
-                    <form>
+                    <form action="#" method="post">
                         <label>First Name *</label>
                         <input type="text" name="first_name" placeholder="First Name *">
                         <label>Last Name *</label>
@@ -65,7 +65,7 @@ $this->load->view('layout/header');
 
 
 
-                        <button class="btn-send-message disabled" type="submit" value="Login">Register</button>
+                        <button name = "registration" class="btn-send-message disabled" type="submit" value="Login">Register</button>
                     </form>
                 </div>
             </div>
