@@ -522,3 +522,61 @@ b.barcomb-list {
   background: #ffffff;
       width: 389px;
 }
+
+.shop-page-area {
+    padding: 20px 0;
+}
+.product-box1 .product-img-holder {
+    position: relative;
+    border: 1px solid #e5e5e5;
+    background: #e5e5e5;
+}
+
+.title-sidebar {
+ 
+    margin-bottom: 0px;
+}
+
+.sidebar-section-margin {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #bebcbc;
+}
+
+.inner-page-banner-area .breadcrumb-area {
+    position: relative;
+    z-index: 2;
+     top: 5px; 
+    left: 0;
+    right: 0;
+}
+
+.inner-page-banner-area {
+    background: url(img/inner-page-banner.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    position: relative;
+     min-height: 60px; 
+         background: #000;
+}
+.inner-page-banner-area .breadcrumb-area h1 {
+    letter-spacing: 4px;
+    font-size: 15px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.header-area-style2 .header-bottom .main-menu-area nav > ul > li {
+    padding: 15px 0;
+}
+
+.header-area-style2 .header-bottom {
+
+    border-bottom: 1px solid #b6b6b6;
+}
+
+.category-menu-area ul li a {
+    line-height: 18px;
+}

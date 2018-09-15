@@ -108,10 +108,10 @@ class Api extends REST_Controller {
         $pricequery = "";
         if (isset($attrdatak["minprice"])) {
             $mnpricr = $attrdatak["minprice"] - 1;
-            $mxpricr = $attrdatak["maxprice"] + 1;
+            $mxpricr = $attrdatak["maxprice"] ;
             unset($attrdatak["minprice"]);
             unset($attrdatak["maxprice"]);
-            $pricequery = " and (price between '$mnpricr' and '$mxpricr') ";
+             $pricequery = " and (price between '$mnpricr' and '$mxpricr') ";
         }
 
         foreach ($attrdatak as $key => $atv) {

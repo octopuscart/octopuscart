@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $baselink = 'http://'.$_SERVER['SERVER_NAME'];
 
 $baselinkmain = strpos($baselink, '192.168') ? $baselink.'/octopusadmin/' : 'http://admin.octopuscart.com/';
-define('imageserver', $baselinkmain."assets_main/productimages/");
+define('imageserver', "http://admin.octopuscart.com/"."assets_main/productimages/");
 
-define('imageserverslider', $baselinkmain."assets_main/sliderimages/");
+define('imageserverslider', "http://admin.octopuscart.com/"."assets_main/sliderimages/");
 
 define('imageservermain', $baselinkmain."assets_main/");
 

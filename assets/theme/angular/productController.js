@@ -48,6 +48,7 @@ ClassApartStore.controller('ProductController', function ($scope, $http, $timeou
         }
 
         $http.get(url).then(function (result) {
+            console.log(result.data);
             if ($scope.productResults.products) {
                 $scope.productResults.products = result.data.products;
             }
@@ -65,18 +66,18 @@ ClassApartStore.controller('ProductController', function ($scope, $http, $timeou
                     var priceSlider = document.getElementById('price-range-filter');
                     if (priceSlider) {
                         noUiSlider.create(priceSlider, {
-                            start: [Number($scope.productResults.price.minprice), Number($scope.productResults.price.maxprice)],
+                            start: [Number($scope.productResults.price.minprice) - 1, Number($scope.productResults.price.maxprice)],
                             connect: true,
                             /*tooltips: true,*/
                             range: {
-                                'min': Number($scope.productResults.price.minprice),
+                                'min': Number($scope.productResults.price.minprice) - 1,
                                 'max': Number($scope.productResults.price.maxprice)
                             },
                             format: wNumb({
                                 decimals: 0
                             }),
                         });
-                        var marginMin = Number($scope.productResults.price.minprice),
+                        var marginMin = Number($scope.productResults.price.minprice) - 1,
                                 marginMax = Number($scope.productResults.price.maxprice);
                         priceSlider.noUiSlider.on('update', function (values, handle) {
                             if (handle) {

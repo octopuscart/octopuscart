@@ -14,24 +14,24 @@ foreach ($categorie_parent as $key => $value) {
 
 <!-- Inner Page Banner Area Start Here -->
 <div class="inner-page-banner-area">
-    <div class="container">
+    <div class="">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="breadcrumb-area">
-                    <h1>
-                        <?php
-                        echo count($linklist) ? $cattitle : 'Shop Now';
-                        ?>
-                    </h1>
-                    <ul>
-                        <li><a href="<?php echo site_url("/"); ?>">Home</a></li>
-                        <?php echo count($linklist) ? "<b class='barcomb-list'>/</b>" : ''; ?>
-                        <?php
-                        echo implode("<b class='barcomb-list'>/</b>", $linklist)
-                        ?>
-                    </ul>
-                </div>
+
+            <div class="breadcrumb-area">
+                <h1>
+                    <?php
+                    echo count($linklist) ? $cattitle : 'Shop Now';
+                    ?>
+                </h1>
+                <ul>
+                    <li><a href="<?php echo site_url("/"); ?>">Home</a></li>
+                    <?php echo count($linklist) ? "<b class='barcomb-list'>/</b>" : ''; ?>
+                    <?php
+                    echo implode("<b class='barcomb-list'>/</b>", $linklist)
+                    ?>
+                </ul>
             </div>
+
         </div>
     </div>
 </div>
@@ -56,7 +56,8 @@ foreach ($categorie_parent as $key => $value) {
 
                                     <li>
                                         <a href="<?php echo site_url("Product/ProductList/" . $value['id']); ?>">
-                                            <i class="flaticon-left-arrow"></i>
+                                            <i class="icon ion-ios-arrow-forward"></i>
+
                                             <?php echo $value['category_name']; ?>
 
                                             <?php
@@ -69,25 +70,7 @@ foreach ($categorie_parent as $key => $value) {
                                             }
                                             ?>
                                         </a>
-                                        <?php
-                                        if (count($subcategories)) {
-                                            ?>
-                                            <ul class="dropdown-menu">
-                                                <?php
-                                                foreach ($subcategories as $key1 => $value1) {
-                                                    ?>
-                                                    <li>
-                                                        <a href="<?php echo site_url("Product/ProductList/" . $value1['id']); ?>">
-                                                            <?php echo $value1['category_name']; ?>
-                                                        </a>
-                                                    </li>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </ul>
-                                            <?php
-                                        }
-                                        ?>
+
                                     </li>
                                     <?php
                                 }
@@ -132,30 +115,30 @@ foreach ($categorie_parent as $key => $value) {
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
-                        <!--                        <div class="inner-shop-top-left">
-                                                    <div class="dropdown">
-                                                        <button class="btn sorting-btn dropdown-toggle" type="button" data-toggle="dropdown">Default Sorting<span class="caret"></span>
-                                                        </button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="#">Date</a></li>
-                                                            <li><a href="#">Best Sale</a></li>
-                                                            <li><a href="#">Rating</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>-->
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
-                        <div class="inner-shop-top-right">
-                            <ul>
-                                <li class="active"><a href="#gried-view" data-toggle="tab" aria-expanded="false"><i class="fa fa-th-large"></i></a></li>
-                                <li><a href="#list-view" data-toggle="tab" aria-expanded="true"><i class="fa fa-list"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row inner-section-space-top">
+                <!--                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+                                                                <div class="inner-shop-top-left">
+                                                                    <div class="dropdown">
+                                                                        <button class="btn sorting-btn dropdown-toggle" type="button" data-toggle="dropdown">Default Sorting<span class="caret"></span>
+                                                                        </button>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a href="#">Date</a></li>
+                                                                            <li><a href="#">Best Sale</a></li>
+                                                                            <li><a href="#">Rating</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
+                                        <div class="inner-shop-top-right">
+                                            <ul>
+                                                <li class="active"><a href="#gried-view" data-toggle="tab" aria-expanded="false"><i class="fa fa-th-large"></i></a></li>
+                                                <li><a href="#list-view" data-toggle="tab" aria-expanded="true"><i class="fa fa-list"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>-->
+                <div class="row inner-section-space-top1">
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active clear products-container" id="gried-view">
@@ -235,20 +218,20 @@ foreach ($categorie_parent as $key => $value) {
         </div>
 
 
-        <div id="content"  ng-if="!productResults.products.length"> 
-            <div ng-if="checkproduct == 0">
-                <!-- Tesm Text -->
-                <section class="error-page text-center pad-t-b-130">
-                    <div class="container "> 
+        <div id="content"  ng-if="productResults.products.length == 0"> 
 
-                        <!-- Heading -->
-                        <h1 style="font-size: 40px">No Product Found</h1>
-                        <p>Products Will Comming Soon</p>
-                        <hr class="dotted">
-                        <a href="<?php echo site_url(); ?>" class="woocommerce-Button button btn-shop-now-fill">BACK TO HOME</a>
-                    </div>
-                </section>
-            </div>
+            <!-- Tesm Text -->
+            <section class="error-page text-center pad-t-b-130">
+                <div class="container "> 
+
+                    <!-- Heading -->
+                    <h1 style="font-size: 40px">No Product Found</h1>
+                    <p>Products Will Comming Soon</p>
+                    <hr class="dotted">
+                    <a href="<?php echo site_url(); ?>" class="woocommerce-Button button btn-shop-now-fill">BACK TO HOME</a>
+                </div>
+            </section>
+
 
         </div>
 
