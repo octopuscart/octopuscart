@@ -104,8 +104,8 @@ class Api extends REST_Controller {
         $attrdatak = $this->get();
         $products = [];
         $countpr = 0;
-
-
+        
+        $pricequery = "";
         if (isset($attrdatak["minprice"])) {
             $mnpricr = $attrdatak["minprice"] - 1;
             $mxpricr = $attrdatak["maxprice"] + 1;
