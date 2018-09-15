@@ -72,6 +72,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
+$baselink = 'http://'.$_SERVER['SERVER_NAME'];
+$checkdebug = strpos($baselink, '192.168') ? TRUE  : FALSE;
 
 $db['default'] = array(
 	'dsn'	=> '',
@@ -82,7 +84,7 @@ $db['default'] = array(
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	'db_debug' => $checkdebug,
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
