@@ -39,6 +39,9 @@ class Product_model extends CI_Model {
         $digits_1 = strlen($no);
         $i = 0;
         $str = array();
+        $wordsz = array('0' => 'zero', '1' => 'one', '2' => 'two',
+            '3' => 'three', '4' => 'four', '5' => 'five', '6' => 'six',
+            '7' => 'seven', '8' => 'eight', '9' => 'nine',);
         $words = array('0' => '', '1' => 'one', '2' => 'two',
             '3' => 'three', '4' => 'four', '5' => 'five', '6' => 'six',
             '7' => 'seven', '8' => 'eight', '9' => 'nine',
@@ -68,10 +71,11 @@ class Product_model extends CI_Model {
         }
         $str = array_reverse($str);
         $result = implode('', $str);
+        $result = $result ? $result : $wordsz[$result / 10];
         $points = ($point) ?
-                "." . $words[$point / 10] . " " .
-                $words[$point = $point % 10] : '';
-        return globle_currency.$result . " " . $points  . ($points ?$points." and Cents" :"");
+                " and " . $wordsz[$point / 10] . " " .
+                $wordsz[$point = $point % 10] : '';
+        return globle_currency . $result . " " . ($points ? "" . $points . " Cents" : "");
     }
 
     ///*******  Get data for deepth of the array  ********///
@@ -116,12 +120,11 @@ where pa.product_id = $product_id group by attribute_value_id";
             $this->db->where('id', $productobj['user_id']);
             $query = $this->db->get('admin_users');
             $userobj = $query->result_array();
-            if(count($userobj)){
+            if (count($userobj)) {
                 $userobj = $userobj[0];
-            $productobj['vendor'] = $userobj['first_name'] . " " . $userobj['last_name'];
-            }
-            else{
-               $productobj['vendor'] = "Admin";
+                $productobj['vendor'] = $userobj['first_name'] . " " . $userobj['last_name'];
+            } else {
+                $productobj['vendor'] = "Admin";
             }
             return $productobj;
         } else {
@@ -243,20 +246,35 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
         }
         $query = $this->db->get('user_order');
         $order_details = $query->row();
-
+        $payment_details = array("payment_mode" => "", "txn_id" => "", "payment_date" => "");
         if ($order_details) {
 
-//            $this->db->order_by('id', 'desc');
+            $this->db->order_by('id', 'desc');
             $this->db->where('order_id', $order_details->id);
             $query = $this->db->get('user_order_status');
             $userorderstatus = $query->result();
             $order_data['order_status'] = $userorderstatus;
+
 
             $order_id = $order_details->id;
             $order_data['order_data'] = $order_details;
             $this->db->where('order_id', $order_details->id);
             $query = $this->db->get('cart');
             $cart_items = $query->result();
+
+            if ($order_details->payment_mode == 'PayPal') {
+                $this->db->where('order_id', $order_details->id);
+                $query = $this->db->get('paypal_status');
+                $paypal_details = $query->result();
+               
+                if ($paypal_details) {
+                    $paypal_details  = end($paypal_details);
+                    $payment_details['payment_mode'] = "PayPal";
+                    $payment_details['txn_id'] = $paypal_details->txn_no;
+                    $payment_details['payment_date'] = $paypal_details->timestemp;
+                }
+            }
+
 
             foreach ($cart_items as $key => $value) {
                 $vendor_id = $value->vendor_id;
@@ -267,7 +285,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 $orderstatus = $query->result();
                 $value->product_status = $orderstatus;
             }
-
+            $order_data['payment_details'] = $payment_details; 
             $order_data['cart_data'] = $cart_items;
             $order_data['amount_in_word'] = $this->convert_num_word($order_data['order_data']->total_price);
         }
@@ -477,26 +495,17 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
         $order_details = $this->getOrderDetails($order_id, 0);
 
         if ($order_details) {
-            $config = Array(
-                'protocol' => 'smtp',
-                'smtp_host' => 'ssl://smtp.googlemail.com',
-                'smtp_port' => 465,
-                'smtp_user' => 'noreplay2classapartstore@gmail.com',
-                'smtp_pass' => 'vjdsxubpqhrhahrj',
-                'mailtype' => 'html',
-                'charset' => 'iso-8859-1'
-            );
-            $this->load->library('email', $config);
-            $this->email->set_newline("\r\n");
-            $this->email->from('no_replay_classapartstore@gmail.com', 'Class Apart Store');
+
+            $this->email->from('noreply.octopuscart@gmail.com', 'Octopuscart Ltd.');
             $this->email->to($order_details['order_data']->email);
-            $this->email->bcc('noreplay2classapartstore@gmail.com');
+            $this->email->bcc('octopuscartltd@gmail.com');
 
             if ($subject) {
                 $this->email->subject($subject);
             } else {
-                $this->email->subject('Class Apart Sore Order No:' . $order_details['order_data']->order_no . " has been confirmed.");
+                $this->email->subject('Octopuscart Order No:' . $order_details['order_data']->order_no . " has been confirmed.");
             }
+            //echo $this->load->view('Email/order_mail', $order_details, true);
             $this->email->message($this->load->view('Email/order_mail', $order_details, true));
             $this->email->print_debugger();
             echo $result = $this->email->send();

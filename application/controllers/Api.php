@@ -331,7 +331,7 @@ class Api extends REST_Controller {
     }
 
     function order_mail_get($order_id, $order_no) {
-        $subject = "Class Apart Store Order No. #" . $order_no . " Copy";
+        $subject = "Octopuscart Order No. #" . $order_no . " Copy";
         $this->Product_model->order_mail($order_id, $subject);
     }
 

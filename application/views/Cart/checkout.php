@@ -91,6 +91,112 @@ $this->load->view('layout/header');
 <!-- Inner Page Banner Area End Here -->
 
 <!-- Content -->
+
+
+<div class="cart-page-area">
+    <div class="container" ng-if="globleCartData.total_quantity">
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <span class="fa-stack">
+                                    <i class="fa fa-shopping-cart fa-stack-1x"></i>
+                                    <i class="ion-bag fa-stack-1x "></i>
+                                </span>   My Shopping Bag
+                                <span style="float: right; line-height: 29px;" class="ng-binding">Total: {{globleCartData.total_price|currency:"<?php echo globle_currency; ?>"}} (<small style="color: #fff" class="ng-binding">{{globleCartData.total_quantity}}</small>)</span> 
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="clearfix"></div>
+                        <div class="cart-page-top table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+
+                                        <td class="cart-form-heading text_center" colspan="2">Product</td>
+                                        <td class="cart-form-heading text_center">Price</td>
+                                        <td class="cart-form-heading text_center">Total</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="quantity-holder">
+                                    <tr ng-repeat="product in globleCartData.products">
+                                        <td class="cart-img-holder" style="    border-right: 0px;">
+                                            <a href="#">
+                                                <img  src="{{product.file_name}}" alt=""  alt="cart" class="img-responsive cart_image_block">
+                                            </a>
+                                        </td>
+                                        <td  style="    border-left: 0px;">
+                                            <h3><a href="#">{{product.title}}</a>
+                                                <br/>
+                                                <small style="font-size: 10px">{{product.sku}}</small>
+                                            </h3>
+                                        </td>
+                                        <td class="amount">{{product.price|currency:" "}} X {{product.quantity}}
+                                        </td>
+                                        <td class="amount">{{product.total_price|currency:" "}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="text_right">
+                                            TOTAL
+                                        </td>
+                                        <td class="text-center amount">
+                                            {{globleCartData.total_price|currency:"<?php echo globle_currency; ?>"}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" class="text_right">
+                                            <div class="proceed-button pull-left " >
+                                                <a href=" <?php echo site_url("Cart/details"); ?>" class="btn-apply-coupon checkout_button_pre disabled" ><i class="fa fa-arrow-left"></i> Back To Cart</a>
+                                            </div>
+                                            <div class="proceed-button pull-right ">
+                                                <a href=" <?php echo site_url("Cart/shipingAddress"); ?>" class="btn-apply-coupon checkout_button_next disabled" >Choose Shipping Address <i class="fa fa-arrow-right"></i></a>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Content -->
+    <div id="content"  ng-if="!globleCartData.total_quantity"> 
+        <!-- Tesm Text -->
+        <section class="error-page text-center pad-t-b-130">
+            <div class="container "> 
+
+                <!-- Heading -->
+                <h1 style="font-size: 40px">No Product Found</h1>
+                <p>Please add product to cart<br>
+                    You can go back to</p>
+                <hr class="dotted">
+                <a href="<?php echo site_url(); ?>" class="btn-send-message ">BACK TO HOME</a>
+            </div>
+        </section>
+    </div>
+    <!-- End Content --> 
+
+
+</div>
+
+
 <div id="content" ng-if="globleCartData.total_quantity"> 
     <!-- Shop Content -->
     <section class="shop-content pad-t-b-60 checkout-page-area">
@@ -178,19 +284,19 @@ $this->load->view('layout/header');
                                         <span>{{product.total_price|currency:" "}}</span></li>
                                 </ul>
                                 <h3>Subtotal<span>{{globleCartData.total_price|currency:" "}}</span></h3>
-<!--                                <ul>
-                                    <li class="availble_credit"> Applicable Credit Limit <span> {{globleCartData.total_credit_limit}}</span></li>
-                                    <li>Available Credits:{{<?php echo $user_credits; ?>|currency:" "}} <span><input type="number" 
-                                                                                                                     ng-change="checkOrderTotal()"
-                                                                                                                     max="{{globleCartData.total_credit_limit}}" 
-                                                                                                                     min="0" 
-                                                                                                                     name="credit_price"
-                                                                                                                     class="form-control" 
-                                                                                                                     ng-model="globleCartData.used_credit" 
-                                                                                                                     value="{{globleCartData.used_credit}}" 
-                                                                                                                     style="width: 100px"></span>
-                                    </li>
-                                </ul>-->
+                                <!--                                <ul>
+                                                                    <li class="availble_credit"> Applicable Credit Limit <span> {{globleCartData.total_credit_limit}}</span></li>
+                                                                    <li>Available Credits:{{<?php echo $user_credits; ?>|currency:" "}} <span><input type="number" 
+                                                                                                                                                     ng-change="checkOrderTotal()"
+                                                                                                                                                     max="{{globleCartData.total_credit_limit}}" 
+                                                                                                                                                     min="0" 
+                                                                                                                                                     name="credit_price"
+                                                                                                                                                     class="form-control" 
+                                                                                                                                                     ng-model="globleCartData.used_credit" 
+                                                                                                                                                     value="{{globleCartData.used_credit}}" 
+                                                                                                                                                     style="width: 100px"></span>
+                                                                    </li>
+                                                                </ul>-->
                                 <h3>Total<span>{{globleCartData.grand_total|currency:" "}}</span></h3>
                             </div>
 
@@ -306,7 +412,7 @@ $this->load->view('layout/header');
                                     <input type="text" required="" name="country" class="form-control" value="" style="height: 10%;">
                                 </td>
                             </tr>
-                          
+
                         </tbody>
                     </table>
 

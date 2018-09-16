@@ -194,7 +194,7 @@
                                                     <li>
                                                         <ul class="checkout">
                                                             <li><a href="<?php echo site_url("Cart/details"); ?>" class="btn-checkout"><i class="fa fa-shopping-cart" aria-hidden="true"></i>View Cart</a></li>
-                                                            <li><a href="<?php echo site_url("Cart/checkout"); ?>" class="btn-checkout"><i class="fa fa-share" aria-hidden="true"></i>Checkout</a></li>
+                                                            <li><a href="<?php echo site_url("Cart/checkoutInit"); ?>" class="btn-checkout"><i class="fa fa-share" aria-hidden="true"></i>Checkout</a></li>
                                                         </ul>
                                                     </li>
                                                 </ul>

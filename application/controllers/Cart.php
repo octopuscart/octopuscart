@@ -25,7 +25,18 @@ class Cart extends CI_Controller {
         $this->load->view('Cart/details');
     }
 
-    function checkout() {
+    function checkoutInit() {
+        $session_data = $this->session->userdata('logged_in');
+        if ($session_data) {
+            $user_address_details = $this->User_model->user_address_details($this->user_id);
+            $data['user_address_details'] = $user_address_details;
+            $this->load->view('Cart/checkoutInit', $data);
+        } else {
+            redirect('Account/login?page=checkoutInit');
+        }
+    }
+
+    function checkoutShipping() {
         $session_data = $this->session->userdata('logged_in');
         if ($session_data) {
             $user_details = $this->User_model->user_details($this->user_id);
@@ -47,7 +58,7 @@ class Cart extends CI_Controller {
                 $this->db->set('status', "default");
                 $this->db->where('id', $adid);
                 $this->db->update('shipping_address');
-                redirect('Cart/checkout');
+                redirect('Cart/checkoutShipping');
             }
 
             //add New address
@@ -62,13 +73,32 @@ class Cart extends CI_Controller {
                     'city' => $this->input->post('city'),
                     'state' => $this->input->post('state'),
                     'zipcode' => $this->input->post('zipcode'),
-                     'country' => $this->input->post('country'),
+                    'country' => $this->input->post('country'),
                     'user_id' => $this->user_id,
                     'status' => 'default',
                 );
                 $this->db->insert('shipping_address', $category_array);
-                redirect('Cart/checkout');
+                redirect('Cart/checkoutShipping');
             }
+            $this->load->view('Cart/checkoutShipping', $data);
+        } else {
+            redirect('Account/login?page=checkoutInit');
+        }
+    }
+
+    function checkoutPayment() {
+        $session_data = $this->session->userdata('logged_in');
+        if ($session_data) {
+            $user_details = $this->User_model->user_details($this->user_id);
+            $data['user_details'] = $user_details;
+
+            $user_address_details = $this->User_model->user_address_details($this->user_id);
+            $data['user_address_details'] = $user_address_details;
+
+            $user_credits = $this->User_model->user_credits($this->user_id);
+            $data['user_credits'] = $user_credits;
+
+           
 
             //place order
             if (isset($_POST['place_order'])) {
@@ -79,15 +109,12 @@ class Cart extends CI_Controller {
                     'email' => $user_details->email,
                     'user_id' => $user_details->id,
                     'contact_no' => $user_details->contact_no ? $user_details->contact_no : '---',
-                    
                     'zipcode' => $address['zipcode'],
                     'address1' => $address['address1'],
                     'address2' => $address['address2'],
                     'city' => $address['city'],
                     'state' => $address['state'],
                     'country' => $address['country'],
-                    
-                    
                     'order_date' => date('Y-m-d'),
                     'order_time' => date('H:i:s'),
                     'amount_in_word' => $this->Product_model->convert_num_word($this->input->post('total_price')),
@@ -142,9 +169,9 @@ class Cart extends CI_Controller {
             }
 
 
-            $this->load->view('Cart/checkout', $data);
+            $this->load->view('Cart/checkoutPayment', $data);
         } else {
-            redirect('Account/login?page=checkout');
+            redirect('Account/login?page=checkoutInit');
         }
     }
 
