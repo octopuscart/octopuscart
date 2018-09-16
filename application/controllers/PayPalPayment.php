@@ -120,9 +120,16 @@ class PayPalPayment extends CI_Controller {
 
                 echo '<h2>Success</h2>';
                 echo 'Your Transaction ID : ' . urldecode($httpParsedResponseAr["PAYMENTINFO_0_TRANSACTIONID"]);
-                $long_message = urldecode($httpParsedResponseAr["L_LONGMESSAGE0"]);
-                $message = urldecode($httpParsedResponseAr["L_SHORTMESSAGE0"]);
-                $error_code = urldecode($httpParsedResponseAr["L_ERRORCODE0"]);
+                if (isset($httpParsedResponseAr["L_LONGMESSAGE0"])) {
+                    $long_message = urldecode($httpParsedResponseAr["L_LONGMESSAGE0"]);
+                    $message = urldecode($httpParsedResponseAr["L_SHORTMESSAGE0"]);
+                    $error_code = urldecode($httpParsedResponseAr["L_ERRORCODE0"]);
+                } else {
+                    $long_message = 'Your Transaction ID : ' . urldecode($httpParsedResponseAr["PAYMENTINFO_0_TRANSACTIONID"]);
+                    $message = "Payment Success";
+                    $error_code = "0";
+                }
+
                 $payment_error_code = urldecode($httpParsedResponseAr["PAYMENTINFO_0_ERRORCODE"]);
                 $payment_status = urldecode($httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"]);
 
@@ -185,7 +192,7 @@ class PayPalPayment extends CI_Controller {
                         'total_price' => urldecode($httpParsedResponseAr["AMT"]),
                         'total_quantity' => $session_cart['total_quantity'],
                         'status' => 'Payment Completed',
-                        'payment_mode'=>'PayPal',
+                        'payment_mode' => 'PayPal',
                         'credit_price' => $this->input->post('credit_price') || 0,
                     );
 
@@ -197,8 +204,8 @@ class PayPalPayment extends CI_Controller {
                     $this->db->set('order_key', $orderkey);
                     $this->db->where('id', $last_id);
                     $this->db->update('user_order');
-                    
-                    
+
+
 
                     $this->db->set('order_id', $last_id);
                     $this->db->where('order_id', '0');
