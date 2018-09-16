@@ -401,8 +401,6 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 $pid = $row['id'];
                 $this->get_children($pid, $container);
             }
-
-            print_r($category);
             return $category;
         } else {
             
