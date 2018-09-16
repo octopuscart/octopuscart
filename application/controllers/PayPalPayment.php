@@ -252,7 +252,7 @@ class PayPalPayment extends CI_Controller {
                     $this->Product_model->order_to_vendor($last_id);
 
 
-                    redirect('Order/orderdetails/' . $orderkey);
+                   // redirect('Order/orderdetails/' . $orderkey);
 
 
 
