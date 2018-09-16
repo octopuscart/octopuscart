@@ -514,6 +514,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
 
     function order_to_vendor($order_id) {
         $order_details = $this->getOrderDetails($order_id, 0);
+        print_r($order_details);
         $cartdata = $order_details['cart_data'];
         $venderarray = array();
         foreach ($cartdata as $key => $value) {
