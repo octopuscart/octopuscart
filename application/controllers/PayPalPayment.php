@@ -117,9 +117,6 @@ class PayPalPayment extends CI_Controller {
             $httpParsedResponseAr = $this->paypalclass->PPHttpPost('DoExpressCheckoutPayment', $doexpresscheckout . $paypaldata, $PayPalApiUsername, $PayPalApiPassword, $PayPalApiSignature, $PayPalMode);
 //Check if everything went ok..
             if ("SUCCESS" == strtoupper($httpParsedResponseAr["ACK"]) || "SUCCESSWITHWARNING" == strtoupper($httpParsedResponseAr["ACK"])) {
-
-                echo '<h2>Success</h2>';
-                echo 'Your Transaction ID : ' . urldecode($httpParsedResponseAr["PAYMENTINFO_0_TRANSACTIONID"]);
                 if (isset($httpParsedResponseAr["L_LONGMESSAGE0"])) {
                     $long_message = urldecode($httpParsedResponseAr["L_LONGMESSAGE0"]);
                     $message = urldecode($httpParsedResponseAr["L_SHORTMESSAGE0"]);
@@ -129,15 +126,8 @@ class PayPalPayment extends CI_Controller {
                     $message = "Payment Success";
                     $error_code = "0";
                 }
-
                 $payment_error_code = urldecode($httpParsedResponseAr["PAYMENTINFO_0_ERRORCODE"]);
                 $payment_status = urldecode($httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"]);
-
-                print_r($httpParsedResponseAr);
-                /*
-                  //Sometimes Payment are kept pending even when transaction is complete.
-                  //hence we need to notify user about it and ask him manually approve the transiction
-                 */
                 if ('Completed' == $httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"]) {
                     echo '<div style="color:green">Payment Received! Your product will be sent to you very soon!</div>';
                 } elseif ('Pending' == $httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"]) {
@@ -252,7 +242,7 @@ class PayPalPayment extends CI_Controller {
                     $this->Product_model->order_to_vendor($last_id);
 
 
-                   // redirect('Order/orderdetails/' . $orderkey);
+                    // redirect('Order/orderdetails/' . $orderkey);
 
 
 
