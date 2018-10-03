@@ -155,9 +155,9 @@ $paymentstatus = "";
                                     <td style="width: 20px;text-align: right">S.No.</td>
                                     <td colspan="2"  style="text-align: center">Product</td>
 
-                                    <td style="text-align: right;width: 100px"">Price<br/><span style="font-size: 10px">(In INR)</span></td>
+                                    <td style="text-align: right;width: 100px"">Price<br/><span style="font-size: 10px">(In <?php echo globle_currency; ?>)</span></td>
                                     <td style="text-align: right;width: 20px"">Qnty.</td>
-                                    <td style="text-align: right;width: 100px">Total<br/><span style="font-size: 10px">(In INR)</span></td>
+                                    <td style="text-align: right;width: 100px">Total<br/><span style="font-size: 10px">(In <?php echo globle_currency; ?>)</span></td>
                                 </tr>
                                 <!--cart details-->
                                 <?php
@@ -272,7 +272,7 @@ $paymentstatus = "";
                                     <td style="text-align: right;width: 60px"><?php echo $order_data->credit_price; ?> </td>
                                 </tr>-->
                                 <tr>
-                                    <td colspan="2" style="text-align: right">Toal Amount</td>
+                                    <td colspan="2" style="text-align: right">Total Amount</td>
                                     <td style="text-align: right;width: 60px"><?php echo $order_data->total_price; ?> </td>
                                 </tr>
 
