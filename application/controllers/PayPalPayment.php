@@ -45,15 +45,15 @@ class PayPalPayment extends CI_Controller {
             $countitem++;
         }
 
-        $discountcalculate = $total_amt - 0.01;
-
-        $total_amt = $total_amt - $discountcalculate;
-        $total_amt = number_format($total_amt, 2, '.', '');
-
-        $paypaldata .= '&L_PAYMENTREQUEST_0_NAME' . $countitem . '=' . urlencode("GIFT DISCOUNT") .
-                '&L_PAYMENTREQUEST_0_NUMBER' . $countitem . '=' . urlencode("GFT0001") .
-                '&L_PAYMENTREQUEST_0_AMT' . $countitem . '=-' . urlencode($discountcalculate) .
-                '&L_PAYMENTREQUEST_0_QTY' . $countitem . '=' . urlencode(1);
+//        $discountcalculate = $total_amt - 0.01;
+//
+//        $total_amt = $total_amt - $discountcalculate;
+//        $total_amt = number_format($total_amt, 2, '.', '');
+//
+//        $paypaldata .= '&L_PAYMENTREQUEST_0_NAME' . $countitem . '=' . urlencode("GIFT DISCOUNT") .
+//                '&L_PAYMENTREQUEST_0_NUMBER' . $countitem . '=' . urlencode("GFT0001") .
+//                '&L_PAYMENTREQUEST_0_AMT' . $countitem . '=-' . urlencode($discountcalculate) .
+//                '&L_PAYMENTREQUEST_0_QTY' . $countitem . '=' . urlencode(1);
 
         $setexpresscheckout = '&METHOD=SetExpressCheckout' .
                 '&PAYMENTREQUEST_0_PAYMENTACTION=' . urlencode("SALE") .
