@@ -57,10 +57,11 @@
         <div class="footer-area-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                        <p>Class Apart Store. All Rights Reserved. </p>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <p>Copyright © <?php echo date('Y');?> Octopuscart. </p>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <p>All rights reserved | from the house of Costco Internatinal Ltd</p>
                     </div>
                 </div>
             </div>
