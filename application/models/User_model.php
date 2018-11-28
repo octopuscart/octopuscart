@@ -93,6 +93,49 @@ class User_model extends CI_Model {
         return $query->result();
     }
 
+    function registration_mail($user_id) {
+        $this->db->where('id', $user_id);
+        $query = $this->db->get('admin_users');
+        $customer = $query->row();
+
+
+        $emailsender = email_sender;
+        $sendername = email_sender_name;
+        $email_bcc = email_bcc;
+
+        if ($customer) {
+            $this->email->set_newline("\r\n");
+            $this->email->from($emailsender, $sendername);
+            $this->email->to($customer->email);
+            $this->email->bcc(email_bcc);
+
+            $orderlog = array(
+                'log_type' => 'Registration',
+                'log_datetime' => date('Y-m-d H:i:s'),
+                'user_id' => $user_id,
+                'log_detail' => "Customer registration on website. "
+            );
+            $this->db->insert('system_log', $orderlog);
+
+            $subject = "Welcome to Bespoke Tailors - Your account with www.bespoketailorshk.com has been successfully created!";
+            $this->email->subject($subject);
+            
+            $customerdetails['customer'] = $customer;
+
+            $htmlsmessage = $this->load->view('Email/registration', $customerdetails, true);
+            $this->email->message($htmlsmessage);
+
+            $this->email->print_debugger();
+            $send = $this->email->send();
+            if ($send) {
+                echo json_encode("send");
+            } else {
+                $error = $this->email->print_debugger(array('headers'));
+                echo json_encode($error);
+            }
+        }
+    }
+
     // end of user detail by id
 }
 

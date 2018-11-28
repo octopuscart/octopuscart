@@ -8,10 +8,10 @@ $this->load->view('layout/header');
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-area">
-                    <h1>Cart Page</h1>
+                    <h1>Your Shopping Cart</h1>
                     <ul>
                         <li><a href="#">Home</a> /</li>
-                        <li>Cart</li>
+                        <li>Your Shopping Cart</li>
                     </ul>
                 </div>
             </div>
@@ -28,8 +28,7 @@ $this->load->view('layout/header');
                     <table class="table table-hover">
                         <thead>
                             <tr>
-
-                                <td class="cart-form-heading text_center" colspan="2">Product</td>
+                                <td class="cart-form-heading text_center" style="width: 50%" colspan="2">Product</td>
                                 <td class="cart-form-heading text_center">Price</td>
                                 <td class="cart-form-heading text_center">Quantity</td>
                                 <td class="cart-form-heading text_center">Total</td>
@@ -44,10 +43,12 @@ $this->load->view('layout/header');
                                     </a>
                                 </td>
                                 <td  style="    border-left: 0px;">
-                                    <h3><a href="#">{{product.title}}</a>
+                                    <h3><a href="#">{{product.title}} - {{product.item_name}}</a>
                                         <br/>
                                         <small style="font-size: 10px">{{product.sku}}</small>
                                     </h3>
+                                                                        <button type="button" ng-click="viewStyle(product)" class="btn btn-primary"  style="margin-top: 10px;">View Design</a>
+
                                 </td>
                                 <td class="amount">{{product.price|currency:" "}}</td>
                                 <td class="quantity">
@@ -75,7 +76,7 @@ $this->load->view('layout/header');
                                 <td colspan="6" class="text_right">
                                     <div class="proceed-button">
 
-                                        <a href=" <?php echo site_url("Cart/checkout"); ?>" class="btn-apply-coupon disabled" >Proceed to checkout</a>
+                                        <a href="<?php echo site_url("Cart/checkoutInit"); ?>" class="btn-apply-coupon disabled" >Proceed to checkout</a>
                                     </div> </td>
 
                             </tr>
@@ -89,22 +90,9 @@ $this->load->view('layout/header');
 
     </div>
 
-    <!-- Content -->
-    <div id="content"  ng-if="!globleCartData.total_quantity"> 
-        <!-- Tesm Text -->
-        <section class="error-page text-center pad-t-b-130">
-            <div class="container "> 
-
-                <!-- Heading -->
-                <h1 style="font-size: 40px">No Product Found</h1>
-                <p>Please add product to cart<br>
-                    You can go back to</p>
-                <hr class="dotted">
-                <a href="<?php echo site_url(); ?>" class="btn-send-message ">BACK TO HOME</a>
-            </div>
-        </section>
-    </div>
-    <!-- End Content --> 
+   <?php
+    $this->load->view('Cart/noproduct');
+    ?>
 
 
 </div>

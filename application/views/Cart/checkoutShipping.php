@@ -103,6 +103,9 @@ $this->load->view('layout/header');
             <?php
             $this->load->view('Cart/itemblock', array('vtype' => 'items'));
             ?>
+            <?php
+            $this->load->view('Cart/itemblock', array('vtype' => 'size'));
+            ?>
 
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -156,7 +159,7 @@ $this->load->view('layout/header');
                                         }
                                     } else {
                                         ?>
-                                        <h4><i class="fa fa-warning"></i> Please Add Shipping Address</h4>
+                                        <h4 class="text-center "  style="color: red"><i class="fa fa-warning"></i> Please Add Shipping Address</h4>
 
                                         <?php
                                     }
@@ -171,7 +174,7 @@ $this->load->view('layout/header');
                                     <tr>
                                         <td colspan="4" class="text_right">
                                             <div class="proceed-button pull-left " >
-                                                <a href=" <?php echo site_url("Cart/checkoutInit"); ?>" class="btn-apply-coupon checkout_button_pre disabled" ><i class="fa fa-arrow-left"></i> View Cart</a>
+                                                <a href=" <?php echo site_url("Cart/checkoutSize"); ?>" class="btn-apply-coupon checkout_button_pre disabled" ><i class="fa fa-arrow-left"></i> View Size</a>
                                             </div>
                                             <div class="proceed-button pull-right ">
                                                 <a href=" <?php echo site_url("Cart/checkoutPayment"); ?>" class="btn-apply-coupon checkout_button_next disabled" >Choose Payment Method <i class="fa fa-arrow-right"></i></a>
@@ -196,22 +199,9 @@ $this->load->view('layout/header');
 
 
 
-<!-- Content -->
-<div id="content" class="cart-page-area"  ng-if="globleCartData.total_quantity == 0"> 
-    <!-- Tesm Text -->
-    <section class="error-page text-center pad-t-b-130">
-        <div class="container "> 
-
-            <!-- Heading -->
-            <h1 style="font-size: 40px">No Product Found</h1>
-            <p>Please add product to cart<br>
-                You can go back to</p>
-            <hr class="dotted">
-            <a href="<?php echo site_url(); ?>" class="btn-send-message ">BACK TO HOME</a>
-        </div>
-    </section>
-</div>
-<!-- End Content --> 
+<?php
+    $this->load->view('Cart/noproduct');
+    ?>
 
 
 
@@ -304,9 +294,9 @@ $this->load->view('layout/header');
 <!--angular controllers-->
 <script src="<?php echo base_url(); ?>assets/theme/angular/productController.js"></script>
 <script>
-    var avaiblecredits =<?php echo $user_credits; ?>;
+    var avaiblecredits =0;
 </script>
 
 <?php
-$this->load->view('layout/footer');
+$this->load->view('layout/footer', array('custom_item'=>0, 'custom_id'=>0));
 ?>

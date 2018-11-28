@@ -14,9 +14,69 @@ foreach ($categorie_parent as $key => $value) {
 ?>
 
 
+<style>
+   .frame {
+  
+  font-family: sans-serif;
+	overflow: hidden;
+
+	margin: 3vw;
+  display: inline-block;
+  
+  .zoom {
+    
+    font-size: 1.3vw;
+		transition: transform 0.2s linear;
+    
+  }
+  
+  
+  img {
+	  
+    max-width: 25vw;
+  
+  }
+  
+  
+  .lorem {
+    
+    padding: 2% 2%;
+  
+  }
+  
+  
+  form {
+
+    margin : 2% auto;    
+    text-align: center;
+    
+    button {
+      
+      font-size: inherit;
+      margin: inherit;
+      
+    }
+  
+    input {
+      
+      border {
+        radius : 5px;
+        style: 1px solid;
+      }    
+     
+      width :20vw;
+      margin : 2% auto;
+      padding: .5vw .8vw;
+      font-size: 1.3vw;
+    
+    }
+  }
+}
+</style>
+
 
 <!-- Inner Page Banner Area Start Here -->
-<div class="inner-page-banner-area" style="background: url(<?php echo imageserver . $product_details['file_name']; ?>);    background-position: center;
+<div class="inner-page-banner-area" style="background: url(<?php echo imageserver . $product_details['file_name2']; ?>);    background-position: center;background-size: cover;
      background-repeat: no-repeat;">
     <div class="container">
         <div class="row">
@@ -50,7 +110,7 @@ foreach ($categorie_parent as $key => $value) {
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="inner-product-details-left">
-                    <div class="tab-content">
+                    <div class="tab-content frame">
 
                         <?php
                         $images = array(
@@ -63,7 +123,7 @@ foreach ($categorie_parent as $key => $value) {
                             if (end($countarray)) {
                                 if ($value) {
                                     ?>
-                                    <div class="tab-pane fade <?php echo $key == 'img1' ? 'active in' : ''; ?>" id="images_<?php echo $key; ?>">
+                                    <div class="tab-pane fade <?php echo $key == 'img1' ? 'active in' : ''; ?> zoom" id="images_<?php echo $key; ?>">
                                         <a href="#" class="zoom ex1 product_image_detail">
                                             <div class="product_image_back product_image_detail_big" style="background: url(<?php echo imageserver . $value; ?>"></div>
                                             <!--<img alt="single" src="img/product/product-details1.jpg" class="img-responsive">-->
@@ -98,8 +158,8 @@ foreach ($categorie_parent as $key => $value) {
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="inner-product-details-right">
                     <h3><?php echo $product_details['title']; ?><br/>
-                        <small><?php echo $product_details['sku']; ?>
-                            <span style="    font-size: 12px;color: #000;">(Seller:<?php echo $product_details['vendor']; ?>)</span>
+                        <small><?php echo $product_details['title']; ?>
+                            <span style="    font-size: 12px;color: #000;"></span>
                         </small>
                     </h3>
                     <ul>
@@ -109,7 +169,7 @@ foreach ($categorie_parent as $key => $value) {
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                     </ul>
-                    <p class="price">{{<?php echo $product_details['price']; ?>|currency:" Rs. "}}</p>
+                    <p class="price">{{<?php echo $product_details['price']; ?>|currency:"<?php echo globle_currency; ?> "}}</p>
                     <p>
                         <?php echo $product_details['short_description']; ?>
                     </p>
@@ -328,3 +388,44 @@ foreach ($categorie_parent as $key => $value) {
 <?php
 $this->load->view('layout/footer');
 ?>
+<script>
+    
+    //zoom plugin
+
+        $(document).on('mousemove', '.frame', function () {
+
+            var element = {
+                width: $(this).width(),
+                height: $(this).height()
+            };
+
+            var mouse = {
+                x: event.pageX,
+                y: event.pageY
+            };
+
+            var offset = $(this).offset();
+
+            var origin = {
+                x: (offset.left + (element.width / 2)),
+                y: (offset.top + (element.height / 2))
+            };
+
+            var trans = {
+                left: (origin.x - mouse.x) / 2,
+                down: (origin.y - mouse.y) / 2
+            };
+
+            var transform = ("scale(2,2) translateX(" + trans.left + "px) translateY(" + trans.down + "px)");
+
+            $(this).children(".zoom").css("transform", transform);
+
+        });
+
+        $(document).on('mouseleave', '.frame', function () {
+            $(this).children(".zoom").css("transform", "none");
+        });
+
+        //end of zoom
+    
+</script>

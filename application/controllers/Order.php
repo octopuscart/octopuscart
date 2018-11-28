@@ -15,14 +15,22 @@ class Order extends CI_Controller {
         } else {
             $this->user_id = 0;
         }
+        $this->checklogin = $this->session->userdata('logged_in');
+        $this->user_id = $this->session->userdata('logged_in')['login_id'];
     }
 
     public function index() {
         redirect('/');
     }
 
+    public function test() {
+        setlocale(LC_MONETARY, "en_US");
+        echo money_format("%.2n", $number);
+    }
+
     //orders details
     public function orderdetails($order_key) {
+
         if ($this->user_id == 0) {
             redirect('/');
         }
@@ -72,8 +80,8 @@ class Order extends CI_Controller {
                 'c_time' => date('H:i:s'),
             );
             $this->db->insert('user_order_payment', $paymentdict);
-            
-            
+
+
             $description = $this->input->post('description');
             $paymentid = $this->input->post('payment_id');
             $orderstatus = array(
@@ -84,33 +92,15 @@ class Order extends CI_Controller {
                 'description' => $description,
                 'order_id' => $order_id
             );
-             $this->db->insert('user_order_status', $orderstatus);
+            $this->db->insert('user_order_status', $orderstatus);
 
 
-            $this->db->where('order_id', $order_id);
-            $query = $this->db->get('vendor_order');
-            $vendor_order = $query->result();
-
-            foreach ($vendor_order as $key => $value) {
-                $vorder_id = $value->id;
-                $vendor_id = $value->vendor_id;
-
-                $vendor_order_status_data = array(
-                    'vendor_order_id' => $vorder_id,
-                    'vendor_id' => $vendor_id,
-                    'c_date' => date('Y-m-d'),
-                    'c_time' => date('H:i:s'),
-                    'status' => "Payment Done",
-                    'remark' => "Payment Done, and txn id. $paymentid",
-                    'description' => $description,
-                    'order_id' => $order_id
-                );
-                $this->db->insert('vendor_order_status', $vendor_order_status_data);
-            }
+          
         }
 
-
+        $order_id = $order_details['order_data']->id;
         if ($order_details) {
+
             try {
                 $order_id = $order_details['order_data']->id;
                 // $this->Product_model->order_mail($order_id);
@@ -121,6 +111,37 @@ class Order extends CI_Controller {
             }
         } else {
             redirect('/');
+        }
+        $this->load->view('Order/orderdetails', $order_details);
+    }
+
+    public function orderdetailsguest($order_key) {
+
+        $order_details = $this->Product_model->getOrderDetails($order_key, 'key');
+
+        $file_newname = "";
+        $this->db->where('active', 'yes');
+        $query = $this->db->get('payment_barcode');
+        $paymentbarcode = $query->row();
+        $order_details['paymentbarcode'] = $paymentbarcode;
+
+      
+
+        $order_id = $order_details['order_data']->id;
+        
+        
+        if ($order_details) {
+
+            try {
+                $order_id = $order_details['order_data']->id;
+                // $this->Product_model->order_mail($order_id);
+                //redirect("Order/orderdetails/$order_key");
+            } catch (customException $e) {
+                //display custom message
+                // redirect("Order/orderdetails/$order_key");
+            }
+        } else {
+            redirect("Order/orderdetailsguest/$order_key");
         }
         $this->load->view('Order/orderdetails', $order_details);
     }

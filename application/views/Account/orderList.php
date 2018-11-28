@@ -77,7 +77,7 @@ $this->load->view('layout/header');
                                             </h6>
                                         </div>
                                         <div class="col-md-4">
-                                            Total Amount: {{<?php echo $value->total_price; ?>|currency:"Rs. "}}
+                                            Total Amount: {{<?php echo $value->total_price; ?>|currency:"<?php echo globle_currency; ?> "}}
                                             <br/>
                                             Total Products: {{<?php echo $value->total_quantity; ?>}}
                                         </div>

@@ -13,20 +13,20 @@ class PayPalPayment extends CI_Controller {
         $this->user_id = $this->session->userdata('logged_in')['login_id'];
     }
 
-    public function index() {
+    public function process() {
         $PayPalMode = ''; // sandbox or live
-        $PayPalApiUsername = 'octopuscartltd_api1.gmail.com'; //PayPal API Username
-        $PayPalApiPassword = '66ZLFS5QP6WHV58H'; //Paypal API password
-        $PayPalApiSignature = 'AFcWxV21C7fd0v3bYYYRCpSSRl31AtRlYclVHieqMP.mCqq5eNqN-DpU'; //Paypal API Signature
-        $PayPalCurrencyCode = 'USD'; //Paypal Currency Code
+        $PayPalApiUsername = paypal_api_username; //PayPal API Username
+        $PayPalApiPassword = paypal_api_password; //Paypal API password
+        $PayPalApiSignature = paypal_api_signature; //Paypal API Signature
+        $PayPalCurrencyCode = paypal_api_currency_code; //Paypal Currency Code
         $data = [];
         if ($this->checklogin) {
             $session_cart = $this->Product_model->cartData($this->user_id);
         } else {
             $session_cart = $this->Product_model->cartData();
         }
-        $PayPalReturnURL = site_url("PayPalPayment/success");
-        $PayPalCancelURL = site_url("PayPalPayment/cancel");
+        $PayPalReturnURL = site_url("PayPalPaymentGuest/success");
+        $PayPalCancelURL = site_url("PayPalPaymentGuest/cancel");
 
         $paypaldata = "";
         $products = $session_cart['products'];
@@ -34,7 +34,7 @@ class PayPalPayment extends CI_Controller {
         $countitem = 0;
         foreach ($products as $keyp => $valuep) {
             $ItemNumber = $valuep['sku'];
-            $ItemName = $valuep['title'];
+            $ItemName = $valuep['item_name'];
             $ItemDesc = $valuep['title'];
             $ItemPrice = $valuep['price'];
             $ItemQty = $valuep['quantity'];
@@ -67,39 +67,33 @@ class PayPalPayment extends CI_Controller {
                 '&PAYMENTREQUEST_0_SHIPDISCAMT=' . urlencode('0') .
                 '&PAYMENTREQUEST_0_INSURANCEAMT=' . urlencode('0') .
                 '&PAYMENTREQUEST_0_AMT=' . urlencode($total_amt) .
-                '&PAYMENTREQUEST_0_CURRENCYCODE=' . urlencode('USD') .
+                '&PAYMENTREQUEST_0_CURRENCYCODE=' . urlencode(paypal_api_currency_code) .
                 '&LOCALECODE=GB' . //PayPal pages to match the language on your website.
-                '&LOGOIMG=http://costcointernational.com/logo.png' . //site logo
+                '&LOGOIMG=http://bespoketailorshk.costcointernational.com/assets/images/logo73.png' . //site logo
                 '&CARTBORDERCOLOR=000000' . //border color of cart
                 '&ALLOWNOTE=1';
-//        $this->load->view('home', $data);
         $this->load->library('paypalclass');
-
-//        set payment on session
         $this->session->set_userdata('session_paypal', $paypaldata);
         $session_paypal = $this->session->userdata('session_paypal');
 
         $httpParsedResponseAr = $this->paypalclass->PPHttpPost('SetExpressCheckout', $setexpresscheckout . $paypaldata, $PayPalApiUsername, $PayPalApiPassword, $PayPalApiSignature, $PayPalMode);
 
         if ("SUCCESS" == strtoupper($httpParsedResponseAr["ACK"]) || "SUCCESSWITHWARNING" == strtoupper($httpParsedResponseAr["ACK"])) {
-//Redirect user to PayPal store with Token received.
             $paypalurl = 'https://www' . $PayPalMode . '.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=' . $httpParsedResponseAr["TOKEN"] . '';
             header('Location: ' . $paypalurl);
         } else {
-//Show error message
-            print_r($httpParsedResponseAr);
-
             $data["error"] = '<div style="color:red"><b>Error : </b>' . urldecode($httpParsedResponseAr["L_LONGMESSAGE0"]) . '</div>';
             $this->load->view('paypal/error', $data);
         }
+        $this->load->view('paypal/process', $data);
     }
 
     public function success() {
         $PayPalMode = ''; // sandbox or live
-        $PayPalApiUsername = 'octopuscartltd_api1.gmail.com'; //PayPal API Username
-        $PayPalApiPassword = '66ZLFS5QP6WHV58H'; //Paypal API password
-        $PayPalApiSignature = 'AFcWxV21C7fd0v3bYYYRCpSSRl31AtRlYclVHieqMP.mCqq5eNqN-DpU'; //Paypal API Signature
-        $PayPalCurrencyCode = 'USD'; //Paypal Currency Code
+        $PayPalApiUsername = paypal_api_username; //PayPal API Username
+        $PayPalApiPassword = paypal_api_password; //Paypal API password
+        $PayPalApiSignature = paypal_api_signature; //Paypal API Signature
+        $PayPalCurrencyCode = paypal_api_currency_code; //Paypal Currency Code
         $data = [];
         //Paypal redirects back to this page using ReturnURL, We should receive TOKEN and Payer ID
         if ($this->input->get("token") && $this->input->get("PayerID")) {
@@ -129,7 +123,7 @@ class PayPalPayment extends CI_Controller {
                 $payment_error_code = urldecode($httpParsedResponseAr["PAYMENTINFO_0_ERRORCODE"]);
                 $payment_status = urldecode($httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"]);
                 if ('Completed' == $httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"]) {
-                   // echo '<div style="color:green">Payment Received! Your product will be sent to you very soon!</div>';
+                    // echo '<div style="color:green">Payment Received! Your product will be sent to you very soon!</div>';
                 } elseif ('Pending' == $httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"]) {
                     echo '<div style="color:red">Transaction Complete, but payment is still pending! ' .
                     'You need to manually authorize this payment in your <a target="_new" href="http://www.paypal.com">Paypal Account</a></div>';
@@ -142,6 +136,11 @@ class PayPalPayment extends CI_Controller {
                 $httpParsedResponseAr = $this->paypalclass->PPHttpPost('GetExpressCheckoutDetails', $padata, $PayPalApiUsername, $PayPalApiPassword, $PayPalApiSignature, $PayPalMode);
 
                 if ("SUCCESS" == strtoupper($httpParsedResponseAr["ACK"]) || "SUCCESSWITHWARNING" == strtoupper($httpParsedResponseAr["ACK"])) {
+
+
+                    $measurement_style = $this->session->userdata('measurement_style');
+                    $data['measurement_style_type'] = $measurement_style ? $measurement_style['measurement_style'] : "Please Select Size";
+
 
                     if ($this->checklogin) {
                         $session_cart = $this->Product_model->cartData($this->user_id);
@@ -183,6 +182,7 @@ class PayPalPayment extends CI_Controller {
                         'total_quantity' => $session_cart['total_quantity'],
                         'status' => 'Payment Completed',
                         'payment_mode' => 'PayPal',
+                        'measurement_style' => $measurement_style['measurement_style'],
                         'credit_price' => $this->input->post('credit_price') || 0,
                     );
 
@@ -201,6 +201,43 @@ class PayPalPayment extends CI_Controller {
                     $this->db->where('order_id', '0');
                     $this->db->where('user_id', $this->user_id);
                     $this->db->update('cart');
+
+                    $custome_items = $session_cart['custome_items'];
+                    $custome_items_ids = implode(", ", $custome_items);
+                    $custome_items_ids_profile = implode("", $custome_items);
+                    $custome_items_nameslist = $session_cart['custome_items_name'];
+                    $custome_items_names = implode(", ", $custome_items_nameslist);
+
+                    $measurement_style_array = $measurement_style['measurement_dict'];
+
+                    if (count($measurement_style_array)) {
+                        $order_measurement_profile = array(
+                            'datetime' => date('Y-m-d H:i:s'),
+                            'order_id' => $last_id,
+                            'measurement_items' => $custome_items_names,
+                            'measurement_items_id' => $custome_items_ids,
+                            'user_id' => $this->user_id,
+                            'display_index' => '1',
+                            "profile" => "MES/" . $this->user_id . "/" . $custome_items_ids_profile . "/" . $last_id,
+                        );
+                        $this->db->insert('custom_measurement_profile', $order_measurement_profile);
+                        $mprofile_id = $this->db->insert_id();
+                        $display_index = 1;
+                        foreach ($measurement_style_array as $key => $value) {
+                            $custom_array = array(
+                                'measurement_key' => $key,
+                                'measurement_value' => $value,
+                                'display_index' => $display_index,
+                                'order_id' => $last_id,
+                                'custom_measurement_profile' => $mprofile_id
+                            );
+                            $this->db->insert('custom_measurement', $custom_array);
+                            $display_index++;
+                        }
+                    }
+
+
+
 
                     $array_payment = array(
                         'c_date' => date('Y-m-d'),
@@ -233,24 +270,15 @@ class PayPalPayment extends CI_Controller {
                         'c_date' => date('Y-m-d'),
                         'c_time' => date('H:i:s'),
                         'order_id' => $last_id,
-                        'status' => $payment_status . " Using PayPal",
+                        'status' => "Order Confirmed",
                         'user_id' => $this->user_id,
                         'remark' => "Order Confirmed, Payment Made Using PayPay.",
                     );
                     $this->db->insert('user_order_status', $order_status_data);
 
-//                    $this->Product_model->order_to_vendor($last_id);
-
-
-                     redirect('Order/orderdetails/' . $orderkey);
-
-
+                    redirect('Order/orderdetails/' . $orderkey);
 
                     $this->load->view('Cart/checkoutPayment', $data);
-
-
-
-
 
 
 
@@ -282,20 +310,20 @@ class PayPalPayment extends CI_Controller {
 
                      */
 
-                    echo '<pre>';
-                    print_r($httpParsedResponseAr);
-                    echo '</pre>';
+                    //  echo '<pre>';
+                    //    print_r($httpParsedResponseAr);
+                    //   echo '</pre>';
                 } else {
-                    echo '<div style="color:red"><b>GetTransactionDetails failed:</b>' . urldecode($httpParsedResponseAr["L_LONGMESSAGE0"]) . '</div>';
-                    echo '<pre>';
-                    print_r($httpParsedResponseAr);
-                    echo '</pre>';
+                    //  echo '<div style="color:red"><b>GetTransactionDetails failed:</b>' . urldecode($httpParsedResponseAr["L_LONGMESSAGE0"]) . '</div>';
+                    //  echo '<pre>';
+                    //    print_r($httpParsedResponseAr);
+                    //    echo '</pre>';
                 }
             } else {
-                echo '<div style="color:red"><b>Error : </b>' . urldecode($httpParsedResponseAr["L_LONGMESSAGE0"]) . '</div>';
+                //  echo '<div style="color:red"><b>Error : </b>' . urldecode($httpParsedResponseAr["L_LONGMESSAGE0"]) . '</div>';
                 echo '<pre>';
-                print_r($httpParsedResponseAr);
-                echo '</pre>';
+                //   print_r($httpParsedResponseAr);
+                //   echo '</pre>';
             }
         }
         $this->load->view('paypal/cancel', $data);

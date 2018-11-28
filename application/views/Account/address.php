@@ -126,9 +126,8 @@ $this->load->view('layout/header');
                                                 <?php } ?> 
                                                 <div class=" address_block <?php echo $value['status']; ?> ">
                                                     <p>
-                                                        <?php echo $value['address1']; ?>,<br/>
-                                                        <?php echo $value['address2']; ?>,<br/>
-                                                        <?php echo $value['city']; ?>, <?php echo $value['state']; ?> <?php echo $value['zipcode']; ?>
+                                                        <?php echo $value['address']; ?>,<br/>
+                                                        <?php echo $value['city']; ?>, <?php echo $value['state']; ?> <?php echo $value['pincode']; ?>
                                                     </p>
                                                     <?php if ($value['status'] != 'default') { ?> 
                                                         <a href="<?php echo site_url("Account/address/?setAddress=" . $value['id']); ?>" class="btn btn-default btn-xs address_button">Set As Default</a>

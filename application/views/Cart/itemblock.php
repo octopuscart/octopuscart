@@ -19,6 +19,24 @@
                 
                 
                 <?php
+                if ($vtype == 'size') {
+                    ?>
+                <!--shipping block-->
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                         <span class="fa-stack">
+                                    <i class="fa fa-list-ol fa-stack-1x"></i>
+                                    <i class="ion-bag fa-stack-1x "></i>
+                                </span>   Your Size
+                        <span style="float: right; line-height: 29px;font-size: 12px;font-weight: 300" class="ng-binding">
+                            <?php echo $measurement_style_type;?>
+                        </span> 
+                    </a>
+                    <?php
+                }
+                ?>
+                
+                
+                <?php
                 if ($vtype == 'shipping') {
                     ?>
                 <!--shipping block-->
@@ -38,7 +56,7 @@
                                 <?php echo $value['city']; ?>, <?php echo $value['state']; ?> <?php echo $value['zipcode']; ?>
                                 <?php
                             } else {
-                                echo "No Shipping Address";
+                                echo "Choose Shipping Address";
                             }
                             ?>
                         </span> 

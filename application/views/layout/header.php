@@ -50,8 +50,6 @@
         <!--sweet alert-->
         <script src="<?php echo base_url(); ?>assets/theme/sweetalert2/sweetalert2.min.js"></script>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme/sweetalert2/sweetalert2.min.css">
-        <link href="https://unpkg.com/ionicons@4.4.2/dist/css/ionicons.min.css" rel="stylesheet">
-
 
         <!--angular js-->
         <script src="<?php echo base_url(); ?>assets/theme/angular/angular.min.js"></script>
@@ -65,36 +63,48 @@
     </head>
 
 
-    <body ng-app="ClassApartStore">
+    <style>
+        .preloadimage{
+            background: black;
+            top: 28%;
+            position: absolute;
+            height:100px; 
+
+            margin-left: -90px;
+        }
+    </style>
+
+    <!-- Modal Dialog Box End Here-->
+    <!-- Preloader Start Here -->
+    <div id="preloader">
+        <center>
+            <!--<img class="preloadimage  " src="<?php echo base_url() . 'assets/theme2/img/preloader.gif' ?>" alt="logo" >-->
+        </center>
+    </div>
+    <!-- Preloader End Here -->
+    <body ng-app="App">
         <div class="wrapper-area" ng-controller="ShopController">
             <!--[if lt IE 8]>
                 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
             <![endif]-->
             <!-- Add your site or application content here -->
             <!-- Header Area Start Here -->
-            <!--LOADER--> 
-            <div id="loader">
-                <div class="position-center-center">
-                    <div class="loader"></div>
-                </div>
-            </div>
+
 
 
             <script>
-                var ClassApartStore = angular.module('ClassApartStore', []).config(function ($interpolateProvider, $httpProvider) {
+
+
+                var App = angular.module('App', []).config(function ($interpolateProvider, $httpProvider) {
                 //$interpolateProvider.startSymbol('{$');
                 //$interpolateProvider.endSymbol('$}');
                 $httpProvider.defaults.headers.common = {};
                         $httpProvider.defaults.headers.post = {};
                 });
-                        var baseurl = "<?php echo base_url(); ?>index.php/";
+                        var baseurl = "<?php echo site_url(); ?>";
                         var imageurlg = "<?php echo imageserver; ?>";
-                        var avaiblecredits = 0;
-                        var currency_type = "<?php echo globle_currency; ?>";
-                        var checktestdata;
-                                                                                                  
-            </script>
-
+                        var globlecurrency = "<?php echo globle_currency; ?>";
+                        var avaiblecredits = 0;</script>
 
             <style>
                 .ownmenu .dropdown.megamenu .dropdown-menu li:last-child{
@@ -104,38 +114,80 @@
                 .ownmenu .dropdown.megamenu .dropdown-menu li a{
                     line-height: 25px;
                 }
+                .account-wishlist ul li a {
+                    font-size: 12px;
+                }
             </style>
 
 
 
             <!-- Header Area Start Here -->
             <header>
+                <input type="hidden" ng-model="showmodel" ng-init="showmodel = 0">
+                <input type="hidden" ng-model="gitem_price" ng-init="showmodel = 0">
+
                 <div class="header-area-style2" id="sticker">
-                    <div class="header-top" >
+                    <div class="header-top" style="  ">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
-                                    <div class="account-wishlist">
+                                    <div class="account-wishlist" style="font-size: 12px;">
                                         <ul>
-                                            <li><a href="<?php echo site_url('Account/profile'); ?>"><i class="fa fa-lock" aria-hidden="true"></i> Account</a></li>
-                                            <li><a href=""><i class="fa fa-heart-o" aria-hidden="true"></i> Our Blog - Coming Soon !</a></li>
+                                            <?php
+                                            $session_data = $this->session->userdata('logged_in');
+                                            if (isset($session_data['login_id'])) {
+                                                ?>
+                                                <li>
+                                                    <a href="<?php echo site_url('Account/profile'); ?>">
+                                                        <i class="fa fa-user"></i> <?php echo $session_data['first_name'] . ' ' . $session_data['last_name']; ?>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo site_url('Account/profile'); ?>">Profile</a>
+                                                </li>
+                                                <li>
+
+                                                    <a href="<?php echo site_url('Account/logout'); ?>">   Logout</a>
+                                                </li>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <li><a href="<?php echo site_url('Account/profile'); ?>">
+                                                        <i class="fa fa-lock" aria-hidden="true"></i> Account</a>
+                                                </li>
+                                                <!--<li><a href=""><i class="fa fa-heart-o" aria-hidden="true"></i>  Wishlist</a></li>-->
+
+
+                                                <?php
+                                            }
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-2 hidden-xs">
+
+
+                                    <?php
+                                    $logoimg = "logo73.png";
+                                    ?>
+
                                     <div class="logo-area">
-                                        <a href="<?php echo site_url(); ?>"><img class="img-responsive logofront" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" ></a>
+                                        <a href="<?php echo site_url(); ?>"><img class="img-responsive" src="<?php echo base_url() . 'assets/images/' . $logoimg; ?>" alt="logo" style="    
+                                                                                 position: absolute;
+                                                                                 top: -22px;
+                                                                                 height: 74px;
+                                                                                 margin-left: -135px;"></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
                                     <ul class="header-cart-area">
-                                        <li class="header-search" id="remote">
-                                            <form id="top-search-form" action="<?php echo site_url('Product/ProductSearch'); ?>">                           
-                                                <input type="text" name="keyword" class="search-input typeahead" placeholder="Search...." required="">
-                                                <a href="#" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                                <button type="submit" style="height: 0px;width: 0px;opacity: 0;"></button>
-                                            </form>
-                                        </li>
+                                        <!--                                        <li class="header-search" id="remote">
+                                                                                    <form id="top-search-form" action="<?php echo site_url('Product/ProductSearch'); ?>">                           
+                                                                                        <input type="text" name="keyword" class="search-input typeahead" placeholder="Search...." required="">
+                                                                                        <a href="#" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                                                                        <button type="submit" style="height: 0px;width: 0px;opacity: 0;"></button>
+                                                                                    </form>
+                                                                                </li>-->
 
 
                                         <!--                                    <li class="header-search" >
@@ -147,7 +199,7 @@
 
                                         <li>
                                             <div class="cart-area">
-                                                <a href="#"><i class="fa fa-shopping-cart" style="color: black;" aria-hidden="true"></i><span style="background: #f01211">{{globleCartData.total_quantity}}</span></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"  aria-hidden="true"></i><span style="background: #f01211">{{globleCartData.total_quantity}}</span></a>
                                                 <ul ng-if="globleCartData.total_quantity">
                                                     <li  ng-repeat="product in globleCartData.products">
 
@@ -155,7 +207,7 @@
                                                             <div class="media">
                                                                 <div class="pull-left cart-product-img">
                                                                     <a href="#">
-                                                                        <div class="product_image_back" style="background: url({{product.file_name}});height: 80px;width: 80px;"></div>
+                                                                        <div class="product_image_back1" style="background: url({{product.file_name}});height: 80px;width: 80px;"></div>
 
                                                                     <!--<img class="img-responsive" alt="product" src="{{product.file_name}}">-->
                                                                     </a>
@@ -166,7 +218,7 @@
                                                                             <h2 style="    white-space: nowrap;
                                                                                 overflow: hidden;
                                                                                 text-overflow: ellipsis;
-                                                                                width: 250px;"><a href="#" style="">{{product.title}}</a></h2>
+                                                                                width: 250px;"><a href="#" style="">{{product.title}} - {{product.item_name}}</a></h2>
                                                                             <h3>                                                                 
                                                                                 <p>
                                                                                     {{product.price|currency:" "}} X {{product.quantity}} 
@@ -188,13 +240,13 @@
                                                     </li>
 
                                                     <li>
-                                                        <span><span>Sub Total</span></span><span>{{globleCartData.total_price|currency:" "}}</span>
+                                                        <span><span>Sub Total</span></span><span>{{globleCartData.total_price|currency:"<?php echo globle_currency; ?> "}}</span>
 
                                                     </li>
                                                     <li>
                                                         <ul class="checkout">
                                                             <li><a href="<?php echo site_url("Cart/details"); ?>" class="btn-checkout"><i class="fa fa-shopping-cart" aria-hidden="true"></i>View Cart</a></li>
-                                                            <li><a href="<?php echo site_url("Cart/checkoutInit"); ?>" class="btn-checkout"><i class="fa fa-share" aria-hidden="true"></i>Checkout</a></li>
+                                                            <!--<li><a href="<?php echo site_url("Cart/checkoutInit"); ?>" class="btn-checkout"><i class="fa fa-share" aria-hidden="true"></i>Checkout</a></li>-->
                                                         </ul>
                                                     </li>
                                                 </ul>
@@ -249,13 +301,12 @@
                                                         }
                                                         ?>
                                                     </ul>
-                                                    <h3 class="ctg-name-title">Category Name List</h3>
+                                                    <h3 class="ctg-name-title"><a href="<?php echo site_url('Product/ProductList/1/0') ?>">Order Now</a></h3>
                                                     <ul class="sidenav-nav">
-                                                        <li ng-repeat="catv in categoriesMenu">
-                                                            <a href="<?php echo site_url("Product/ProductList/"); ?>{{catv.id}}" >
-                                                                <i class="flaticon-left-arrow"></i>{{catv.category_name}}
-                                                            </a>
-                                                        </li>
+                                                        <li><a href="<?php echo site_url('Product/ProductList/1/0'); ?>">Shirts</a></li>
+                                                        <li><a href="<?php echo site_url('Product/ProductList/2/0'); ?>">Suits</a></li>
+                                                        <li><a href="<?php echo site_url('Product/ProductList/4/0'); ?>">Jackets</a></li>
+                                                        <li><a href="<?php echo site_url('Product/ProductList/3/0'); ?>">Pants</a></li>
 
                                                     </ul>
                                                     <!-- times-->
@@ -274,26 +325,37 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="logo-area" style="    margin-top: 2px;">
                                         <a href="<?php echo site_url(); ?>">
-                                            <img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" alt="logo" style="    height:48px;">
+                                            <img class="img-responsive" src="<?php echo base_url() . 'assets/images/' . $logoimg; ?>" alt="logo" style="    height:60px;padding-top: 4px;
+                                                 padding-bottom: 6px;">
                                         </a>
                                     </div>
                                     <div class="main-menu-area home2-sticky-area">
                                         <nav>
                                             <ul>
-                                                <li  ng-repeat="catv in categoriesMenu" >
-                                                    <a href="<?php echo site_url("Product/ProductList/"); ?>{{catv.id}}" >{{catv.category_name}}</a>
-                                                    <ul >
-                                                        <li ng-repeat="subv in catv.sub_category">
-                                                            <a href="<?php echo site_url("Product/ProductList/"); ?>{{subv.id}}" >{{subv.category_name}}</a>
-                                                        </li>
+                                                <li class="active"><a href="<?php echo base_url(); ?>">Home</a>
+                                                    <ul>
+                                                        <li><a href="<?php echo site_url("Shop/faq"); ?>">FAQ'S</a></li>
+                                                        <li><a href="<?php echo site_url("Shop/aboutus") ?>">About Us</a></li>
                                                     </ul>
                                                 </li>
+                                                <li ><a href="<?php echo site_url('Product/ProductList/1/0') ?>">Order Now</a>
+                                                    <ul>
+                                                        <li><a href="<?php echo site_url('Product/ProductList/1/0') ?>">Shirts</a></li>
+                                                        <li><a href="<?php echo site_url('Product/ProductList/2/0') ?>">Suits</a></li>
+                                                        <li><a href="<?php echo site_url('Product/ProductList/4/0') ?>">Jackets</a></li>
+                                                        <li><a href="<?php echo site_url('Product/ProductList/3/0') ?>">Pants</a></li>
 
+                                                    </ul>
+                                                </li>
+                                                <li><a href="<?php echo site_url("Shop/catalogue"); ?>">Catalogue</a></li>
+                                                <li><a href="<?php echo site_url("Shop/appointment"); ?>">Appointment</a></li>
+
+                                                <li><a href="<?php echo site_url("Shop/contactus") ?>">Contact Us</a></li>
                                             </ul>
                                         </nav>
                                     </div>
                                     <div class="cart_header_stick">
-                                        <i class="fa fa-shopping-cart" style="color: black;" aria-hidden="true"></i><span>{{globleCartData.total_quantity}}</span>
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i><span>{{globleCartData.total_quantity}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -306,17 +368,25 @@
                                         <div class="mobile-menu">
                                             <nav id="dropdown">
                                                 <ul>
-
-                                                    <li ng-repeat="catv in categoriesMenu">
-                                                        <a href="<?php echo site_url("Product/ProductList/"); ?>{{catv.id}}" class="{{$index==0?'active':''}}" >{{catv.category_name}}</a>
-
+                                                    <li class="active"><a href="#">Home</a>
                                                         <ul>
-                                                            <li ng-repeat="subv in catv.sub_category">
-                                                                <a href="<?php echo site_url("Product/ProductList/"); ?>{{subv.id}}" >{{subv.category_name}}</a>
-                                                            </li>
+                                                            <li><a href="<?php echo site_url("Shop/faq"); ?>">FAQ'S</a></li>
+                                                            <li><a href="<?php echo site_url("Shop/aboutus") ?>">About Us</a></li>
                                                         </ul>
                                                     </li>
+                                                    <li ><a href="#">Order Now</a>
+                                                        <ul>
+                                                            <li><a href="<?php echo site_url('Product/ProductList/1/0') ?>">Shirt</a></li>
+                                                            <li><a href="<?php echo site_url('Product/ProductList/2/0') ?>">Suit</a></li>
+                                                            <li><a href="<?php echo site_url('Product/ProductList/4/0') ?>">Jacket</a></li>
+                                                            <li><a href="<?php echo site_url('Product/ProductList/3/0') ?>">Pant</a></li>
 
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#">Catalogue</a></li>
+                                                    <li><a href="#">Schedule</a></li>
+
+                                                    <li><a href="<?php echo site_url("Shop/contactus") ?>">Contact Us</a></li>
                                                 </ul>
                                             </nav>
                                         </div>
@@ -376,7 +446,7 @@
                                             <div class="media">
                                                 <div class="pull-left cart-product-img">
                                                     <a href="#">
-                                                        <div class="product_image_back" style="background: url({{product.file_name}});height: 80px;width: 80px;"></div>
+                                                        <div class="product_image_back" style="background: url({{product.file_name}});height: 80px;width: 80px;    background-size: cover;"></div>
 
                                                                     <!--<img class="img-responsive" alt="product" src="{{product.file_name}}">-->
                                                     </a>
@@ -387,7 +457,7 @@
                                                             <h2 style="    white-space: nowrap;
                                                                 overflow: hidden;
                                                                 text-overflow: ellipsis;
-                                                                width: 250px;"><a href="#" style="">{{product.title}}</a></h2>
+                                                                width: 250px;"><a href="#" style="">{{product.title}}-{{product.item_name}}</a></h2>
                                                             <h3>                                                                 
                                                                 <p>
                                                                     {{product.price|currency:" "}} X {{product.quantity}} 
@@ -409,7 +479,7 @@
                                     <li>
                                         <ul class="checkout">
                                             <li><a href="<?php echo site_url("Cart/details"); ?>" class="btn-checkout1"><i class="fa fa-shopping-cart" aria-hidden="true"></i>View Cart</a></li>
-                                            <li><a href="<?php echo site_url("Cart/checkout"); ?>" class="btn-checkout1"><i class="fa fa-share" aria-hidden="true"></i>Checkout</a></li>
+                                            <li><a href="<?php echo site_url("Cart/checkoutInit"); ?>" class="btn-checkout1"><i class="fa fa-share" aria-hidden="true"></i>Checkout</a></li>
                                         </ul>
                                     </li>
                                 </ul>

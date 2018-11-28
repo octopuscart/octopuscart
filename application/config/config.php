@@ -24,18 +24,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   | a PHP script and you can easily do that on your own.
   |
  */
-if ($_SERVER['SERVER_PORT'] == 443) {
-    $baselink = 'https://' . $_SERVER['SERVER_NAME'];
-} else {
-    $baselink = 'http://' . $_SERVER['SERVER_NAME'];
+
+require("configdbconnect.php");
+$configuration = $globleConnectDB;
+
+$baselink = 'http://' . $_SERVER['SERVER_NAME'];
+switch ($baselink) {
+    case "http://localhost":
+        $baselinkmain = $baselink . $configuration['localpath'];
+        break;
+    case "http://192.168.1.2":
+        $baselinkmain = $baselink .  $configuration['localpath'];
+        break;
+    default:
+        $baselinkmain =  $configuration['site_url'];
 }
-$baselinkmain = strpos($baselink, '192.168') ? $baselink . '/octopuscart' : $baselink . '/';
 
 $config['base_url'] = $baselinkmain;
-
-
-
-
+//$config['base_url'] = $baselinkmain; 
+//Important
+$config['rest_enable_keys'] = FALSE;
 
 
 /*
@@ -48,7 +56,7 @@ $config['base_url'] = $baselinkmain;
   | variable so that it is blank.
   |
  */
-$config['index_page'] = 'index.php';
+$config['index_page'] = strpos($baselink, '192.168') ? 'index.php/' : '';
 
 /*
   |--------------------------------------------------------------------------
@@ -420,6 +428,8 @@ $config['sess_regenerate_destroy'] = FALSE;
         $config['sess_time_to_update'] = 300;
         $config['sess_regenerate_destroy'] = FALSE;
 }
+
+
 
 
 
