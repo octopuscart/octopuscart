@@ -8,7 +8,7 @@ $this->load->view('layout/header');
 <?php
 foreach ($sliders as $key => $value) {
     ?>
-                                        <img src="<?php echo imageserverslider . $value->file_name; ?>" alt="" title="#slider-direction-<?php echo $key; ?>" />
+                                                <img src="<?php echo imageserverslider . $value->file_name; ?>" alt="" title="#slider-direction-<?php echo $key; ?>" />
     <?php
 }
 ?>        
@@ -18,18 +18,18 @@ foreach ($sliders as $key => $value) {
 <?php
 foreach ($sliders as $key => $value) {
     ?>
-                                    <div id="slider-direction-<?php echo $key; ?>" class="t-cn slider-direction">
-                                        <div class="slider-content t-lfl s-tb slider-1">
-                                            <div class="title-container s-tb-c">
-                                                <h2 class="title<?php echo $key; ?>" style="color:<?php echo $value->title_color; ?>">
+                                            <div id="slider-direction-<?php echo $key; ?>" class="t-cn slider-direction">
+                                                <div class="slider-content t-lfl s-tb slider-1">
+                                                    <div class="title-container s-tb-c">
+                                                        <h2 class="title<?php echo $key; ?>" style="color:<?php echo $value->title_color; ?>">
     <?php echo $value->title; ?>
-                                                </h2>
-                                                <p style="color:<?php echo $value->line1_color; ?>"><?php echo $value->line1; ?></p>
-                                                <p style="color:<?php echo $value->line2_color; ?>"><?php echo $value->line2; ?></p>
-                                                <a href="<?php echo $value->link; ?>" class="btn-shop-now-fill-slider"><?php echo $value->link_text; ?></a>
+                                                        </h2>
+                                                        <p style="color:<?php echo $value->line1_color; ?>"><?php echo $value->line1; ?></p>
+                                                        <p style="color:<?php echo $value->line2_color; ?>"><?php echo $value->line2; ?></p>
+                                                        <a href="<?php echo $value->link; ?>" class="btn-shop-now-fill-slider"><?php echo $value->link_text; ?></a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
     <?php
 }
 ?>
@@ -40,28 +40,26 @@ foreach ($sliders as $key => $value) {
 
 
 <!-- Slider Area Start Here -->
-<div class="main-slider2">
+<div class="main-slider2" >
     <div class="bend niceties preview-1">
-        <div id="ensign-nivoslider-3" class="slides">
-            <img src="<?php echo base_url(); ?>assets/sliders/s1.jpg" alt="" title="#slider-direction-1" />
-            <img src="<?php echo base_url(); ?>assets/sliders/s2.jpg" alt="" title="#slider-direction-3" />
+        <div id="ensign-nivoslider-3" class="slides" style="    height: 500px;">
+            <img src="<?php echo base_url(); ?>assets/sliders/s6.jpg" alt="" title="#slider-direction-1" />
+            <img src="<?php echo base_url(); ?>assets/sliders/s3.jpg" alt="" title="#slider-direction-3" />
+            <img src="<?php echo base_url(); ?>assets/sliders/s7.jpg" alt="" title="#slider-direction-3" />
+            <img src="<?php echo base_url(); ?>assets/sliders/s5.jpg" alt="" title="#slider-direction-3" />
+
         </div>
         <div id="slider-direction-1" class="t-cn slider-direction">
             <div class="slider-content t-lfl s-tb slider-1">
                 <div class="title-container s-tb-c">
-                    <h2 class="title1">   <span>Custom Made</span> <br>Just For You</h2>
-                    <p>With our unique suit customizer, you can easily create a suit </p>
-                    <p>that perfectly matches your personality.</p>
-                    <a href="#" class="btn-shop-now-fill-slider">Customize Now</a>
+
+                    <!--                    <a href="#" class="btn-shop-now-fill-slider">Customize Now</a>-->
                 </div>
             </div>
         </div>
         <div id="slider-direction-3" class="slider-direction">
             <div class="slider-content t-lfr s-tb slider-3">
                 <div class="title-container s-tb-c">
-                    <h2 class="title1" style="color: white"><span>New Collection</span> Is <br>Available Here</h2>
-                    <p></p>
-                    <a href="#" class="btn-shop-now-fill-slider">View Collections</a>
                 </div>
             </div>
         </div>
@@ -97,7 +95,7 @@ foreach ($sliders as $key => $value) {
                         <a href="#">
                             <!--<img class="img-responsive" src="" alt="product" style="height: 224px">-->
 
-                            <div class="product_image_back" style="background: url(<?php echo custome_image_server; ?>/shirt/output/<?php echo $value['folder'];?>/shirt_model10001.png);height: 270px"></div>
+                            <div class="product_image_back" style="background: url(<?php echo custome_image_server; ?>/shirt/output/<?php echo $value['folder']; ?>/shirt_model10001.png);height: 270px"></div>
                             <!--<img src="img/product/15.jpg" alt="product">-->
                         </a>
                     </div>
@@ -163,7 +161,7 @@ foreach ($sliders as $key => $value) {
                         </ul>
                         <div class="product-img-holder">
                             <a href="#">
-                                <div class="product_image_back product_image_back_grid" style="background: url(<?php echo custome_image_server; ?>/jacket/output/<?php echo $value['folder'];?>/s1_master_style60001.png);height: 360px"></div>
+                                <div class="product_image_back product_image_back_grid" style="background: url(<?php echo custome_image_server; ?>/jacket/output/<?php echo $value['folder']; ?>/s1_master_style60001.png);height: 360px"></div>
                                 <!--<img src="img/product/3.jpg" alt="product">-->
                             </a>
                         </div>
@@ -187,52 +185,44 @@ foreach ($sliders as $key => $value) {
 
 <!-- Advantage Area Start Here -->
 <div class="advantage3-area">
-    <div class="container">
-        <div class="row">
-
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <div class="advantage-area-box">
-                    <div class="advantage-area-box-icon">
-                        <a href="#"><i class="flaticon-polo"></i></a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="advantage-area-box">
+                            <div class="advantage-area-box-icon">
+                                <a href="#"><i class="flaticon-truck"></i></a>
+                            </div>
+                            <div class="advantage-area-box-content">
+                                <h3>FREE SHIPPING WORLDWIDE</h3>
+                                <p>On All Orders Of <?php echo globle_currency;?> 500</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="advantage-area-box-content">
-                        <h3>CHOOSE A LOOK</h3>
-                        <p>On All Orders!</p>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="advantage-area-box">
+                            <div class="advantage-area-box-icon">
+                                <a href="#"><i class="flaticon-headphones"></i></a>
+                            </div>
+                            <div class="advantage-area-box-content">
+                                <h3>24/7 CUSTOMER SERVICE</h3>
+                                <p>Get Help When You Need It</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <div class="advantage-area-box">
-                    <div class="advantage-area-box-icon">
-                        <a href="#"><i class="fa fa-tap"></i></a>
-                    </div>
-                    <div class="advantage-area-box-content">
-                        <h3>HOW TO MEASURE</h3>
-                        <p>Have Problems? Call Us Directly!</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <div class="advantage-area-box">
-                    <div class="advantage-area-box-icon">
-                        <a href="#"><i class="flaticon-screen"></i></a>
-                    </div>
-                    <div class="advantage-area-box-content">
-                        <h3>WHO WE ARE</h3>
-                        <p>Get Products From An Exclusive Range!</p>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="advantage-area-box">
+                            <div class="advantage-area-box-icon">
+                                <a href="#"><i class="flaticon-reload"></i></a>
+                            </div>
+                            <div class="advantage-area-box-content">
+                                <h3>100% RETURN BACK</h3>
+                                <p>30 Day Free Returns.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
-    </div>
-</div>
 <!-- Advantage Area End Here -->
 
 <?php

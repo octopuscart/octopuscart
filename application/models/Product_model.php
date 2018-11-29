@@ -433,6 +433,20 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
         }
         return $container;
     }
+    
+    
+    function menuList($category_id) {
+        $this->db->where('parent_id', $category_id);
+        $query = $this->db->get('menu');
+        $category = $query->result_array();
+        $container = [];
+        foreach ($category as $ckey => $cvalue) {
+            $cvalue['sub_menu'] = $this->menuList($cvalue['id']);
+            array_push($container, $cvalue);
+        }
+        return $container;
+    }
+    
 
     function get_children($id, $container) {
         $this->db->where('id', $id);

@@ -16,24 +16,17 @@ class Product extends CI_Controller {
     }
 
     //function for product list
-    function ProductList($custom_id, $cat_id) {
+    function ProductList($cat_id) {
 
 
-        $this->db->where('id', $custom_id);
-        $query = $this->db->get('custome_items');
-        $customeitem = $query->row();
 
-        if ($cat_id == 0) {
-            $cat_id = $customeitem->category_id;
-        }
-
-        $categories = $this->Product_model->productListCategories($cat_id, $custom_id);
+        $categories = $this->Product_model->productListCategories($cat_id);
         $data["categorie_parent"] = $this->Product_model->getparent($cat_id);
         $data["categories"] = $categories;
         $data["category"] = $cat_id;
-        $data["custom_item"] = $customeitem->item_name;
-        $data["custom_id"] = $custom_id;
-        $data["item_price"] = $customeitem->price;
+        $data["custom_item"] = "";
+        $data["custom_id"] = "";
+        $data["item_price"] = "0";
 
         $this->load->view('Product/productList', $data);
     }

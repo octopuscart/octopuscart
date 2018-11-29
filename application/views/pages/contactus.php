@@ -36,16 +36,17 @@ $this->load->view('layout/header');
                                 </div><script type='text/javascript'>
                                     function init_map() {
                                         //22.2968045,114.1687551  22.2969039,114.1623853
-                                        var myOptions = {zoom: 17, center: new google.maps.LatLng(22.297975, 114.17118299999993),
+                                        var myOptions = {zoom: 13, center: new google.maps.LatLng(22.312308, 114.1681743),
                                             mapTypeId: google.maps.MapTypeId.ROADMAP};
                                         map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
-                                        marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(22.297975, 114.17118299999993)});
+                                        marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(22.312308, 114.1681743)});
 
-                                        marker2 = new google.maps.Marker({map: map, position: new google.maps.LatLng(22.2967832, 114.1709048)});
+                                        marker2 = new google.maps.Marker({map: map, position: new google.maps.LatLng(22.297301, 114.1704174)});
 
 
 
-                                        infowindow = new google.maps.InfoWindow({content: '<strong>Bespoke Tailors Showroom</strong><br>2nd Floor, 45 Haiphong Road ,Tsim Sha Tsui, Kowloon , Hong Kong<br>'});
+                                        infowindow = new google.maps.InfoWindow({content: '<strong>Flat B, 4th Floor, Yen Chun Mansion,</strong><br>\
+                                        Block 18-26 Portland Street,<br> Yau Ma Tei<br>Kowloon, Hong Kong<br>'});
 
                                         google.maps.event.addListener(marker, 'click', function () {
                                             infowindow.open(map, marker);
@@ -54,7 +55,8 @@ $this->load->view('layout/header');
 
 
 
-                                        infowindow = new google.maps.InfoWindow({content: '<strong>Bespoke Tailors Shop</strong><br>Shop D, Ground Floor, Hanyee Building, 19-21 Hankow Road , Tsim Sha Tsui, Kowloon , Hong Kong.<br>'});
+                                        infowindow = new google.maps.InfoWindow({content: '<strong>Unit 29, 2nd Floor, Mirador Mansion,</strong><br>\
+                                        58-64B Nathan Road,<br> T.S.T, Kowloon, Hong Kong<br>'});
 
                                         google.maps.event.addListener(marker2, 'click', function () {
                                             infowindow.open(map, marker2);
@@ -138,36 +140,32 @@ $this->load->view('layout/header');
             </div>
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                 <div class="contact-us-right">
-                    <h2 class="title-sidebar" style="margin-bottom: 10px;">Showroom</h2>
+                    <h2 class="title-sidebar" style="margin-bottom: 10px;">Address 1:</h2>
                     <ul style="    margin-bottom: 30px;">
-                        <li class="con-address">2nd Floor, 45 Haiphong Road ,
-                            <br/>
-                            Tsim Sha Tsui, Kowloon, <br/>Hong Kong
+                        <li class="con-address">
+                            Flat B, 4th Floor, Yen Chun Mansion, <br/>
+                            Block 18-26 Portland Street, <br/>
+                            Yau Ma Tei, Kowloon, Hong Kong
+                            
                         </li>
-                        <li class="con-envelope">info@bespoketailorshk.com</li>
-                        <li class="con-phone">+(852) 2730 8566</li>
-
-                        <li class=""><i class="con-clock fa fa-clock-o"></i> <span class="timeing_opensm">Opening Hours</span><br/>
-                            <span class="timeing_open">Mon - Sat</span>: 09:00 to 19:00 <br/>
-                            <span class="timeing_open">Sun & Holidays</span>: 09:00 to 18:00
-                        </li>
+                       
                     </ul>
-                    <h2 class="title-sidebar" style="margin-bottom: 10px;">Shop Address</h2>
+                    <h2 class="title-sidebar" style="margin-bottom: 10px;">Address 2:</h2>
                     <ul>
-                        <li class="con-address">Shop D, Ground Floor,<br/>  Hanyee Building,<br/> 19-21 Hankow Road,
-                            <br/>
-                            Tsim Sha Tsui, Kowloon, <br/>Hong Kong</li>
-                        
-                        
-                        
-                        <li class="con-envelope">info@bespoketailorshk.com</li>
-                        
-                        <li class="con-phone">+(852) 3460 5254</li>
-
-                        <li class=""><i class="con-clock fa fa-clock-o"></i> <span class="timeing_opensm">Opening Hours</span><br/>
-                            <span class="timeing_open">Mon - Sat</span>: 09:00 to 21:00 <br/>
-                            <span class="timeing_open">Sun & Holidays</span>: 09:00 to 19:00
+                        <li class="con-address">
+                            Unit 29, 2/F, Mirador Mansion,<br/> 
+                            58-64B Nathan Road,<br/>
+                            19-21 Hankow Road, <br/>
+                            T.S.T, Kowloon, Hong Kong 
                         </li>
+                        
+                        
+                        
+                        <li class="con-envelope">sales@octopuscart.com</li>
+                        
+                        <li class="con-phone">+(852) 6878 4014</li>
+
+                        
  
                     </ul>
                     
@@ -176,8 +174,8 @@ $this->load->view('layout/header');
                       
 
                         <li class=""><i class="con-clock fa fa-whatsapp"></i> 
-                            <span class="timeing_opensm">WhatsApp (24 Hours)</span><br> 
-                            <b>+(852) 6795 8894</b>
+                            <span class="timeing_opensm">Telephone / Mobile / Whatsapp / Wechat / Viber: </span><br> 
+                            <b>+(852) 6878 4014, <br/>+(852) 5129 8473</b>
                         
                         </li>
  

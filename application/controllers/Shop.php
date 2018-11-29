@@ -13,8 +13,13 @@ class Shop extends CI_Controller {
 
     public function index() {
         $product_home_slider_bottom = $this->Product_model->product_home_slider_bottom();
-        $categories = $this->Product_model->productListCategories(0);
-        $data["categories"] = $categories;
+        $menulist = $this->Product_model->menuList(0);
+//        print_r($menulist);
+//        $this->session->set_userdata('menulist', $menulist);
+        
+       // $this->session->unset_userdata('menulist');
+        
+        $data["categories"] = $menulist;
         $data["product_home_slider_bottom"] = $product_home_slider_bottom;
         $customarray = [1, 2];
         $this->db->where_in('id', $customarray);

@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="footer-box">
-                            <h3>Order Now</h3>
+<!--                            <h3>Order Now</h3>
                             <ul class="info-list">
 
                                 <li><a href="<?php echo site_url('Product/ProductList/1/0') ?>">Shirts</a></li>
@@ -38,7 +38,7 @@
 
 
                                
-                            </ul>
+                            </ul>-->
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -144,6 +144,13 @@
 
 
 <script>
+    jQuery(document).ready(function(){
+    $(".dropdown").hover(
+        function() { $('.dropdown-menu', this).stop().fadeIn("fast");
+        },
+        function() { $('.dropdown-menu', this).stop().fadeOut("fast");
+    });
+});
                                             $(window).on('load', function () {
                                                 // Page Preloader
 

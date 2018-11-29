@@ -63,6 +63,86 @@
     </head>
 
 
+    <?php
+    $menulist = [
+        array(
+            "title" => "Exculsive",
+            "link" => site_url("Product/ProductList/62"),
+            "submenu" => []
+        ),
+        array(
+            "title" => "Men",
+            "link" => site_url("Product/ProductList/53"),
+            "submenu" => [
+                array(
+                    "title" => "Shirts",
+                    "link" => site_url("Product/ProductList/55"),
+                    "submenu" => []),
+                array(
+                    "title" => "Jackets",
+                    "link" => site_url("Product/ProductList/56"),
+                    "submenu" => []
+                ),
+                array(
+                    "title" => "Shoes",
+                    "link" => site_url("Product/ProductList/57"),
+                    "submenu" => [
+                        array("title" => "Sports Shoes", "link" => site_url("Product/ProductList/58"),),
+                        array("title" => "Casual Shoes", "link" => site_url("Product/ProductList/58"),),
+                        array("title" => "Formal Shoes", "link" => site_url("Product/ProductList/58"),),
+                    ]
+                ),
+            ],
+        ),
+        array(
+            "title" => "Women",
+            "link" => site_url("Product/ProductList/54"),
+            "submenu" => [
+                array(
+                    "title" => "Tops",
+                    "link" => site_url("Product/ProductList/58"),
+                    "submenu" => []
+                ),
+                array(
+                    "title" => "Sandals",
+                    "link" => site_url("Product/ProductList/59"),
+                    "submenu" => []
+                ),
+                array(
+                    "title" => "Shoes",
+                    "link" => site_url("Product/ProductList/60"),
+                    "submenu" => []
+                ),
+                array(
+                    "title" => "Scarf",
+                    "link" => site_url("Product/ProductList/61"),
+                    "submenu" => []
+                ),
+            ],
+        ),
+        array(
+            "title" => "Electronics",
+            "link" => site_url("Product/ProductList/62"),
+            "submenu" => []
+        ),
+        array(
+            "title" => "Ready To Eat",
+            "link" => site_url("Product/ProductList/63"),
+            "submenu" => [],
+        ),
+        array(
+            "title" => "Grocery",
+            "link" => site_url("Product/ProductList/64"),
+            "submenu" => [],
+        ),
+        array(
+            "title" => "Packers & Movers",
+            "link" => site_url(),
+            "submenu" => [],
+        ),
+    ];
+    ?>
+
     <style>
         .preloadimage{
             background: black;
@@ -116,6 +196,16 @@
                 }
                 .account-wishlist ul li a {
                     font-size: 12px;
+                    color: white;
+                }
+                .header-contact ul li a {
+                    color:white;
+
+                    letter-spacing: 2px; 
+                }
+                .header-contact ul li{
+                    color:white;
+                    letter-spacing: 2px; 
                 }
             </style>
 
@@ -126,231 +216,193 @@
                 <input type="hidden" ng-model="showmodel" ng-init="showmodel = 0">
                 <input type="hidden" ng-model="gitem_price" ng-init="showmodel = 0">
 
-                <div class="header-area-style2" id="sticker">
-                    <div class="header-top" style="  ">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
-                                    <div class="account-wishlist" style="font-size: 12px;">
-                                        <ul>
-                                            <?php
-                                            $session_data = $this->session->userdata('logged_in');
-                                            if (isset($session_data['login_id'])) {
-                                                ?>
-                                                <li>
-                                                    <a href="<?php echo site_url('Account/profile'); ?>">
-                                                        <i class="fa fa-user"></i> <?php echo $session_data['first_name'] . ' ' . $session_data['last_name']; ?>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="<?php echo site_url('Account/profile'); ?>">Profile</a>
-                                                </li>
-                                                <li>
 
-                                                    <a href="<?php echo site_url('Account/logout'); ?>">   Logout</a>
-                                                </li>
-                                                <?php
-                                            } else {
-                                                ?>
-                                                <li><a href="<?php echo site_url('Account/profile'); ?>">
-                                                        <i class="fa fa-lock" aria-hidden="true"></i> Account</a>
-                                                </li>
-                                                <!--<li><a href=""><i class="fa fa-heart-o" aria-hidden="true"></i>  Wishlist</a></li>-->
-
-
-                                                <?php
-                                            }
-                                            ?>
-                                        </ul>
+                <div class="header-area-style3" id="sticker">
+                    <div class="header-top">
+                        <div class="header-top-inner-top">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                        <div class="header-contact">
+                                            <ul>
+                                                <li><i class="fa fa-phone" aria-hidden="true"></i><a href="+(852) 6878 4014"> +(852) 6878 4014</a></li>
+                                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#"> sales@octopuscart.com</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <div class="account-wishlist">
+                                            <ul>
+                                                <li><a href="<?php echo site_url("Account/profile"); ?>"><i class="fa fa-lock" aria-hidden="true"></i> Account</a></li>
+                                                <li><a href="<?php echo site_url("Account/profile"); ?>"><i class="fa fa-heart-o" aria-hidden="true"></i> Wishlist</a></li>
+                                                <li><a href="#"><i class="fa fa-usd" aria-hidden="true"></i> USD</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-2 hidden-xs">
-
-
-                                    <?php
-                                    $logoimg = "logo73.png";
-                                    ?>
-
-                                    <div class="logo-area">
-                                        <a href="<?php echo site_url(); ?>"><img class="img-responsive" src="<?php echo base_url() . 'assets/images/' . $logoimg; ?>" alt="logo" style="    
-                                                                                 position: absolute;
-                                                                                 top: -22px;
-                                                                                 height: 74px;
-                                                                                 margin-left: -135px;"></a>
+                            </div>
+                        </div>
+                        <div class="header-top-inner-bottom">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <div class="logo-area">
+                                            <a href="<?php echo site_url(); ?>"><img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" style="height: 50px;" alt="logo"></a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
-                                    <ul class="header-cart-area">
-                                        <!--                                        <li class="header-search" id="remote">
-                                                                                    <form id="top-search-form" action="<?php echo site_url('Product/ProductSearch'); ?>">                           
-                                                                                        <input type="text" name="keyword" class="search-input typeahead" placeholder="Search...." required="">
-                                                                                        <a href="#" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                                                                        <button type="submit" style="height: 0px;width: 0px;opacity: 0;"></button>
-                                                                                    </form>
-                                                                                </li>-->
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                                        <div class="search-area">
+                                            <div class="input-group" id="adv-search">
+                                                <input type="text" class="form-control" placeholder="Search Product">
+                                                <div class="input-group-btn">
+                                                    <div class="btn-group" role="group">
+                                                        
+                                                        <button type="button" class="btn btn-metro-search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                        <ul class="header-cart-area">
+                                            <li>
+                                                <div class="cart-area">
+                                                    <a href="#"><i class="fa fa-shopping-cart"  aria-hidden="true"></i><span style="background: #f01211">{{globleCartData.total_quantity}}</span></a>
+                                                    <ul ng-if="globleCartData.total_quantity">
+                                                        <li  ng-repeat="product in globleCartData.products">
 
-
-                                        <!--                                    <li class="header-search" >
-                                                                                <form id="top-search-form" >                           
-                                                                                        <input type="text" id="searchdata" class="search-input" placeholder="Search...." required="">
-                                                                                        <a href="#" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                                                                </form>
-                                                                            </li>-->
-
-                                        <li>
-                                            <div class="cart-area">
-                                                <a href="#"><i class="fa fa-shopping-cart"  aria-hidden="true"></i><span style="background: #f01211">{{globleCartData.total_quantity}}</span></a>
-                                                <ul ng-if="globleCartData.total_quantity">
-                                                    <li  ng-repeat="product in globleCartData.products">
-
-                                                        <div class="cart-single-product">
-                                                            <div class="media">
-                                                                <div class="pull-left cart-product-img">
-                                                                    <a href="#">
-                                                                        <div class="product_image_back1" style="background: url({{product.file_name}});height: 80px;width: 80px;"></div>
+                                                            <div class="cart-single-product">
+                                                                <div class="media">
+                                                                    <div class="pull-left cart-product-img">
+                                                                        <a href="#">
+                                                                            <div class="product_image_back1" style="background: url({{product.file_name}});height: 80px;width: 80px;"></div>
 
                                                                     <!--<img class="img-responsive" alt="product" src="{{product.file_name}}">-->
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body cart-content">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <h2 style="    white-space: nowrap;
-                                                                                overflow: hidden;
-                                                                                text-overflow: ellipsis;
-                                                                                width: 250px;"><a href="#" style="">{{product.title}} - {{product.item_name}}</a></h2>
-                                                                            <h3>                                                                 
-                                                                                <p>
-                                                                                    {{product.price|currency:" "}} X {{product.quantity}} 
-                                                                                </p>
-                                                                            </h3>
-                                                                        </li>
-                                                                        <li>
-                                                                        </li>
-                                                                        <li>
-                                                                            <p></p>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="trash" href="#." ng-click="removeCart(product.product_id)"><i class="fa fa-trash-o"></i></a>
-                                                                        </li>
-                                                                    </ul>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="media-body cart-content">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <h2 style="    white-space: nowrap;
+                                                                                    overflow: hidden;
+                                                                                    text-overflow: ellipsis;
+                                                                                    width: 250px;"><a href="#" style="">{{product.title}} - {{product.item_name}}</a></h2>
+                                                                                <h3>                                                                 
+                                                                                    <p>
+                                                                                        {{product.price|currency:" "}} X {{product.quantity}} 
+                                                                                    </p>
+                                                                                </h3>
+                                                                            </li>
+                                                                            <li>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p></p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="trash" href="#." ng-click="removeCart(product.product_id)"><i class="fa fa-trash-o"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </li>
+                                                        </li>
 
-                                                    <li>
-                                                        <span><span>Sub Total</span></span><span>{{globleCartData.total_price|currency:"<?php echo globle_currency; ?> "}}</span>
+                                                        <li>
+                                                            <span><span>Sub Total</span></span><span>{{globleCartData.total_price|currency:"<?php echo globle_currency; ?> "}}</span>
 
-                                                    </li>
-                                                    <li>
-                                                        <ul class="checkout">
-                                                            <li><a href="<?php echo site_url("Cart/details"); ?>" class="btn-checkout"><i class="fa fa-shopping-cart" aria-hidden="true"></i>View Cart</a></li>
-                                                            <!--<li><a href="<?php echo site_url("Cart/checkoutInit"); ?>" class="btn-checkout"><i class="fa fa-share" aria-hidden="true"></i>Checkout</a></li>-->
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-
-
-
-
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="additional-menu-area" id="additional-menu-area">
-
-
-
-                                                <div id="mySidenav" class="sidenav">
-                                                    <a href="#" class="closebtn">×</a>
-                                                    <div class="sidenav-search">
-                                                        <div class="input-group stylish-input-group" >
-                                                            <input type="text" placeholder="Search Here . . ." class="form-control">
-                                                            <span class="input-group-addon">
-                                                                <button type="submit">
-                                                                    <span class="glyphicon glyphicon-search"></span>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="sidenav-login-registration">
-
-                                                        <?php
-                                                        $session_data = $this->session->userdata('logged_in');
-                                                        if (isset($session_data['login_id'])) {
-                                                            ?>
-                                                            <li>
-                                                                <a href="<?php echo site_url("Account/profile"); ?>" style="text-transform: capitalize">
-                                                                    <i class="fa fa-user"></i> <?php echo $session_data['first_name'] . ' ' . $session_data['last_name']; ?>
-                                                                    <span class="arrow"></span></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="<?php echo site_url("Account/logout"); ?>">Logout<span class="arrow"></span></a>
-                                                            </li>
-
-                                                            <?php
-                                                        } else {
-                                                            ?>
-                                                            <li>
-                                                                <a href="<?php echo site_url("Account/login"); ?>">Login<span class="arrow"></span></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="<?php echo site_url("Account/login"); ?>">Registration<span class="arrow"></span></a>
-                                                            </li>
-                                                            <?php
-                                                        }
-                                                        ?>
+                                                        </li>
+                                                        <li>
+                                                            <ul class="checkout">
+                                                                <li><a href="<?php echo site_url("Cart/details"); ?>" class="btn-checkout"><i class="fa fa-shopping-cart" aria-hidden="true"></i>View Cart</a></li>
+                                                                <!--<li><a href="<?php echo site_url("Cart/checkoutInit"); ?>" class="btn-checkout"><i class="fa fa-share" aria-hidden="true"></i>Checkout</a></li>-->
+                                                            </ul>
+                                                        </li>
                                                     </ul>
-                                                    <h3 class="ctg-name-title"><a href="<?php echo site_url('Product/ProductList/1/0') ?>">Order Now</a></h3>
-                                                    <ul class="sidenav-nav">
-                                                        <li><a href="<?php echo site_url('Product/ProductList/1/0'); ?>">Shirts</a></li>
-                                                        <li><a href="<?php echo site_url('Product/ProductList/2/0'); ?>">Suits</a></li>
-                                                        <li><a href="<?php echo site_url('Product/ProductList/4/0'); ?>">Jackets</a></li>
-                                                        <li><a href="<?php echo site_url('Product/ProductList/3/0'); ?>">Pants</a></li>
 
-                                                    </ul>
-                                                    <!-- times-->
+
+
+
                                                 </div>
-                                                <span class="side-menu-open side-menu-trigger"><i class="fa fa-bars" aria-hidden="true"></i></span>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                            <li>
+                                                <div class="additional-menu-area" id="additional-menu-area">
+                                                    <div id="mySidenav" class="sidenav">
+                                                        <a href="#" class="closebtn">×</a>
+                                                        <div class="sidenav-search">
+                                                            <div class="input-group stylish-input-group">
+                                                                <input type="text" placeholder="Search Here . . ." class="form-control">
+                                                                <span class="input-group-addon">
+                                                                    <button type="submit">
+                                                                        <span class="glyphicon glyphicon-search"></span>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <h3 class="ctg-name-title">Category Name List</h3>
+                                                        <ul class="sidenav-nav">
+                                                            <?php foreach ($menulist as $mkey => $mvalue) { ?>
+                                                                <li>
+                                                                    <a href="<?php echo $mvalue['link']; ?>"><?php echo $mvalue['title']; ?></a>
+                                                                </li>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </ul>
+                                                        <!-- times-->
+                                                    </div>
+                                                    <span class="side-menu-open side-menu-trigger"><i class="fa fa-bars" aria-hidden="true"></i></span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                </div>
+
+                <div class="header-area-style2" id="sticker">
+
+
                     <div class="header-bottom">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="logo-area" style="    margin-top: 2px;">
-                                        <a href="<?php echo site_url(); ?>">
-                                            <img class="img-responsive" src="<?php echo base_url() . 'assets/images/' . $logoimg; ?>" alt="logo" style="    height:60px;padding-top: 4px;
-                                                 padding-bottom: 6px;">
-                                        </a>
-                                    </div>
+
                                     <div class="main-menu-area home2-sticky-area">
                                         <nav>
                                             <ul>
-                                                <li class="active"><a href="<?php echo base_url(); ?>">Home</a>
-                                                    <ul>
-                                                        <li><a href="<?php echo site_url("Shop/faq"); ?>">FAQ'S</a></li>
-                                                        <li><a href="<?php echo site_url("Shop/aboutus") ?>">About Us</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li ><a href="<?php echo site_url('Product/ProductList/1/0') ?>">Order Now</a>
-                                                    <ul>
-                                                        <li><a href="<?php echo site_url('Product/ProductList/1/0') ?>">Shirts</a></li>
-                                                        <li><a href="<?php echo site_url('Product/ProductList/2/0') ?>">Suits</a></li>
-                                                        <li><a href="<?php echo site_url('Product/ProductList/4/0') ?>">Jackets</a></li>
-                                                        <li><a href="<?php echo site_url('Product/ProductList/3/0') ?>">Pants</a></li>
+                                                <?php foreach ($menulist as $mkey => $mvalue) { ?>
+                                                    <li class="dropdown menu-large">
+                                                        <a href="<?php echo $mvalue['link']; ?>" class="dropdown-toggle <?php echo count($mvalue['submenu']) ? 'submenu' : ''; ?>" data-toggle="dropdown"><?php echo $mvalue['title']; ?>  </a>
+                                                        <?php
+                                                        if (count($mvalue['submenu'])) {
+                                                            ?>
 
-                                                    </ul>
-                                                </li>
-                                                <li><a href="<?php echo site_url("Shop/catalogue"); ?>">Catalogue</a></li>
-                                                <li><a href="<?php echo site_url("Shop/appointment"); ?>">Appointment</a></li>
+                                                            <ul class="dropdown-menu megamenu row">
+                                                                <?php foreach ($mvalue['submenu'] as $smkey => $smvalue) { ?>
 
-                                                <li><a href="<?php echo site_url("Shop/contactus") ?>">Contact Us</a></li>
+                                                                    <li class="col">
+                                                                        <a href="<?php echo $smvalue['link']; ?>"><?php echo $smvalue['title']; ?> <i class="glyphicon glyphicon-triangle-right"></i></a>
+
+                                                                        <?php foreach ($smvalue['submenu'] as $sb1mkey => $sb1mvalue) { ?>
+                                                                            <a href="<?php echo $sb1mvalue['link']; ?>" style="    font-weight: 500;    border-bottom: 0px solid #b6b6b6;"><?php echo $sb1mvalue['title']; ?></a>
+                                                                        <?php } ?>
+                                                                    </li>
+                                                                <?php } ?>
+                                                            </ul>
+
+
+
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </li>
+                                                    <?php
+                                                }
+                                                ?>
                                             </ul>
                                         </nav>
                                     </div>
@@ -367,26 +419,45 @@
                                     <div class="col-md-12">
                                         <div class="mobile-menu">
                                             <nav id="dropdown">
+
+
+
                                                 <ul>
-                                                    <li class="active"><a href="#">Home</a>
-                                                        <ul>
-                                                            <li><a href="<?php echo site_url("Shop/faq"); ?>">FAQ'S</a></li>
-                                                            <li><a href="<?php echo site_url("Shop/aboutus") ?>">About Us</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li ><a href="#">Order Now</a>
-                                                        <ul>
-                                                            <li><a href="<?php echo site_url('Product/ProductList/1/0') ?>">Shirt</a></li>
-                                                            <li><a href="<?php echo site_url('Product/ProductList/2/0') ?>">Suit</a></li>
-                                                            <li><a href="<?php echo site_url('Product/ProductList/4/0') ?>">Jacket</a></li>
-                                                            <li><a href="<?php echo site_url('Product/ProductList/3/0') ?>">Pant</a></li>
+                                                    <?php foreach ($menulist as $mkey => $mvalue) { ?>
+                                                        <li>
+                                                            <a href="<?php echo $mvalue['link']; ?>"><?php echo $mvalue['title']; ?></a>
+                                                            <?php
+                                                            if (count($mvalue['submenu'])) {
+                                                                ?>
 
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">Catalogue</a></li>
-                                                    <li><a href="#">Schedule</a></li>
+                                                                <ul >
+                                                                    <?php foreach ($mvalue['submenu'] as $smkey => $smvalue) { ?>
 
-                                                    <li><a href="<?php echo site_url("Shop/contactus") ?>">Contact Us</a></li>
+                                                                        <li>
+                                                                            <a href="<?php echo $smvalue['link']; ?>"><?php echo $smvalue['title']; ?></a>
+
+                                                                            <?php foreach ($smvalue['submenu'] as $sb1mkey => $sb1mvalue) { ?>
+                                                                                <a href="<?php echo $sb1mvalue['link']; ?>"><?php echo $sb1mvalue['title']; ?></a>
+                                                                            <?php } ?>
+                                                                        </li>
+                                                                    <?php } ?>
+                                                                </ul>
+
+
+
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </li>
+                                                        <?php
+                                                    }
+                                                    ?>
+
+
+
+
+
+
                                                 </ul>
                                             </nav>
                                         </div>
@@ -448,7 +519,7 @@
                                                     <a href="#">
                                                         <div class="product_image_back" style="background: url({{product.file_name}});height: 80px;width: 80px;    background-size: cover;"></div>
 
-                                                                    <!--<img class="img-responsive" alt="product" src="{{product.file_name}}">-->
+                                                                        <!--<img class="img-responsive" alt="product" src="{{product.file_name}}">-->
                                                     </a>
                                                 </div>
                                                 <div class="media-body cart-content">
