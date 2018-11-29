@@ -93,10 +93,7 @@ foreach ($sliders as $key => $value) {
                         }
                         ?>
                         <a href="#">
-                            <!--<img class="img-responsive" src="" alt="product" style="height: 224px">-->
-
-                            <div class="product_image_back" style="background: url(<?php echo custome_image_server; ?>/shirt/output/<?php echo $value['folder']; ?>/shirt_model10001.png);height: 270px"></div>
-                            <!--<img src="img/product/15.jpg" alt="product">-->
+                            <div class="product_image_back" style="background: url(<?php echo custome_image_server; ?><?php echo $value['file_name']; ?>);height: 270px"></div>
                         </a>
                     </div>
                     <div class="product-content-holder">
@@ -104,7 +101,7 @@ foreach ($sliders as $key => $value) {
 
                         <span style="font-size: 12px"><?php echo $value['short_description']; ?></span>
                         <br>
-                        <span>{{<?php echo $shirtcustome->price; ?>|currency:"<?php echo globle_currency; ?> "}}</span>
+                        <span>{{<?php echo $value['price']; ?>|currency:"<?php echo globle_currency; ?> "}}</span>
                     </div>
                 </div>
                 <?php

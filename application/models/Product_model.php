@@ -510,11 +510,11 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
     }
 
     function product_home_slider_bottom() {
-        $pquery = "SELECT pa.* FROM products as pa where home_slider = 'on' and variant_product_of<1";
+        $pquery = "SELECT pa.* FROM products as pa where home_slider = 'on' ";
         $product_home_slider = $this->query_exe($pquery);
 
 
-        $pquery = "SELECT pa.* FROM products as pa where home_bottom = 'on'  and variant_product_of<1";
+        $pquery = "SELECT pa.* FROM products as pa where home_bottom = 'on'  ";
         $product_home_bottom = $this->query_exe($pquery);
 
         return array('home_bottom' => $product_home_bottom, 'home_slider' => $product_home_slider);
