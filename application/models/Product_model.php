@@ -120,9 +120,9 @@ where pa.product_id = $product_id group by attribute_value_id";
                 $this->db->where('id', $custom_id);
                 $query = $this->db->get('custome_items');
                 $customeitem = $query->row();
-                $productobj['price'] = $customeitem->price;
-                $productobj['regular_price'] = $customeitem->price;
-                $productobj['item_name'] = $customeitem->item_name;
+                $productobj['price'] = $productobj['price'];
+                $productobj['regular_price'] = $productobj['price'];
+                $productobj['item_name'] = "";
             }
             $productattr = $this->singleProductAttrs($productobj['id']);
             $productobj['attrs'] = $productattr;
@@ -359,7 +359,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 'attrs' => "",
                 'vendor_id' => $product_details['user_id'],
                 'total_price' => $product_details['price'],
-                'file_name' => custome_image_server . PRODUCT_PATH_PRE . $product_details['folder'] . PRODUCT_PATH_POST,
+                'file_name' => custome_image_server . $product_details['file_name'] ,
                 'quantity' => $quantity,
                 'user_id' => $user_id,
                 'credit_limit' => $product_details['credit_limit'] ? $product_details['credit_limit'] : 0,
@@ -408,7 +408,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                     'attrs' => "",
                     'vendor_id' => $product_details['user_id'],
                     'total_price' => $product_details['price'],
-                    'file_name' => custome_image_server . PRODUCT_PATH_PRE . $product_details['folder'] . PRODUCT_PATH_POST,
+                    'file_name' => custome_image_server . $product_details['file_name'] ,
                     'quantity' => 1,
                     'product_id' => $product_id,
                     'date' => date('Y-m-d'),
@@ -576,7 +576,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
             );
             $this->db->insert('user_order_log', $orderlog);
 
-            $subject = "Order Confirmation - Your Order with www.bespoketailorshk.com [" . $order_no . "] has been successfully placed!";
+            $subject = "Order Confirmation - Your Order with www.octopuscart.com [" . $order_no . "] has been successfully placed!";
             $this->email->subject($subject);
 
             if ($checkcode) {
@@ -687,7 +687,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 'attrs' => "",
                 'vendor_id' => $product_details['user_id'],
                 'total_price' => $product_details['price'],
-                'file_name' => custome_image_server . PRODUCT_PATH_PRE . $product_details['folder'] . PRODUCT_PATH_POST,
+                'file_name' => custome_image_server . $product_details['file_name'] ,
                 'quantity' => $quantity,
                 'user_id' => $user_id,
                 'item_id' => $item_id,
@@ -754,7 +754,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                     'attrs' => "",
                     'vendor_id' => $product_details['user_id'],
                     'total_price' => $product_details['price'],
-                    'file_name' => custome_image_server . PRODUCT_PATH_PRE . $product_details['folder'] . PRODUCT_PATH_POST,
+                    'file_name' => custome_image_server . $product_details['file_name'] ,
                     'quantity' => 1,
                     'item_id' => $item_id,
                     'item_name' => $item_name,
@@ -788,7 +788,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 'attrs' => "",
                 'vendor_id' => $product_details['user_id'],
                 'total_price' => $value['total_price'],
-                'file_name' => custome_image_server . PRODUCT_PATH_PRE . $product_details['folder'] . PRODUCT_PATH_POST,
+                'file_name' => custome_image_server . $product_details['file_name'] ,
                 'quantity' => $quantity,
                 'user_id' => $user_id,
                 'item_id' => $item_id,
@@ -832,7 +832,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 'attrs' => "",
                 'vendor_id' => $product_details['user_id'],
                 'total_price' => $value['total_price'],
-                'file_name' => custome_image_server . PRODUCT_PATH_PRE . $product_details['folder'] . PRODUCT_PATH_POST,
+                'file_name' => custome_image_server . $product_details['file_name'] ,
                 'quantity' => $quantity,
                 'user_id' => 'guest',
                 'item_id' => $item_id,

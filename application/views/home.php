@@ -81,7 +81,7 @@ foreach ($sliders as $key => $value) {
                 ?>
                 <div class="product-box1">
                     <ul class="product-social" style="">
-                        <li><a href="<?php echo site_url("Product/customizationRedirect/" . $shirtcustome->id) ?>/<?php echo $value['id']; ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                        <li><a href="#" ng-click="addToCart(<?php echo $value['id']; ?>, 1)"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
 
                     </ul>
                     <div class="product-img-holder">
