@@ -278,7 +278,7 @@
                                                                 <div class="media">
                                                                     <div class="pull-left cart-product-img">
                                                                         <a href="#">
-                                                                            <div class="product_image_back1" style="background: url({{product.file_name}});height: 80px;width: 80px;    background-size: cover;"></div>
+                                                                            <div class="product_image_back1" style="background: url({{product.file_name}});height: 80px;width: 80px;  background-size: contain;     background-repeat: no-repeat;"></div>
 
                                                                     <!--<img class="img-responsive" alt="product" src="{{product.file_name}}">-->
                                                                         </a>
@@ -289,7 +289,7 @@
                                                                                 <h2 style="    white-space: nowrap;
                                                                                     overflow: hidden;
                                                                                     text-overflow: ellipsis;
-                                                                                    width: 250px;"><a href="#" style="">{{product.title}} - {{product.item_name}}</a></h2>
+                                                                                    width: 250px;"><a href="#" style="">{{product.title}}</a></h2>
                                                                                 <h3>                                                                 
                                                                                     <p>
                                                                                         {{product.price|currency:" "}} X {{product.quantity}} 
