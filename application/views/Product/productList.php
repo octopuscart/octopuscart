@@ -293,7 +293,7 @@ $image2 = "";
                                     <div class="product-img-holder">
                                         <a href="#">
 
-                                    <div class="product_image_back" style="background: url(<?php echo imageserver; ?>{{product.file_name}});    height: 200px;"></div>
+                                    <div class="product_image_back" style="background: url(<?php echo custome_image_server; ?>{{product.file_name}});     height: 320px;"></div>
 
 
                                         </a>
