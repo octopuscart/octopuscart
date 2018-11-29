@@ -103,10 +103,7 @@ $this->load->view('layout/header');
             <?php
             $this->load->view('Cart/itemblock', array('vtype' => 'items'));
             ?>
-            <?php
-            $this->load->view('Cart/itemblock', array('vtype' => 'size'));
-            ?>
-
+          
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
@@ -174,7 +171,7 @@ $this->load->view('layout/header');
                                     <tr>
                                         <td colspan="4" class="text_right">
                                             <div class="proceed-button pull-left " >
-                                                <a href=" <?php echo site_url("Cart/checkoutSize"); ?>" class="btn-apply-coupon checkout_button_pre disabled" ><i class="fa fa-arrow-left"></i> View Size</a>
+                                                <a href=" <?php echo site_url("Cart/checkoutInit"); ?>" class="btn-apply-coupon checkout_button_pre disabled" ><i class="fa fa-arrow-left"></i> View Cart</a>
                                             </div>
                                             <div class="proceed-button pull-right ">
                                                 <a href=" <?php echo site_url("Cart/checkoutPayment"); ?>" class="btn-apply-coupon checkout_button_next disabled" >Choose Payment Method <i class="fa fa-arrow-right"></i></a>
