@@ -359,7 +359,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 'attrs' => "",
                 'vendor_id' => $product_details['user_id'],
                 'total_price' => $product_details['price'],
-                'file_name' => custome_image_server . $product_details['file_name'] ,
+                'file_name' => custome_image_server . $product_details['file_name'],
                 'quantity' => $quantity,
                 'user_id' => $user_id,
                 'credit_limit' => $product_details['credit_limit'] ? $product_details['credit_limit'] : 0,
@@ -408,7 +408,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                     'attrs' => "",
                     'vendor_id' => $product_details['user_id'],
                     'total_price' => $product_details['price'],
-                    'file_name' => custome_image_server . $product_details['file_name'] ,
+                    'file_name' => custome_image_server . $product_details['file_name'],
                     'quantity' => 1,
                     'product_id' => $product_id,
                     'date' => date('Y-m-d'),
@@ -433,8 +433,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
         }
         return $container;
     }
-    
-    
+
     function menuList($category_id) {
         $this->db->where('parent_id', $category_id);
         $query = $this->db->get('menu');
@@ -446,7 +445,6 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
         }
         return $container;
     }
-    
 
     function get_children($id, $container) {
         $this->db->where('id', $id);
@@ -674,8 +672,8 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
             $custom_dict[$kkey] = $vvalue;
         }
 
-        $item_name = $customeitem->item_name;
-        $item_id = $customeitem->id;
+        $item_id = "";
+        $item_name = "";
 
         if ($user_id != 0) {
             $cartdata = $this->cartData($user_id);
@@ -687,7 +685,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 'attrs' => "",
                 'vendor_id' => $product_details['user_id'],
                 'total_price' => $product_details['price'],
-                'file_name' => custome_image_server . $product_details['file_name'] ,
+                'file_name' => custome_image_server . $product_details['file_name'],
                 'quantity' => $quantity,
                 'user_id' => $user_id,
                 'item_id' => $item_id,
@@ -713,7 +711,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
             } else {
 
 //                $custom_dict
-
+                
                 $this->db->insert('cart', $product_dict);
                 $last_id = $this->db->insert_id();
                 $display_index = 1;
@@ -754,7 +752,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                     'attrs' => "",
                     'vendor_id' => $product_details['user_id'],
                     'total_price' => $product_details['price'],
-                    'file_name' => custome_image_server . $product_details['file_name'] ,
+                    'file_name' => custome_image_server . $product_details['file_name'],
                     'quantity' => 1,
                     'item_id' => $item_id,
                     'item_name' => $item_name,
@@ -778,8 +776,8 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
         foreach ($productlist as $key => $value) {
             $quantity = $value['quantity'];
             $product_id = $value['product_id'];
-            $item_id = $value['item_id'];
-            $item_name = $value['item_name'];
+            $item_id = "";
+            $item_name = "";
             $product_details = $this->productDetails($product_id, $item_id);
             $product_dict = array(
                 'title' => $product_details['title'],
@@ -788,7 +786,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 'attrs' => "",
                 'vendor_id' => $product_details['user_id'],
                 'total_price' => $value['total_price'],
-                'file_name' => custome_image_server . $product_details['file_name'] ,
+                'file_name' => custome_image_server . $product_details['file_name'],
                 'quantity' => $quantity,
                 'user_id' => $user_id,
                 'item_id' => $item_id,
@@ -797,7 +795,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 'product_id' => $product_id,
                 'op_date_time' => date('Y-m-d H:i:s'),
             );
-            $custom_dict = $value['custom_dict'];
+            $custom_dict = array();
             $this->db->insert('cart', $product_dict);
             $last_id = $this->db->insert_id();
             $display_index = 1;
@@ -832,7 +830,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 'attrs' => "",
                 'vendor_id' => $product_details['user_id'],
                 'total_price' => $value['total_price'],
-                'file_name' => custome_image_server . $product_details['file_name'] ,
+                'file_name' => custome_image_server . $product_details['file_name'],
                 'quantity' => $quantity,
                 'user_id' => 'guest',
                 'item_id' => $item_id,

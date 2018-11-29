@@ -63,13 +63,13 @@
           background: rgb(225, 225, 225);
           font-family: sans-serif;">
         <div class="" style="padding:50px 0px">
-            <table align="center" border="0" cellpadding="0" cellspacing="0" width="700" style="background: #000;padding: 0 20px">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="700" style="background: #fff;padding: 0 20px">
                 <tr>
                     <td >
                         <center><img src="<?php echo site_mail_logo; ?> " style="margin: 10px;
                                      height: 50px;
                                      width: auto;"/><br/>
-                            <h4 style="color: white;"> Welcome</h4>
+                            <h4 style="color: black;"> Welcome</h4>
                         </center>
                     </td>
 
@@ -86,7 +86,7 @@
 
                         <p>Dear <?php echo $customer->first_name; ?> <?php echo $customer->last_name; ?>,</p><br/>
 
-                        <p> Thank you for registering your online Bespoke Tailors account from <?php echo $customer->country; ?>. </p>
+                        <p> Thank you for registering your online Octopuscart account from <?php echo $customer->country; ?>. </p>
                         <p>You will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more. </p> 
                         <p>Your Login Credentials: </p>
                         <table style="    margin-top: 12px;
@@ -108,30 +108,8 @@
                             </tr>
                         </table>
 
-
-                        <p>For any order related queries, please email us at info@bespoketailorshk.com</p>
-
                         <br/>
-                        <div style="height: 200px;">Kindest Regards,<br />
-                            <img src="<?php echo site_mail_logo; ?>" style="height: 30px;  background: #000 ;margin: 5px 0px 10px ;"><br/>
-                                <span style="float: left; font-size: 12px;">
-
-                                    <address>
-                                        <b>Address 1</b><br/>
-                                        2nd Floor, 45 Haiphong Road,<br/> 
-                                        Tsim Sha Tsui, Kowloon, Hong Kong
-                                        <br/><br/>
-                                        <b>Address 2</b><br/>
-                                        Shop D, Ground Floor, Hanyee Building, 19-21 Hankow Road, <br/>
-                                        Tsim Sha Tsui, Kowloon, Hong Kong                                        <br/>
-                                        <b>Tel#</b>: +(852) 2730 8566  <b>Fax#</b>: +(852) 2730 8577<br/>
-                                        <b>Email</b>: info@bespoketailorshk.com  
-                                        <b>Web</b>: www.bespoketailorshk.com
-
-
-                                    </address>
-                                </span>
-                        </div>
+                            <?php echo EMAIL_FOOTER; ?>
 
                     </td>
                 </tr>

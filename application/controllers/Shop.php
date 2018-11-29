@@ -128,7 +128,7 @@ class Shop extends CI_Controller {
                 $this->email->from(email_bcc, $sendername);
                 $this->email->to($this->input->post('email'));
                 $this->email->bcc(email_bcc);
-                $subjectt = "Bespoke Tailors Appointment : ".$appointment['select_date']." (".$appointment['select_time'].")";
+                $subjectt = "Octopuscart Appointment : ".$appointment['select_date']." (".$appointment['select_time'].")";
                 $orderlog = array(
                     'log_type' => 'Appointment',
                     'log_datetime' => date('Y-m-d H:i:s'),

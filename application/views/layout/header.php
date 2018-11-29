@@ -65,11 +65,7 @@
 
     <?php
     $menulist = [
-        array(
-            "title" => "Exculsive",
-            "link" => site_url("Product/ProductList/62"),
-            "submenu" => []
-        ),
+        
         array(
             "title" => "Men's",
             "link" => site_url("Product/ProductList/53"),
@@ -137,6 +133,11 @@
             "title" => "Grocery",
             "link" => site_url("Product/ProductList/64"),
             "submenu" => [],
+        ),
+        array(
+            "title" => "Exculsive",
+            "link" => site_url("Product/ProductList/62"),
+            "submenu" => []
         ),
         array(
             "title" => "Packers & Movers",
