@@ -842,7 +842,7 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
                 'order_id' => $order_id,
                 'op_date_time' => date('Y-m-d H:i:s'),
             );
-            $custom_dict = $value['custom_dict'];
+            $custom_dict = array();
             $this->db->insert('cart', $product_dict);
             $last_id = $this->db->insert_id();
             $display_index = 1;
