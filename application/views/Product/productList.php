@@ -293,7 +293,7 @@ $image2 = "";
                                     <div class="product-img-holder">
                                         <a href="#">
 
-                                    <div class="product_image_back" style="background: url(<?php echo custome_image_server; ?>{{product.file_name}});     height: 320px;"></div>
+                                            <div class="product_image_back" style="background: url(<?php echo custome_image_server; ?>{{product.file_name}});     height: 320px;"></div>
 
 
                                         </a>
@@ -319,11 +319,13 @@ $image2 = "";
                             <div style="clear: both"></div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <center>
-                            <div class="page_navigation "></div>
-                        </center>
-                        <div style="clear: both"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <center>
+                                <div class="page_navigation "></div>
+                            </center>
+                            <div style="clear: both"></div>
+                        </div>
                     </div>
                 </div>
 
