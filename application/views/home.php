@@ -8,7 +8,7 @@ $this->load->view('layout/header');
 <?php
 foreach ($sliders as $key => $value) {
     ?>
-                                                <img src="<?php echo imageserverslider . $value->file_name; ?>" alt="" title="#slider-direction-<?php echo $key; ?>" />
+                                                    <img src="<?php echo imageserverslider . $value->file_name; ?>" alt="" title="#slider-direction-<?php echo $key; ?>" />
     <?php
 }
 ?>        
@@ -18,18 +18,18 @@ foreach ($sliders as $key => $value) {
 <?php
 foreach ($sliders as $key => $value) {
     ?>
-                                            <div id="slider-direction-<?php echo $key; ?>" class="t-cn slider-direction">
-                                                <div class="slider-content t-lfl s-tb slider-1">
-                                                    <div class="title-container s-tb-c">
-                                                        <h2 class="title<?php echo $key; ?>" style="color:<?php echo $value->title_color; ?>">
+                                                <div id="slider-direction-<?php echo $key; ?>" class="t-cn slider-direction">
+                                                    <div class="slider-content t-lfl s-tb slider-1">
+                                                        <div class="title-container s-tb-c">
+                                                            <h2 class="title<?php echo $key; ?>" style="color:<?php echo $value->title_color; ?>">
     <?php echo $value->title; ?>
-                                                        </h2>
-                                                        <p style="color:<?php echo $value->line1_color; ?>"><?php echo $value->line1; ?></p>
-                                                        <p style="color:<?php echo $value->line2_color; ?>"><?php echo $value->line2; ?></p>
-                                                        <a href="<?php echo $value->link; ?>" class="btn-shop-now-fill-slider"><?php echo $value->link_text; ?></a>
+                                                            </h2>
+                                                            <p style="color:<?php echo $value->line1_color; ?>"><?php echo $value->line1; ?></p>
+                                                            <p style="color:<?php echo $value->line2_color; ?>"><?php echo $value->line2; ?></p>
+                                                            <a href="<?php echo $value->link; ?>" class="btn-shop-now-fill-slider"><?php echo $value->link_text; ?></a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
     <?php
 }
 ?>
@@ -158,16 +158,16 @@ foreach ($sliders as $key => $value) {
                         </ul>
                         <div class="product-img-holder">
                             <a href="#">
-                                <div class="product_image_back product_image_back_grid" style="background: url(<?php echo custome_image_server; ?>/jacket/output/<?php echo $value['folder']; ?>/s1_master_style60001.png);height: 360px"></div>
+                                <div class="product_image_back product_image_back_grid" style="background: url(<?php echo custome_image_server; ?><?php echo $value['file_name']; ?>);height: 270px"></div>
                                 <!--<img src="img/product/3.jpg" alt="product">-->
                             </a>
                         </div>
                         <div class="product-content-holder">
-                            <h3><a href="<?php echo site_url("Product/ProductDetails/" . $value['id']); ?>"><?php echo $value['title']; ?></a></h3>
+                            <h3><a href="#"><?php echo $value['title']; ?></a></h3>
 
                             <span style="font-size: 12px"><?php echo $value['short_description']; ?></span>
                             <br>
-                            <span>{{<?php echo $suitcustome->price; ?>|currency:"<?php echo globle_currency; ?> "}}</span>
+                            <span>{{<?php echo $value['price']; ?>|currency:"<?php echo globle_currency; ?> "}}</span>
                         </div>
                     </div>
                 </div>
@@ -182,44 +182,44 @@ foreach ($sliders as $key => $value) {
 
 <!-- Advantage Area Start Here -->
 <div class="advantage3-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="advantage-area-box">
-                            <div class="advantage-area-box-icon">
-                                <a href="#"><i class="flaticon-truck"></i></a>
-                            </div>
-                            <div class="advantage-area-box-content">
-                                <h3>FREE SHIPPING WORLDWIDE</h3>
-                                <p>On All Orders Of <?php echo globle_currency;?> 500</p>
-                            </div>
-                        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="advantage-area-box">
+                    <div class="advantage-area-box-icon">
+                        <a href="#"><i class="flaticon-truck"></i></a>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="advantage-area-box">
-                            <div class="advantage-area-box-icon">
-                                <a href="#"><i class="flaticon-headphones"></i></a>
-                            </div>
-                            <div class="advantage-area-box-content">
-                                <h3>24/7 CUSTOMER SERVICE</h3>
-                                <p>Get Help When You Need It</p>
-                            </div>
-                        </div>
+                    <div class="advantage-area-box-content">
+                        <h3>FREE SHIPPING WORLDWIDE</h3>
+                        <p>On All Orders Of <?php echo globle_currency; ?> 500</p>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="advantage-area-box">
-                            <div class="advantage-area-box-icon">
-                                <a href="#"><i class="flaticon-reload"></i></a>
-                            </div>
-                            <div class="advantage-area-box-content">
-                                <h3>100% RETURN BACK</h3>
-                                <p>30 Day Free Returns.</p>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="advantage-area-box">
+                    <div class="advantage-area-box-icon">
+                        <a href="#"><i class="flaticon-headphones"></i></a>
+                    </div>
+                    <div class="advantage-area-box-content">
+                        <h3>24/7 CUSTOMER SERVICE</h3>
+                        <p>Get Help When You Need It</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="advantage-area-box">
+                    <div class="advantage-area-box-icon">
+                        <a href="#"><i class="flaticon-reload"></i></a>
+                    </div>
+                    <div class="advantage-area-box-content">
+                        <h3>100% RETURN BACK</h3>
+                        <p>30 Day Free Returns.</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 <!-- Advantage Area End Here -->
 
 <?php
