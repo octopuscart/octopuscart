@@ -293,7 +293,7 @@ $image2 = "";
                                     <div class="product-img-holder">
                                         <a href="#">
 
-                                            <img class="img-responsive" src="<?php echo custome_image_server; ?>{{product.file_name}}" alt="product">
+                                    <div class="product_image_back" style="background: url(<?php echo imageserver; ?>{{product.file_name}});    height: 200px;"></div>
 
 
                                         </a>
@@ -304,7 +304,7 @@ $image2 = "";
                                                 <span style="font-size: 12px">{{product.short_description}} </span>
                                             </a>
                                             <p style="     margin-bottom: 0px;
-    height: 2px;" ng-if="product.attr.length">
+                                               height: 2px;" ng-if="product.attr.length">
 
                                                 <span class="colorblock" style="background: {{product.attr[0]['Colors']}};"></span>
                                             </p>
