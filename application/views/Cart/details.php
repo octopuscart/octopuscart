@@ -43,7 +43,7 @@ $this->load->view('layout/header');
                                     </a>
                                 </td>
                                 <td  style="    border-left: 0px;">
-                                    <h3><a href="#">{{product.title}} - {{product.item_name}}</a>
+                                    <h3><a href="#">{{product.title}}</a>
                                         <br/>
                                         <small style="font-size: 10px">{{product.sku}}</small>
                                     </h3>

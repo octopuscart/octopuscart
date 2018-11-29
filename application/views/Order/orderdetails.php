@@ -265,26 +265,11 @@ $paymentstatus = "";
 
                                         <td style="width: 200px;">
 
-                                            <?php echo $product->title; ?> - <?php echo $product->item_name; ?>
+                                            <?php echo $product->title; ?> 
                                             <br/>
                                             <small style="font-size: 12px;">(<?php echo $product->sku; ?>)</small>
 
-                                            <h4 class="panel-title">
-                                                <a role="button" class="btn btn-xs btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $product->id; ?>" aria-expanded="true" aria-controls="collapseOne">
-                                                    View Summary
-                                                </a>
-                                            </h4>
-                                            </div>
-                                            <div id="collapse<?php echo $product->id; ?>" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
-                                                <div class="panel-body" style="padding:10px 0px;">
-                                                    <?php
-                                                    echo "<ul class='list-group'>";
-                                                    foreach ($product->custom_dict as $key => $value) {
-                                                        echo "<li class='list-group-item'>$key <span class='badge'>$value</span></li>";
-                                                    }
-                                                    echo "</ul>";
-                                                    ?>                                            </div>
-                                            </div>
+                                           
 
 
                                         </td>
@@ -305,36 +290,7 @@ $paymentstatus = "";
                                         <?php
                                     }
                                     ?>
-                                    <td colspan="7">
-                                        Measurement Type :
-                                        <?php
-                                        echo $order_data->measurement_style;
-                                        if (count($measurements_items)) {
-                                            ?>
-                                            <a role="button" class="btn btn-xs btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapsemeasurements" aria-expanded="true" aria-controls="collapseOne">
-                                                View Measurement
-                                            </a>
-                                            <div id="collapsemeasurements" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="panel-body" style="padding:10px 0px;">
-                                                            <?php
-                                                            echo "<ul class='list-group'>";
-                                                            foreach ($measurements_items as $keym => $valuem) {
-                                                                $mvalues = explode(" ", $valuem['measurement_value']);
-                                                                echo "<li class='list-group-item'>" . $valuem['measurement_key'] . " <span class='measurement_right_text'><span class='measurement_text'>" . $mvalues[0] . "</span><span class='fr_value'>" . $mvalues[1] . '"' . "</span></span></li>";
-                                                            }
-                                                            echo "</ul>";
-                                                            ?>                             
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            <?php
-                                        }
-                                        ?>
-                                    </td>
+                                   
 
 
                                     <!--end of cart details-->
