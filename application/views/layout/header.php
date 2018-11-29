@@ -65,7 +65,7 @@
 
     <?php
     $menulist = [
-        
+
         array(
             "title" => "Men's",
             "link" => site_url("Product/ProductList/53"),
@@ -255,12 +255,12 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                                        <div class="search-area">
+                                        <div class="search-area" id="remote">
                                             <div class="input-group" id="adv-search">
-                                                <input type="text" class="form-control" placeholder="Search Product">
+                                                <input type="text" class="form-control typeahead1" name="keyword"  placeholder="Search Product">
                                                 <div class="input-group-btn">
                                                     <div class="btn-group" role="group">
-                                                        
+
                                                         <button type="button" class="btn btn-metro-search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                                     </div>
                                                 </div>

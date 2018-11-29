@@ -236,7 +236,7 @@ class Cart extends CI_Controller {
                     'total_quantity' => $total_quantity,
                     'status' => 'Order Confirmed',
                     'payment_mode' => $paymentmathod,
-                    'measurement_style' => $measurement_style['measurement_style'],
+                    'measurement_style' => '',
                     'credit_price' => $this->input->post('credit_price') || 0,
                 );
 

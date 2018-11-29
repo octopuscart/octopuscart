@@ -2,7 +2,7 @@
  Shop Cart product controllers
  */
 App.controller('ShopController', function ($scope, $http, $timeout, $interval, $filter) {
-
+console.log("search data")
 
     var searchProducts = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
