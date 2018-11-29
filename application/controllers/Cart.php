@@ -26,7 +26,7 @@ class Cart extends CI_Controller {
         } else {
             $session_cart = $this->Product_model->cartData();
         }
-        if (count($session_cart['custome_items'])) {
+        if (count($session_cart['products'])) {
             
         } else {
             redirect('Cart/details');

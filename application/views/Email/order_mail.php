@@ -72,13 +72,13 @@
           background: rgb(225, 225, 225);
           font-family: sans-serif;">
         <div class="" style="padding:50px 0px">
-            <table align="center" border="0" cellpadding="0" cellspacing="0" width="700" style="background: #000;padding: 0 20px">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="700" style="background: #fff;padding: 0 20px">
                 <tr>
                     <td >
                         <center><img src="<?php echo site_mail_logo; ?> " style="margin: 10px;
                                      height: 50px;
                                      width: auto;"/><br/>
-                            <h4 style="color: white;"> Order No.: <?php echo $order_data->order_no; ?></h4>
+                            <h4 style=""> Order No.: <?php echo $order_data->order_no; ?></h4>
                         </center>
                     </td>
 
@@ -176,7 +176,7 @@
                         </td>
 
                         <td style="width: 200px;">
-                            <?php echo $product->title; ?> - <?php echo $product->item_name; ?><br/>
+                            <?php echo $product->title; ?><br/>
                             <small style="font-size: 10px;">(<?php echo $product->sku; ?>)</small>
 
 
@@ -194,34 +194,13 @@
                             <?php echo $product->total_price; ?>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="6">
-                            <b>Style Details : <?php echo $product->title; ?> - <?php echo $product->item_name; ?></b>
-                            <br/><?php
-                            foreach ($product->custom_dict as $key => $value) {
-                                echo "<p class='style_block'><b>$key</b><span> $value</span></p>";
-                            }
-                            ?>  
-                        </td>
-                    </tr>
+                    
                     <?php
                 }
                 ?>
                 <!--end of cart details-->
 
-                <tr>
-                    <td colspan="6">
-                        <b>Sizes: <?php echo $order_data->measurement_style; ?></b>
-                        <br/><?php
-                        if (count($measurements_items)) {
-                            foreach ($measurements_items as $keym => $valuem) {
-                                $mvalues = explode(" ", $valuem['measurement_value']);
-                                echo "<p class='style_block'><b>" . $valuem['measurement_key'] . " </b><span> " . $mvalues[0] . " <span class='fr_value'>" . $mvalues[1] . '"' . "</span></span></p>";
-                            }
-                        }
-                        ?>  
-                    </td>
-                </tr>
+                
 
 
                 <tr>

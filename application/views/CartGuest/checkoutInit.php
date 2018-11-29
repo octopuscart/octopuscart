@@ -158,7 +158,7 @@ $this->load->view('layout/header');
                                                 <a href=" <?php echo site_url("Cart/details"); ?>" class="btn-apply-coupon checkout_button_pre disabled" ><i class="fa fa-arrow-left"></i> Back To Cart</a>
                                             </div>
                                             <div class="proceed-button pull-right ">
-                                                <a href=" <?php echo site_url("CartGuest/checkoutSize"); ?>" class="btn-apply-coupon checkout_button_next disabled" >Your Size <i class="fa fa-arrow-right"></i></a>
+                                                <a href=" <?php echo site_url("CartGuest/checkoutShipping"); ?>" class="btn-apply-coupon checkout_button_next disabled" >Choose Shipping Address <i class="fa fa-arrow-right"></i></a>
                                             </div>
                                         </td>
 
@@ -175,9 +175,7 @@ $this->load->view('layout/header');
 
 
             </div>
-            <?php
-            $this->load->view('CartGuest/itemblock', array('vtype' => 'size'));
-            ?>
+        
 
             <?php
             $this->load->view('CartGuest/itemblock', array('vtype' => 'shipping'));

@@ -106,9 +106,7 @@ $this->load->view('layout/header');
             <?php
             $this->load->view('CartGuest/itemblock', array('vtype' => 'items'));
             ?>
-            <?php
-            $this->load->view('Cart/itemblock', array('vtype' => 'size'));
-            ?>
+           
 
 
 
@@ -197,13 +195,15 @@ $this->load->view('layout/header');
                     </div>
                 </div>
             </div>
+            <?php
+        $this->load->view('CartGuest/itemblock', array('vtype' => 'payment'));
+        ?>
         </div>
 
 
-        <?php
-        $this->load->view('CartGuest/itemblock', array('vtype' => 'payment'));
-        ?>
+        
     </div>
+    
 </div>
 </div>
 

@@ -822,8 +822,8 @@ where pa.product_id in ($productatrvalue) group by attribute_value_id";
         foreach ($productlist as $key => $value) {
             $quantity = $value['quantity'];
             $product_id = $value['product_id'];
-            $item_id = $value['item_id'];
-            $item_name = $value['item_name'];
+            $item_id = "";
+            $item_name = "";
             $product_details = $this->productDetails($product_id, $item_id);
             $product_dict = array(
                 'title' => $product_details['title'],

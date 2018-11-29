@@ -103,9 +103,7 @@ $this->load->view('layout/header');
             <?php
             $this->load->view('Cart/itemblock', array('vtype' => 'items'));
             ?>
-            <?php
-            $this->load->view('Cart/itemblock', array('vtype' => 'size'));
-            ?>
+          
             <?php
             $this->load->view('Cart/itemblock', array('vtype' => 'shipping'));
             ?>

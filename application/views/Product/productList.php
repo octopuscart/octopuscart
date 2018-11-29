@@ -330,7 +330,7 @@ $image2 = "";
                                                 <span class="colorblock" style="background: {{product.attr[0]['Colors']}};"></span>
                                             </p>
                                         </h3>
-                                        <span>{{<?php echo $item_price; ?>|currency:"<?php echo globle_currency; ?> "}}</span>
+                                        <span>{{product.price|currency:"<?php echo globle_currency; ?> "}}</span>
                                     </div>
                                 </div>
                             </div>

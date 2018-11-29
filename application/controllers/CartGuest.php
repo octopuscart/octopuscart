@@ -26,7 +26,7 @@ class CartGuest extends CI_Controller {
         } else {
             $session_cart = $this->Product_model->cartData();
         }
-        if (count($session_cart['custome_items'])) {
+        if (count($session_cart['products'])) {
             
         } else {
             redirect('Cart/details');
@@ -209,13 +209,13 @@ class CartGuest extends CI_Controller {
                 'total_quantity' => $total_quantity,
                 'status' => 'Order Confirmed',
                 'payment_mode' => $paymentmathod,
-                'measurement_style' => $measurement_style['measurement_style'],
+                'measurement_style' => "",
                 'credit_price' => $this->input->post('credit_price') || 0,
             );
 
             $this->db->insert('user_order', $order_array);
             $last_id = $this->db->insert_id();
-            $orderno = "BT" . date('Y/m/d') . "/" . $last_id;
+            $orderno = "OC" . date('Ymd') . "" . $last_id;
             $orderkey = md5($orderno);
             $this->db->set('order_no', $orderno);
             $this->db->set('order_key', $orderkey);

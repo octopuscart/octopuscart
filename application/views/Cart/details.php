@@ -47,7 +47,6 @@ $this->load->view('layout/header');
                                         <br/>
                                         <small style="font-size: 10px">{{product.sku}}</small>
                                     </h3>
-                                                                        <button type="button" ng-click="viewStyle(product)" class="btn btn-primary"  style="margin-top: 10px;">View Design</a>
 
                                 </td>
                                 <td class="amount">{{product.price|currency:" "}}</td>
