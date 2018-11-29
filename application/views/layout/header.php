@@ -71,7 +71,7 @@
             "submenu" => []
         ),
         array(
-            "title" => "Men",
+            "title" => "Men's",
             "link" => site_url("Product/ProductList/53"),
             "submenu" => [
                 array(
@@ -95,7 +95,7 @@
             ],
         ),
         array(
-            "title" => "Women",
+            "title" => "Women's",
             "link" => site_url("Product/ProductList/54"),
             "submenu" => [
                 array(
@@ -114,9 +114,12 @@
                     "submenu" => []
                 ),
                 array(
-                    "title" => "Scarf",
+                    "title" => "Scarf & Hijab",
                     "link" => site_url("Product/ProductList/61"),
-                    "submenu" => []
+                    "submenu" => [
+                        array("title" => "Scarf", "link" => site_url("Product/ProductList/65"),),
+                        array("title" => "Hijab", "link" => site_url("Product/ProductList/66"),),
+                    ]
                 ),
             ],
         ),
