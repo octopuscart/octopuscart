@@ -38,19 +38,20 @@ $image2 = "";
 
     .colorblock{
         font-weight: 500;
-
         padding: 0px 10px;
         height: 13px;
         width: 100x;
-        /* float: left; */
-        margin-top: -71px;
-        position: absolute;
-        margin: auto;
+
         border: 1px solid #0000005e;
         border: 1px solid #0000005e;
         text-shadow: 0px 1px 4px #000;
-        margin-top: -71px;
-        margin-left: -7px;
+
+        float: left;
+
+        position: absolute;
+        right: auto;
+        left: auto;
+        margin-left: -10px;
     }
 
 
@@ -86,9 +87,9 @@ $image2 = "";
         }
         ?>
     }
-    
-    
-    
+
+
+
     .product-box1{
 
 
@@ -121,7 +122,7 @@ $image2 = "";
         }
         ?>
     }
-    
+
 </style>
 
 
@@ -291,41 +292,19 @@ $image2 = "";
                                     </ul>
                                     <div class="product-img-holder">
                                         <a href="#">
-                                            <?php
-                                            switch ($custom_id) {
-                                                case "1":
-                                                    ?>
-                                                    <img class="img-responsive" src="<?php echo custome_image_server; ?>/shirt/output/{{product.folder}}/shirt_model10001.png" alt="product">
-                                                    <?php
-                                                    break;
-                                                case "2":
-                                                    ?>
-                                                    <img class="img-responsive" src="<?php echo custome_image_server; ?>/jacket/output/{{product.folder}}/s1_master_style60001.png" alt="product">
 
-                                                    <?php
-                                                    break;
-                                                case "3":
-                                                    ?>
-                                                    <img class="img-responsive" src="<?php echo custome_image_server; ?>/jacket/output/{{product.folder}}/pant_style10001.png" alt="product">
-                                                    <?php
-                                                    break;
-                                                case "4":
-                                                    ?>
-                                                    <img class="img-responsive" src="<?php echo custome_image_server; ?>/jacket/output/{{product.folder}}/s1_master_style60001.png" alt="product">
-                                                    <?php
-                                                    break;
-                                                default:
-                                                    echo $custom_item;
-                                            }
-                                            ?>
+                                            <img class="img-responsive" src="<?php echo custome_image_server; ?>{{product.file_name}}" alt="product">
+
+
                                         </a>
                                     </div>
                                     <div class="product-content-holder">
                                         <h3>
-                                            <a href="#">{{product.title}}  <br>
+                                            <a href="#"><span class="list_product_title">{{product.title}}</span>  <br>
                                                 <span style="font-size: 12px">{{product.short_description}} </span>
                                             </a>
-                                            <p style="    margin-bottom: -7px;" ng-if="product.attr.length">
+                                            <p style="     margin-bottom: 0px;
+    height: 2px;" ng-if="product.attr.length">
 
                                                 <span class="colorblock" style="background: {{product.attr[0]['Colors']}};"></span>
                                             </p>
@@ -379,7 +358,7 @@ $image2 = "";
 
 
 <script>
-            var category_id = <?php echo $category; ?>;</script>
+    var category_id = <?php echo $category; ?>;</script>
 <!--angular controllers-->
 
 <script src="<?php echo base_url(); ?>assets/theme2/js/jquery.pajinate.min.js"></script>
@@ -580,7 +559,7 @@ $this->load->view('layout/footer');
 <script src="<?php echo base_url(); ?>assets/theme2/js/jquery.pajinate.min.js"></script>
 
 <script type="text/javascript">
-            $(document).ready(function () {
+                                            $(document).ready(function () {
 
-    });
+                                            });
 </script>
