@@ -102,12 +102,17 @@
                 array(
                     "title" => "Sandals",
                     "link" => site_url("Product/ProductList/59"),
-                    "submenu" => []
+                    
+                    "submenu" => [
+                        array("title" => "Handmade Sandals", "link" => site_url("Product/ProductList/69"),),
+                    ]
                 ),
                 array(
                     "title" => "Shoes",
                     "link" => site_url("Product/ProductList/60"),
                     "submenu" => []
+                    
+                     
                 ),
                 array(
                     "title" => "Scarf & Hijab",
@@ -116,6 +121,11 @@
                         array("title" => "Scarf", "link" => site_url("Product/ProductList/65"),),
                         array("title" => "Hijab", "link" => site_url("Product/ProductList/66"),),
                     ]
+                ),
+                array(
+                    "title" => "Handmade Purse",
+                    "link" => site_url("Product/ProductList/68"),
+                    "submenu" => []
                 ),
             ],
         ),
@@ -127,7 +137,13 @@
         array(
             "title" => "Ready To Eat",
             "link" => site_url("Product/ProductList/63"),
-            "submenu" => [],
+            "submenu" => [
+                array(
+                    "title" => "Chocolate",
+                    "link" => site_url("Product/ProductList/67"),
+                    "submenu" => []
+                ),
+            ],
         ),
         array(
             "title" => "Grocery",
@@ -345,13 +361,13 @@
 
                                                         <h3 class="ctg-name-title">Category Name List</h3>
                                                         <ul class="sidenav-nav">
-                                                            <?php foreach ($menulist as $mkey => $mvalue) { ?>
+<?php foreach ($menulist as $mkey => $mvalue) { ?>
                                                                 <li>
                                                                     <a href="<?php echo $mvalue['link']; ?>"><?php echo $mvalue['title']; ?></a>
                                                                 </li>
-                                                                <?php
-                                                            }
-                                                            ?>
+    <?php
+}
+?>
                                                         </ul>
                                                         <!-- times-->
                                                     </div>
@@ -378,35 +394,35 @@
                                     <div class="main-menu-area home2-sticky-area">
                                         <nav>
                                             <ul>
-                                                <?php foreach ($menulist as $mkey => $mvalue) { ?>
+<?php foreach ($menulist as $mkey => $mvalue) { ?>
                                                     <li class="dropdown menu-large">
                                                         <a href="<?php echo $mvalue['link']; ?>" class="dropdown-toggle <?php echo count($mvalue['submenu']) ? 'submenu' : ''; ?>" data-toggle="dropdown"><?php echo $mvalue['title']; ?>  </a>
-                                                        <?php
-                                                        if (count($mvalue['submenu'])) {
-                                                            ?>
+    <?php
+    if (count($mvalue['submenu'])) {
+        ?>
 
                                                             <ul class="dropdown-menu megamenu row">
-                                                                <?php foreach ($mvalue['submenu'] as $smkey => $smvalue) { ?>
+                                                        <?php foreach ($mvalue['submenu'] as $smkey => $smvalue) { ?>
 
                                                                     <li class="col">
                                                                         <a href="<?php echo $smvalue['link']; ?>"><?php echo $smvalue['title']; ?> <i class="glyphicon glyphicon-triangle-right"></i></a>
 
-                                                                        <?php foreach ($smvalue['submenu'] as $sb1mkey => $sb1mvalue) { ?>
+                                                                <?php foreach ($smvalue['submenu'] as $sb1mkey => $sb1mvalue) { ?>
                                                                             <a href="<?php echo $sb1mvalue['link']; ?>" style="    font-weight: 500;    border-bottom: 0px solid #b6b6b6;"><?php echo $sb1mvalue['title']; ?></a>
-                                                                        <?php } ?>
+            <?php } ?>
                                                                     </li>
                                                                 <?php } ?>
                                                             </ul>
 
 
 
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                    </li>
                                                             <?php
                                                         }
                                                         ?>
-                                                    </li>
-                                                    <?php
-                                                }
-                                                ?>
                                             </ul>
                                         </nav>
                                     </div>
@@ -427,35 +443,35 @@
 
 
                                                 <ul>
-                                                    <?php foreach ($menulist as $mkey => $mvalue) { ?>
+<?php foreach ($menulist as $mkey => $mvalue) { ?>
                                                         <li>
                                                             <a href="<?php echo $mvalue['link']; ?>"><?php echo $mvalue['title']; ?></a>
-                                                            <?php
-                                                            if (count($mvalue['submenu'])) {
-                                                                ?>
+    <?php
+    if (count($mvalue['submenu'])) {
+        ?>
 
                                                                 <ul >
-                                                                    <?php foreach ($mvalue['submenu'] as $smkey => $smvalue) { ?>
+                                                            <?php foreach ($mvalue['submenu'] as $smkey => $smvalue) { ?>
 
                                                                         <li>
                                                                             <a href="<?php echo $smvalue['link']; ?>"><?php echo $smvalue['title']; ?></a>
 
-                                                                            <?php foreach ($smvalue['submenu'] as $sb1mkey => $sb1mvalue) { ?>
+                                                                    <?php foreach ($smvalue['submenu'] as $sb1mkey => $sb1mvalue) { ?>
                                                                                 <a href="<?php echo $sb1mvalue['link']; ?>"><?php echo $sb1mvalue['title']; ?></a>
-                                                                            <?php } ?>
+            <?php } ?>
                                                                         </li>
                                                                     <?php } ?>
                                                                 </ul>
 
 
 
+                                                                        <?php
+                                                                    }
+                                                                    ?>
+                                                        </li>
                                                                 <?php
                                                             }
                                                             ?>
-                                                        </li>
-                                                        <?php
-                                                    }
-                                                    ?>
 
 
 
