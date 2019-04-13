@@ -15,9 +15,9 @@ foreach ($categorie_parent as $key => $value) {
 $image1 = "";
 $image2 = "";
 ?>
-  <?php echo "++++".$item_price; ?>
+
 <div style="opacity: 0;position: fixed;">
-    <?php echo "++++".$item_price; ?>
+  
     {{gitem_price = <?php echo $item_price; ?>}}
     {{showmodel = 1}}
 </div>
