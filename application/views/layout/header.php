@@ -115,16 +115,16 @@
                         array("title" => "Handmade Sandals", "link" => site_url("Product/ProductList/69"),),
                     ]
                 ),
-                array(
-                    "title" => "Shoes",
-                    "link" => site_url("Product/ProductList/60"),
-                    "submenu" => []
-                ),
-                array(
-                    "title" => "Handmade Purse",
-                    "link" => site_url("Product/ProductList/68"),
-                    "submenu" => []
-                ),
+//                array(
+//                    "title" => "Shoes",
+//                    "link" => site_url("Product/ProductList/60"),
+//                    "submenu" => []
+//                ),
+//                array(
+//                    "title" => "Handmade Purse",
+//                    "link" => site_url("Product/ProductList/68"),
+//                    "submenu" => []
+//                ),
             ],
         ),
 //        array(
