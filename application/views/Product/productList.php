@@ -15,7 +15,9 @@ foreach ($categorie_parent as $key => $value) {
 $image1 = "";
 $image2 = "";
 ?>
+  <?php echo "++++".$item_price; ?>
 <div style="opacity: 0;position: fixed;">
+    <?php echo "++++".$item_price; ?>
     {{gitem_price = <?php echo $item_price; ?>}}
     {{showmodel = 1}}
 </div>
@@ -424,10 +426,11 @@ $image2 = "";
                                     <li><i aria-hidden="true" class="fa fa-star"></i></li>
                                     <li><i aria-hidden="true" class="fa fa-star"></i></li>
                                 </ul>
-                                <p style="font-size: 20px;" class="price">{{gitem_price|currency:"<?php echo globle_currency; ?> "}}</p>
+                            
+                                <p style="font-size: 20px;" class="price">{{projectDetailsModel.productobj.price|currency:"<?php echo globle_currency; ?> "}}</p>
                                 <p>{{projectDetailsModel.productobj.short_description}}</p>
                                 <div class="product-details-content">
-                                    <p><span class="model_tab_title">SKU:</span><br/> {{projectDetailsModel.productobj.title}}</p>
+                                    <p><span class="model_tab_title">SKU:</span><br/> {{projectDetailsModel.productobj.sku}}</p>
                                     <p><span class="model_tab_title">Availability:</span><br/> {{projectDetailsModel.productobj.stock_status}}</p>
                                     <p ng-if="projectDetailsModel.productobj.attr.length"><span class="model_tab_title" >Color(s)</span><br/> <span class="colorblock" style="background: {{projectDetailsModel.productobj.attr[0]['Colors']}};    position: relative;margin: 0;"></span></p>
                                 </div>
