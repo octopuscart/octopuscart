@@ -95,9 +95,18 @@
             "link" => site_url("Product/ProductList/54"),
             "submenu" => [
                 array(
-                    "title" => "Tops",
-                    "link" => site_url("Product/ProductList/58"),
+                    "title" => "Cotton Suits",
+                    "link" => site_url("Product/ProductList/70"),
                     "submenu" => []
+                ),
+                
+                array(
+                    "title" => "Scarf & Hijab",
+                    "link" => site_url("Product/ProductList/61"),
+                    "submenu" => [
+                        array("title" => "Scarf", "link" => site_url("Product/ProductList/65"),),
+                        array("title" => "Hijab", "link" => site_url("Product/ProductList/66"),),
+                    ]
                 ),
                 array(
                     "title" => "Sandals",
@@ -112,51 +121,43 @@
                     "submenu" => []
                 ),
                 array(
-                    "title" => "Scarf & Hijab",
-                    "link" => site_url("Product/ProductList/61"),
-                    "submenu" => [
-                        array("title" => "Scarf", "link" => site_url("Product/ProductList/65"),),
-                        array("title" => "Hijab", "link" => site_url("Product/ProductList/66"),),
-                    ]
-                ),
-                array(
                     "title" => "Handmade Purse",
                     "link" => site_url("Product/ProductList/68"),
                     "submenu" => []
                 ),
             ],
         ),
-        array(
-            "title" => "Electronics",
-            "link" => site_url("Product/ProductList/62"),
-            "submenu" => []
-        ),
-        array(
-            "title" => "Ready To Eat",
-            "link" => site_url("Product/ProductList/63"),
-            "submenu" => [
-                array(
-                    "title" => "Chocolate",
-                    "link" => site_url("Product/ProductList/67"),
-                    "submenu" => []
-                ),
-            ],
-        ),
-        array(
-            "title" => "Grocery",
-            "link" => site_url("Product/ProductList/64"),
-            "submenu" => [],
-        ),
+//        array(
+//            "title" => "Electronics",
+//            "link" => site_url("Product/ProductList/62"),
+//            "submenu" => []
+//        ),
+//        array(
+//            "title" => "Ready To Eat",
+//            "link" => site_url("Product/ProductList/63"),
+//            "submenu" => [
+//                array(
+//                    "title" => "Chocolate",
+//                    "link" => site_url("Product/ProductList/67"),
+//                    "submenu" => []
+//                ),
+//            ],
+//        ),
+//        array(
+//            "title" => "Grocery",
+//            "link" => site_url("Product/ProductList/64"),
+//            "submenu" => [],
+//        ),
         array(
             "title" => "Exculsive",
             "link" => site_url("Product/ProductList/62"),
             "submenu" => []
         ),
-        array(
-            "title" => "Packers & Movers",
-            "link" => site_url(),
-            "submenu" => [],
-        ),
+//        array(
+//            "title" => "Packers & Movers",
+//            "link" => site_url(),
+//            "submenu" => [],
+//        ),
     ];
     ?>
 
