@@ -55,7 +55,7 @@ $image2 = "";
         left: auto;
         margin-left: -10px;
     }
-    
+
     #product_description p{
         margin: 0 0 0px;
         font-size: 12px;
@@ -308,8 +308,10 @@ $image2 = "";
                                     <div class="product-content-holder">
                                         <h3>
                                             <a href="#">
-<!--                                                <span class="list_product_title">{{product.title}}</span> 
-                                                <br>-->
+                                                <span style="font-size: 12px">Style#:{{product.sku}}</span> 
+                                                <br>
+                                                <span class="list_product_title">{{product.title}}</span> 
+                                                <br>
                                                 <span style="font-size: 12px">{{product.short_description}} </span>
                                             </a>
                                             <p style="     margin-bottom: 0px;
@@ -436,7 +438,7 @@ $image2 = "";
 
                                 <p style="font-size: 20px;" class="price">{{projectDetailsModel.productobj.price|currency:"<?php echo globle_currency; ?> "}}</p>
                                 <p>{{projectDetailsModel.productobj.short_description}}</p>
-                                
+
                                 <div class="product-details-content">
                                     <p><span class="model_tab_title">SKU:</span><br/> {{projectDetailsModel.productobj.sku}}</p>
                                     <p><span class="model_tab_title">Availability:</span><br/> {{projectDetailsModel.productobj.stock_status}}</p>
@@ -469,7 +471,7 @@ $image2 = "";
                                 </ul>
                                 <b>Description</b>
                                 <div  id="product_description"></div>
-                                
+
                             </div>
                         </div>
                     </div>
