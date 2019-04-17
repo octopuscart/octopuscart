@@ -323,6 +323,7 @@ $image2 = "";
                                         <span>{{product.price|currency:"<?php echo globle_currency; ?> "}}</span>
                                     </div>
                                 </div>
+
                             </div>
 
 
@@ -385,7 +386,7 @@ $image2 = "";
             <div class="product-details1-area">
                 <div class="product-details-info-area">
                     <div class="row">
-                        <div class="col-md-7 col-sm-12 col-xs-12">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="inner-product-details-left">
                                 <div class="tab-content">
                                     <div id="metro-related1" class="tab-pane fade active in" ng-if="projectDetailsModel.productobj.file_name">
@@ -425,9 +426,9 @@ $image2 = "";
                                 </ul>
                             </div>
                         </div>
-                        <div class=" col-md-5 col-sm-12 col-xs-12">
+                        <div class=" col-md-6 col-sm-12 col-xs-12">
                             <div class="inner-product-details-right">
-                                <h3 style="font-size: 20px;">{{projectDetailsModel.productobj.title}}</h3> 
+
                                 <ul>
                                     <li><i aria-hidden="true" class="fa fa-star"></i></li>
                                     <li><i aria-hidden="true" class="fa fa-star"></i></li>
@@ -435,15 +436,38 @@ $image2 = "";
                                     <li><i aria-hidden="true" class="fa fa-star"></i></li>
                                     <li><i aria-hidden="true" class="fa fa-star"></i></li>
                                 </ul>
+                                <h3 style="font-size: 18px;">{{projectDetailsModel.productobj.title}}<br/><small>
+                                        ({{projectDetailsModel.productobj.sku}})
+                                    </small></h3>                                
+                                <p style=''>{{projectDetailsModel.productobj.short_description}}</p>
+                                <div class='row'>
+                                    <div class='col-md-6'>
+                                        <p style="font-size: 20px;    font-size: 20px;
+                                           line-height: 50px;" class="price">{{projectDetailsModel.productobj.price|currency:"<?php echo globle_currency; ?> "}}</p>
 
-                                <p style="font-size: 20px;" class="price">{{projectDetailsModel.productobj.price|currency:"<?php echo globle_currency; ?> "}}</p>
-                                <p>{{projectDetailsModel.productobj.short_description}}</p>
-
-                                <div class="product-details-content">
-                                    <p><span class="model_tab_title">SKU:</span><br/> {{projectDetailsModel.productobj.sku}}</p>
-                                    <p><span class="model_tab_title">Availability:</span><br/> {{projectDetailsModel.productobj.stock_status}}</p>
-                                    <p ng-if="projectDetailsModel.productobj.attr.length"><span class="model_tab_title" >Color(s)</span><br/> <span class="colorblock" style="background: {{projectDetailsModel.productobj.attr[0]['Colors']}};    position: relative;margin: 0;"></span></p>
+                                    </div>
+                                    <div class='col-md-6'>
+                                        <ul class="inner-product-details-cart">
+                                            <li>
+                                                <a href="#" style='font-size: 11px;padding: 0 8px;' ng-click="addToCart(projectDetailsModel.productobj.product_id, projectDetailsModel.quantity)">Add To Cart</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
+                                <div class='row'>
+                                    <div class='col-md-6'>
+                                        <div class="product-details-content">
+                                            <p><span class="model_tab_title">Availability:</span><br/> {{projectDetailsModel.productobj.stock_status}}</p>
+                                        </div>
+                                    </div>
+                                    <div class='col-md-6'>
+                                        <div class="product-details-content">
+                                            <p ng-if="projectDetailsModel.productobj.attr.length"><span class="model_tab_title" >Color(s)</span><br/> <span class="colorblock" style="background: {{projectDetailsModel.productobj.attr[0]['Colors']}};    position: relative;margin: 0;"></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
 
 
                                 <!--                                <ul class="product-details-social">
@@ -453,24 +477,12 @@ $image2 = "";
                                                                     <li><a href="#"><i aria-hidden="true" class="fa fa-linkedin"></i></a></li>
                                                                     <li><a href="#"><i aria-hidden="true" class="fa fa-pinterest"></i></a></li>
                                                                 </ul>-->
-                                <ul class="inner-product-details-cart">
-                                    <li>
-                                        <a href="#" ng-click="addToCart(projectDetailsModel.productobj.product_id, projectDetailsModel.quantity)">Add To Cart</a>
-                                        <!--<a href="{{projectDetailsModel.link}}" >Customize Now</a>-->
-                                    </li>
-                                    <!--                                    <li>
-                                                                            <div class="input-group quantity-holder" id="quantity-holder">
-                                                                                <input type="text" placeholder="1" value="1" id="model_quantity" class="form-control quantity-input" name="quantity">
-                                                                                <div class="input-group-btn-vertical">
-                                                                                    <button type="button" class="btn btn-default quantity-plus" ng-click="modelProductQuantity()"><i aria-hidden="true" class="fa fa-plus"></i></button>
-                                                                                    <button type="button" class="btn btn-default quantity-minus"  ng-click="modelProductQuantity()"><i aria-hidden="true" class="fa fa-minus"></i></button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>-->
-                                                                        <!--<li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>-->
-                                </ul>
-                                <b>Description</b>
+                                <div class="product-details-content">
+                                    <p><span class="model_tab_title" >Description</span><br/>
                                 <div  id="product_description"></div>
+                                    
+                                    </p>
+                                </div>
 
                             </div>
                         </div>
@@ -490,7 +502,7 @@ $this->load->view('layout/footer');
 <script src="<?php echo base_url(); ?>assets/theme2/js/jquery.pajinate.min.js"></script>
 
 <script type="text/javascript">
-                                            $(document).ready(function () {
+                                                $(document).ready(function () {
 
-                                            });
+                                                });
 </script>
