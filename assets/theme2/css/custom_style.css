@@ -18,7 +18,7 @@
 
 .product_image_back {
     height: 85px;
-    background-size: contain!important;
+    background-size: cover!important;
     background-repeat: no-repeat!important;
     background-position-x: center!important;
     background-position-y: center!important;

@@ -291,7 +291,7 @@ $image2 = "";
                     <div class="tab-content" >
                         <div role="tabpanel"  class="tab-pane active clear products-container content" id="gried-view"> 
 
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 animated zoomIn"  ng-repeat="(k, product) in productResults.products">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 animated zoomIn"  ng-repeat="(k, product) in productResults.products">
                                 <div class="product-box1" style="height: 434px;">
                                     <ul class="product-social">
                                         <li><a href="#" ng-click="addToCart(product.product_id, 1)"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
@@ -300,7 +300,7 @@ $image2 = "";
                                     <div class="product-img-holder">
                                         <a href="#">
 
-                                            <div class="product_image_back" style="background: url(<?php echo custome_image_server; ?>{{product.file_name}});     height: 320px;"></div>
+                                            <div class="product_image_back" style="background: url(<?php echo custome_image_server; ?>{{product.file_name}});     height: 400px;"></div>
 
 
                                         </a>
@@ -391,13 +391,13 @@ $image2 = "";
                                     </div>
                                     <div id="metro-related2" class="tab-pane fade" ng-if="projectDetailsModel.productobj.file_name1">
                                         <a href="#">
-                                            <div class="product_image_back popup_fabric" style="background: url(<?php echo custome_image_server; ?>{{projectDetailsModel.productobj.file_name}}>);"></div>
+                                            <div class="product_image_back popup_fabric" style="background: url(<?php echo custome_image_server; ?>{{projectDetailsModel.productobj.file_name1}});"></div>
                                                                                          <!--<img class="img-responsive" src="<?php echo imageserver; ?>/{{projectDetailsModel.productobj.file_name1}}" alt="single">-->
                                         </a>
                                     </div>
                                     <div id="metro-related3" class="tab-pane fade" ng-if="projectDetailsModel.productobj.file_name2">
                                         <a href="#">
-                                            <div class="product_image_back popup_fabric" style="background: url(<?php echo custome_image_server; ?>{{projectDetailsModel.productobj.file_name}}>);"></div>
+                                            <div class="product_image_back popup_fabric" style="background: url(<?php echo custome_image_server; ?>{{projectDetailsModel.productobj.file_name2}});"></div>
                                         </a>
                                     </div>
                                     <div style="clear: both"></div>
