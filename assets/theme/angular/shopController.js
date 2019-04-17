@@ -260,6 +260,7 @@ ClassApartStore.controller('ShopController', function ($scope, $http, $timeout, 
     //get product detail model
     $scope.viewShortDetails = function (detailobj) {
         $scope.projectDetailsModel.productobj = detailobj;
+        console.log(detailobj.description)
     }
 
 

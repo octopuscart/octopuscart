@@ -17,7 +17,7 @@ $image2 = "";
 ?>
 
 <div style="opacity: 0;position: fixed;">
-  
+
     {{gitem_price = <?php echo $item_price; ?>}}
     {{showmodel = 1}}
 </div>
@@ -54,6 +54,11 @@ $image2 = "";
         right: auto;
         left: auto;
         margin-left: -10px;
+    }
+    
+    #product_description p{
+        margin: 0 0 0px;
+        font-size: 12px;
     }
 
 
@@ -426,9 +431,10 @@ $image2 = "";
                                     <li><i aria-hidden="true" class="fa fa-star"></i></li>
                                     <li><i aria-hidden="true" class="fa fa-star"></i></li>
                                 </ul>
-                            
+
                                 <p style="font-size: 20px;" class="price">{{projectDetailsModel.productobj.price|currency:"<?php echo globle_currency; ?> "}}</p>
                                 <p>{{projectDetailsModel.productobj.short_description}}</p>
+                                
                                 <div class="product-details-content">
                                     <p><span class="model_tab_title">SKU:</span><br/> {{projectDetailsModel.productobj.sku}}</p>
                                     <p><span class="model_tab_title">Availability:</span><br/> {{projectDetailsModel.productobj.stock_status}}</p>
@@ -459,6 +465,9 @@ $image2 = "";
                                                                         </li>-->
                                                                         <!--<li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>-->
                                 </ul>
+                                <b>Description</b>
+                                <div  id="product_description"></div>
+                                
                             </div>
                         </div>
                     </div>

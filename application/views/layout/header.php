@@ -65,11 +65,58 @@
 
     <?php
     $menulist = [
-
+        array(
+            "title" => "Women's",
+            "link" => site_url("Product/ProductList/54"),
+            "icon" => "flaticon-dress-1",
+            "block" => "2",
+            "issubmenu"=>"Yes",
+            "submenu1" => [
+                array(
+                    "title" => "Cotton Suits",
+                    "link" => site_url("Product/ProductList/70"),
+                    "submenu" => [
+                        array("title" => "Pakistani Suits", "link" => site_url("Product/ProductList/71"),),
+                        array("title" => "Indian Suits", "link" => site_url("Product/ProductList/72"),),
+                        array("title" => "Indo Western Suits", "link" => site_url("Product/ProductList/73"),),
+                    ]
+                ),
+                array(
+                    "title" => "Scarf & Hijab",
+                    "link" => site_url("Product/ProductList/61"),
+                    "submenu" => [
+                        array("title" => "Scarf", "link" => site_url("Product/ProductList/65"),),
+                        array("title" => "Hijab", "link" => site_url("Product/ProductList/66"),),
+                    ]
+                ),
+            ],
+            "submenu2" => [
+                array(
+                    "title" => "Sandals",
+                    "link" => site_url("Product/ProductList/59"),
+                    "submenu" => [
+                        array("title" => "Handmade Sandals", "link" => site_url("Product/ProductList/69"),),
+                    ]
+                ),
+                array(
+                    "title" => "Shoes",
+                    "link" => site_url("Product/ProductList/60"),
+                    "submenu" => []
+                ),
+                array(
+                    "title" => "Handmade Purse",
+                    "link" => site_url("Product/ProductList/68"),
+                    "submenu" => []
+                ),
+            ],
+        ),
         array(
             "title" => "Men's",
             "link" => site_url("Product/ProductList/53"),
-            "submenu" => [
+            "icon" => "flaticon-polo",
+            "block" => "1",
+            "issubmenu"=>"Yes",
+            "submenu1" => [
                 array(
                     "title" => "Shirts",
                     "link" => site_url("Product/ProductList/55"),
@@ -91,47 +138,13 @@
             ],
         ),
         array(
-            "title" => "Women's",
-            "link" => site_url("Product/ProductList/54"),
-            "submenu" => [
-                array(
-                    "title" => "Cotton Suits",
-                    "link" => site_url("Product/ProductList/70"),
-                    "submenu" => []
-                ),
-                
-                array(
-                    "title" => "Scarf & Hijab",
-                    "link" => site_url("Product/ProductList/61"),
-                    "submenu" => [
-                        array("title" => "Scarf", "link" => site_url("Product/ProductList/65"),),
-                        array("title" => "Hijab", "link" => site_url("Product/ProductList/66"),),
-                    ]
-                ),
-                array(
-                    "title" => "Sandals",
-                    "link" => site_url("Product/ProductList/59"),
-                    "submenu" => [
-                        array("title" => "Handmade Sandals", "link" => site_url("Product/ProductList/69"),),
-                    ]
-                ),
-//                array(
-//                    "title" => "Shoes",
-//                    "link" => site_url("Product/ProductList/60"),
-//                    "submenu" => []
-//                ),
-//                array(
-//                    "title" => "Handmade Purse",
-//                    "link" => site_url("Product/ProductList/68"),
-//                    "submenu" => []
-//                ),
-            ],
+            "title" => "Electronics",
+            "link" => site_url("Product/ProductList/62"),
+            "submenu" => [],
+            "block" => "1",
+            "issubmenu"=>"No",
+            "icon" => "flaticon-plug",
         ),
-//        array(
-//            "title" => "Electronics",
-//            "link" => site_url("Product/ProductList/62"),
-//            "submenu" => []
-//        ),
 //        array(
 //            "title" => "Ready To Eat",
 //            "link" => site_url("Product/ProductList/63"),
@@ -151,7 +164,10 @@
         array(
             "title" => "Exculsive",
             "link" => site_url("Product/ProductList/62"),
-            "submenu" => []
+            "submenu" => [],
+            "block" => "1",
+            "issubmenu"=>"No",
+            "icon" => "fa fa-star-o",
         ),
 //        array(
 //            "title" => "Packers & Movers",
@@ -197,12 +213,12 @@
                 //$interpolateProvider.startSymbol('{$');
                 //$interpolateProvider.endSymbol('$}');
                 $httpProvider.defaults.headers.common = {};
-                        $httpProvider.defaults.headers.post = {};
+                $httpProvider.defaults.headers.post = {};
                 });
-                        var baseurl = "<?php echo site_url(); ?>";
-                        var imageurlg = "<?php echo imageserver; ?>";
-                        var globlecurrency = "<?php echo globle_currency; ?>";
-                        var avaiblecredits = 0;</script>
+                var baseurl = "<?php echo site_url(); ?>";
+                var imageurlg = "<?php echo imageserver; ?>";
+                var globlecurrency = "<?php echo globle_currency; ?>";
+                var avaiblecredits = 0;</script>
 
             <style>
                 .ownmenu .dropdown.megamenu .dropdown-menu li:last-child{
@@ -227,14 +243,10 @@
                 }
             </style>
 
-
-
             <!-- Header Area Start Here -->
             <header>
                 <input type="hidden" ng-model="showmodel" ng-init="showmodel = 0">
                 <input type="hidden" ng-model="gitem_price" ng-init="showmodel = 0">
-
-
                 <div class="header-area-style3" id="sticker">
                     <div class="header-top">
                         <div class="header-top-inner-top">
@@ -253,7 +265,7 @@
                                             <ul>
                                                 <li><a href="<?php echo site_url("Account/profile"); ?>"><i class="fa fa-lock" aria-hidden="true"></i> Account</a></li>
                                                 <li><a href="<?php echo site_url("Account/profile"); ?>"><i class="fa fa-heart-o" aria-hidden="true"></i> Wishlist</a></li>
-                                                <li><a href="#"><i class="fa fa-usd" aria-hidden="true"></i> USD</a></li>
+                                                <li><a href="#"><i class="fa fa-usd" aria-hidden="true"></i> $HKD</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -269,12 +281,21 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                                        <div class="search-area" id="remote">
+                                        <div class="search-area">
                                             <div class="input-group" id="adv-search">
-                                                <input type="text" class="form-control typeahead1" name="keyword"  placeholder="Search Product">
+                                                <input type="text" class="form-control" placeholder="Search Product" />
                                                 <div class="input-group-btn">
                                                     <div class="btn-group" role="group">
-
+                                                        <div class="dropdown dropdown-lg">
+                                                            <button type="button" class="btn btn-metro dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span>All Categories</span><i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                                                            <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                                                <ul class="sidenav-nav">
+                                                                    <?php foreach ($menulist as $mkey => $mvalue) { ?>
+                                                                        <li><a href="#"><i class="flaticon"></i><?php echo $mvalue['title']; ?></a></li>
+                                                                    <?php } ?>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
                                                         <button type="button" class="btn btn-metro-search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                                     </div>
                                                 </div>
@@ -356,16 +377,43 @@
                                                                 </span>
                                                             </div>
                                                         </div>
-
+                                                        <ul class="sidenav-login-registration">
+                                                            <li data-toggle="collapse" data-target="#login" class="collapsed">
+                                                                <a href="#">Login<span class="arrow"></span></a>
+                                                                <div class="collapse" id="login">
+                                                                    <div class="login-registration-field">
+                                                                        <form method="post">
+                                                                            <label>Username or email address *</label>
+                                                                            <input type="text">
+                                                                            <label>Password *</label>
+                                                                            <input type="password">
+                                                                            <button value="Login" type="submit" class="btn-side-nav disabled">Login</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li data-toggle="collapse" data-target="#registration" class="collapsed">
+                                                                <a href="#">Registration<span class="arrow"></span></a>
+                                                                <div class="collapse" id="registration">
+                                                                    <div class="login-registration-field">
+                                                                        <form method="post">
+                                                                            <label>User Name*</label>
+                                                                            <input type="text">
+                                                                            <label>E-mail address *</label>
+                                                                            <input type="email">
+                                                                            <label>Password *</label>
+                                                                            <input type="password">
+                                                                            <button value="Login" type="submit" class="btn-side-nav disabled">Register</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
                                                         <h3 class="ctg-name-title">Category Name List</h3>
                                                         <ul class="sidenav-nav">
                                                             <?php foreach ($menulist as $mkey => $mvalue) { ?>
-                                                                <li>
-                                                                    <a href="<?php echo $mvalue['link']; ?>"><?php echo $mvalue['title']; ?></a>
-                                                                </li>
-                                                                <?php
-                                                            }
-                                                            ?>
+                                                                <li><a href="shop1.html"><i class="flaticon-dress-1"></i>Women</a></li>
+                                                            <?php } ?>
                                                         </ul>
                                                         <!-- times-->
                                                     </div>
@@ -378,54 +426,101 @@
                             </div>
                         </div>
                     </div>
-
-                </div>
-
-                <div class="header-area-style2" id="sticker">
-
-
                     <div class="header-bottom">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-4">
+                                    <div class="logo-area">
+                                        <a href="<?php echo site_url(); ?>"><img class="img-responsive" src="<?php echo base_url() . 'assets/images/logo73.png'; ?>" style="height: 50px;" alt="logo"></a>
+                                    </div>
+                                    <div class="category-menu-area" id="category-menu-area">
+                                        <h2 class="category-menu-title"><a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>Categories</h2>
+                                        <ul class="category-menu-area-inner">
+                                            <?php foreach ($menulist as $mkey => $mvalue) { ?>
+                                                <li>
+                                                    <a href="<?php echo $mvalue['link']; ?>">
+                                                        <i class="<?php echo $mvalue['icon']; ?>"></i><?php echo $mvalue['title']; ?><span><i class="flaticon-next"></i></span>
+                                                    </a>
+                                                    <?php
+                                                    if($mvalue['issubmenu']=='Yes'){
+                                                    ?>
+                                                    <ul class="dropdown-menu" style='width: <?php echo $mvalue['block'] == '2'?'600px':'200px;'  ?> '>
 
-                                    <div class="main-menu-area home2-sticky-area">
-                                        <nav>
-                                            <ul>
-                                                <?php foreach ($menulist as $mkey => $mvalue) { ?>
-                                                    <li>
-                                                        <a href="<?php echo $mvalue['link']; ?>" class="dropdown-toggle <?php echo count($mvalue['submenu']) ? 'submenu' : ''; ?>" data-toggle="dropdown"><?php echo $mvalue['title']; ?>  </a>
                                                         <?php
-                                                        if (count($mvalue['submenu'])) {
+                                                        if ($mvalue['block'] == '2') {
                                                             ?>
+                                                            <div class='col-md-6'>
+                                                                <?php foreach ($mvalue['submenu1'] as $mkey1 => $mvalue1) { ?>
+                                                                    <li class='menu_heading' ><a href="<?php echo $mvalue1['link']; ?>"><?php echo $mvalue1['title']; ?></a></li>
+                                                                    <?php foreach ($mvalue1['submenu'] as $mkeys1 => $mvalues1) { ?>
+                                                                        <li class='submenu_heading'><a href="<?php echo $mvalues1['link']; ?>"><?php echo $mvalues1['title']; ?></a></li>
+                                                                    <?php }
+                                                                    ?>
 
-                                                            <ul class="mega-menu-area">
-                                                                <?php foreach ($mvalue['submenu'] as $smkey => $smvalue) { ?>
+                                                                    <span style='margin-bottom: 10px;'></span>
+                                                                <?php }
+                                                                ?>
+                                                            </div>
+                                                            <div class='col-md-6'>
+                                                                <?php foreach ($mvalue['submenu2'] as $mkey1 => $mvalue1) { ?>
+                                                                    <li class='menu_heading' ><a href="<?php echo $mvalue1['link']; ?>"><?php echo $mvalue1['title']; ?></a></li>
+                                                                    <?php foreach ($mvalue1['submenu'] as $mkeys1 => $mvalues1) { ?>
+                                                                        <li class='submenu_heading'><a href="<?php echo $mvalues1['link']; ?>"><?php echo $mvalues1['title']; ?></a></li>
+                                                                    <?php }
+                                                                    ?>
 
-                                                                    <li>
-                                                                        <a href="<?php echo $smvalue['link']; ?>"><?php echo $smvalue['title']; ?> <i class="glyphicon glyphicon-triangle-right"></i></a>
-
-                                                                        <?php foreach ($smvalue['submenu'] as $sb1mkey => $sb1mvalue) { ?>
-                                                                            <a href="<?php echo $sb1mvalue['link']; ?>" style="    font-weight: 500;    border-bottom: 0px solid #b6b6b6;"><?php echo $sb1mvalue['title']; ?></a>
-                                                                        <?php } ?>
+                                                                    <span style='margin-bottom: 10px;'></span>
+                                                                <?php }
+                                                                ?>
+                                                            </div>
+                                                        <?php } ?>
+                                                        <?php
+                                                        if ($mvalue['block'] == '1') {
+                                                            if(isset($mvalue['submenu1'])){
+                                                            ?>
+                                                            <div class='col-md-6'>
+                                                                <?php foreach ($mvalue['submenu1'] as $mkeys1 => $mvalues1) { ?>
+                                                                    <li class='submenu_heading'>
+                                                                        <a href="<?php echo $mvalues1['link']; ?>"><?php echo $mvalues1['title']; ?></a>
                                                                     </li>
-                                                                <?php } ?>
-                                                            </ul>
+                                                                <?php }
+                                                                ?>
+                                                            </div>
+                                                            <div class='col-md-6'></div>
 
-
-
-                                                            <?php
+                                                        <?php }
                                                         }
                                                         ?>
-                                                    </li>
+
+
+
+                                                    </ul>
                                                     <?php
-                                                }
-                                                ?>
+                                                    }
+                                                    ?>
+                                                </li>
+
+                                            <?php } ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8">
+                                    <div class="main-menu-area">
+                                        <nav>
+                                            <ul>
+                                                <li class="active">
+                                                    <a href="#">Home</a>
+                                                    <ul>
+                                                        <li><a href="">Privacy Policies </a></li>
+                                                        <li><a href="">Term Of Services</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">About</a></li>
+                                                <li><a href="#">Blog</a></li>
+                                                <li><a href="#">FAQ's</a></li>
+                                                <li><a href="#">Contact</a></li>
                                             </ul>
                                         </nav>
-                                    </div>
-                                    <div class="cart_header_stick">
-                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i><span>{{globleCartData.total_quantity}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -492,6 +587,8 @@
 
 
 
+
+
             <!--mobile model-->
 
 
@@ -537,7 +634,7 @@
                                                     <a href="#">
                                                         <div class="product_image_back" style="background: url({{product.file_name}});height: 80px;width: 80px;    background-size: cover;"></div>
 
-                                                                        <!--<img class="img-responsive" alt="product" src="{{product.file_name}}">-->
+                                                                            <!--<img class="img-responsive" alt="product" src="{{product.file_name}}">-->
                                                     </a>
                                                 </div>
                                                 <div class="media-body cart-content">

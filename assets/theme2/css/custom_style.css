@@ -866,3 +866,23 @@ li.col {
     color: #212121;
     margin-bottom: 5px;
 }
+
+.menu_heading{
+   
+}
+
+.menu_heading a{
+     font-size: 15px;
+     font-weight: bold!important;
+     color: red!important;
+     
+}
+
+.submenu_heading{
+     border-bottom: 0px!important;
+}
+
+.submenu_heading a{
+    font-size: 12px;
+        line-height: 10px!important;
+}

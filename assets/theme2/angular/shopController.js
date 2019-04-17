@@ -243,6 +243,7 @@ console.log("search data")
     $scope.viewShortDetails = function (detailobj, link) {
         $scope.projectDetailsModel.productobj = detailobj;
         $scope.projectDetailsModel.link = link;
+        $("#product_description").html(detailobj.description)
     }
 
 
