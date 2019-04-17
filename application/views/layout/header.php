@@ -364,61 +364,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="additional-menu-area" id="additional-menu-area">
-                                                    <div id="mySidenav" class="sidenav">
-                                                        <a href="#" class="closebtn">×</a>
-                                                        <div class="sidenav-search">
-                                                            <div class="input-group stylish-input-group">
-                                                                <input type="text" placeholder="Search Here . . ." class="form-control">
-                                                                <span class="input-group-addon">
-                                                                    <button type="submit">
-                                                                        <span class="glyphicon glyphicon-search"></span>
-                                                                    </button>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <ul class="sidenav-login-registration">
-                                                            <li data-toggle="collapse" data-target="#login" class="collapsed">
-                                                                <a href="#">Login<span class="arrow"></span></a>
-                                                                <div class="collapse" id="login">
-                                                                    <div class="login-registration-field">
-                                                                        <form method="post">
-                                                                            <label>Username or email address *</label>
-                                                                            <input type="text">
-                                                                            <label>Password *</label>
-                                                                            <input type="password">
-                                                                            <button value="Login" type="submit" class="btn-side-nav disabled">Login</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li data-toggle="collapse" data-target="#registration" class="collapsed">
-                                                                <a href="#">Registration<span class="arrow"></span></a>
-                                                                <div class="collapse" id="registration">
-                                                                    <div class="login-registration-field">
-                                                                        <form method="post">
-                                                                            <label>User Name*</label>
-                                                                            <input type="text">
-                                                                            <label>E-mail address *</label>
-                                                                            <input type="email">
-                                                                            <label>Password *</label>
-                                                                            <input type="password">
-                                                                            <button value="Login" type="submit" class="btn-side-nav disabled">Register</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                        <h3 class="ctg-name-title">Category Name List</h3>
-                                                        <ul class="sidenav-nav">
-                                                            <?php foreach ($menulist as $mkey => $mvalue) { ?>
-                                                                <li><a href="shop1.html"><i class="flaticon-dress-1"></i>Women</a></li>
-                                                            <?php } ?>
-                                                        </ul>
-                                                        <!-- times-->
-                                                    </div>
-                                                    <span class="side-menu-open side-menu-trigger"><i class="fa fa-bars" aria-hidden="true"></i></span>
-                                                </div>
+                                               
                                             </li>
                                         </ul>
                                     </div>

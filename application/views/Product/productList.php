@@ -307,7 +307,9 @@ $image2 = "";
                                     </div>
                                     <div class="product-content-holder">
                                         <h3>
-                                            <a href="#"><span class="list_product_title">{{product.title}}</span>  <br>
+                                            <a href="#">
+<!--                                                <span class="list_product_title">{{product.title}}</span> -->
+                                                <br>
                                                 <span style="font-size: 12px">{{product.short_description}} </span>
                                             </a>
                                             <p style="     margin-bottom: 0px;
