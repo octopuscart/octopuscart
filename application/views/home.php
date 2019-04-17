@@ -8,7 +8,7 @@ $this->load->view('layout/header');
 <?php
 foreach ($sliders as $key => $value) {
     ?>
-                                                    <img src="<?php echo imageserverslider . $value->file_name; ?>" alt="" title="#slider-direction-<?php echo $key; ?>" />
+                                                                <img src="<?php echo imageserverslider . $value->file_name; ?>" alt="" title="#slider-direction-<?php echo $key; ?>" />
     <?php
 }
 ?>        
@@ -18,18 +18,18 @@ foreach ($sliders as $key => $value) {
 <?php
 foreach ($sliders as $key => $value) {
     ?>
-                                                <div id="slider-direction-<?php echo $key; ?>" class="t-cn slider-direction">
-                                                    <div class="slider-content t-lfl s-tb slider-1">
-                                                        <div class="title-container s-tb-c">
-                                                            <h2 class="title<?php echo $key; ?>" style="color:<?php echo $value->title_color; ?>">
+                                                            <div id="slider-direction-<?php echo $key; ?>" class="t-cn slider-direction">
+                                                                <div class="slider-content t-lfl s-tb slider-1">
+                                                                    <div class="title-container s-tb-c">
+                                                                        <h2 class="title<?php echo $key; ?>" style="color:<?php echo $value->title_color; ?>">
     <?php echo $value->title; ?>
-                                                            </h2>
-                                                            <p style="color:<?php echo $value->line1_color; ?>"><?php echo $value->line1; ?></p>
-                                                            <p style="color:<?php echo $value->line2_color; ?>"><?php echo $value->line2; ?></p>
-                                                            <a href="<?php echo $value->link; ?>" class="btn-shop-now-fill-slider"><?php echo $value->link_text; ?></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                                        </h2>
+                                                                        <p style="color:<?php echo $value->line1_color; ?>"><?php echo $value->line1; ?></p>
+                                                                        <p style="color:<?php echo $value->line2_color; ?>"><?php echo $value->line2; ?></p>
+                                                                        <a href="<?php echo $value->link; ?>" class="btn-shop-now-fill-slider"><?php echo $value->link_text; ?></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
     <?php
 }
 ?>
@@ -43,26 +43,48 @@ foreach ($sliders as $key => $value) {
 <div class="main-slider2" >
     <div class="bend niceties preview-1">
         <div id="ensign-nivoslider-3" class="slides" style="    height: 500px;">
-            <img src="<?php echo base_url(); ?>assets/sliders/s6.jpg" alt="" title="#slider-direction-1" />
-            <img src="<?php echo base_url(); ?>assets/sliders/s3.jpg" alt="" title="#slider-direction-3" />
-            <img src="<?php echo base_url(); ?>assets/sliders/s7.jpg" alt="" title="#slider-direction-3" />
-            <img src="<?php echo base_url(); ?>assets/sliders/s5.jpg" alt="" title="#slider-direction-3" />
+            <img src="<?php echo base_url(); ?>assets/sliders/1.jpg" alt="" title="#slider-direction-1" />
+            <img src="<?php echo base_url(); ?>assets/sliders/3.jpg" alt="" title="#slider-direction-2" />
+            <img src="<?php echo base_url(); ?>assets/sliders/4.jpg" alt="" title="#slider-direction-3" />
+            <img src="<?php echo base_url(); ?>assets/sliders/s10.jpg" alt="" title="#slider-direction-4" />
+            <img src="<?php echo base_url(); ?>assets/sliders/s5.jpg" alt="" title="#slider-direction-5" />
 
         </div>
-        <div id="slider-direction-1" class="t-cn slider-direction">
-            <div class="slider-content t-lfl s-tb slider-1">
+        <div id="slider-direction-1" class="slider-direction">
+            <div class="slider-content t-lfr s-tb slider-3">
                 <div class="title-container s-tb-c">
-
-                    <!--                    <a href="#" class="btn-shop-now-fill-slider">Customize Now</a>-->
+                    <h2 class="title1" style='color:white;'><span>Pakistani Lawn Suits</h2>
+                    <p style='color:white;'>Fully Heavy Embroidered Lawn Top with Embroidered Patches</p>
+      
+                    <a href="<?php  echo site_url("Product/ProductList/71");?>" class="btn-shop-now-fill-slider">View Collections</a>
+                </div>
+            </div>
+        </div>
+        <div id="slider-direction-2" class="slider-direction">
+            <div class="slider-content t-lfr s-tb slider-3">
+                <div class="title-container s-tb-c">
                 </div>
             </div>
         </div>
         <div id="slider-direction-3" class="slider-direction">
             <div class="slider-content t-lfr s-tb slider-3">
                 <div class="title-container s-tb-c">
-                </div>
+                  </div>
             </div>
         </div>
+        <div id="slider-direction-4" class="slider-direction">
+            <div class="slider-content t-lfr s-tb slider-3">
+                <div class="title-container s-tb-c">
+                 </div>
+            </div>
+        </div>
+        <div id="slider-direction-5" class="slider-direction">
+            <div class="slider-content t-lfr s-tb slider-3">
+                <div class="title-container s-tb-c">
+                  </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <!-- Slider Area End Here -->
